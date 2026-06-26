@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Users Management | RecruitIQ</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>RecruitIQ</h2>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html">📊 Dashboard</a></li>
+                <li><a class="active" href="#">👥 Users</a></li>
+                <li><a href="jobs.html">💼 Jobs</a></li>
+                <li><a href="companies.html">🏢 Companies</a></li>
+                <li><a href="analytics.html">📈 Analytics</a></li>
+                <li><a href="settings.html">⚙ Settings</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+
+            <nav class="navbar">
+                <div class="logo">Users Management</div>
+            </nav>
+
+            <div class="page-header">
+
+                <h2>Manage Users</h2>
+
+                <button class="primary-btn">
+                    + Add User
+                </button>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <div class="table-toolbar">
+
+                    <input type="text" placeholder="Search users..." class="table-search">
+
+                    <select class="table-filter">
+                        <option>All Roles</option>
+                        <option>Candidate</option>
+                        <option>Recruiter</option>
+                        <option>Admin</option>
+                    </select>
+
+                </div>
+
+                <table class="admin-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Sarah Johnson</td>
+                            <td>sarah@mail.com</td>
+                            <td>Candidate</td>
+                            <td>
+                                <span class="status active-status">
+                                    Active
+                                </span>
+                            </td>
+                            <td>
+                                <button class="action-btn">View</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>TechNova HR</td>
+                            <td>hr@technova.com</td>
+                            <td>Recruiter</td>
+                            <td>
+                                <span class="status active-status">
+                                    Active
+                                </span>
+                            </td>
+                            <td>
+                                <button class="action-btn">View</button>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>John Smith</td>
+                            <td>john@mail.com</td>
+                            <td>Candidate</td>
+                            <td>
+                                <span class="status inactive-status">
+                                    Inactive
+                                </span>
+                            </td>
+                            <td>
+                                <button class="action-btn">View</button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,100 @@
+<!-- Modal Overlay -->
+
+<div class="modal-overlay" id="modalOverlay">
+
+    <div class="modal-container">
+
+        <div class="modal-header">
+
+            <h2>Candidate Details</h2>
+
+            <button class="modal-close" onclick="closeModal()">
+                ✕
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div class="modal-profile">
+
+                <img src="../assets/avatar.png" alt="Candidate" class="modal-avatar">
+
+                <h3>Sarah Johnson</h3>
+
+                <p>Senior Frontend Developer</p>
+
+            </div>
+
+            <div class="modal-section">
+
+                <h4>Contact Information</h4>
+
+                <p>Email: sarah@example.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Location: Pune, India</p>
+
+            </div>
+
+            <div class="modal-section">
+
+                <h4>Skills</h4>
+
+                <div class="modal-skills">
+
+                    <span>React</span>
+                    <span>JavaScript</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>Node.js</span>
+
+                </div>
+
+            </div>
+
+            <div class="modal-section">
+
+                <h4>Experience</h4>
+
+                <p>
+                    4+ years of experience building modern
+                    web applications using React ecosystem.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button class="secondary-btn">
+                Close
+            </button>
+
+            <button class="primary-btn">
+                Shortlist Candidate
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    function openModal() {
+
+        document.getElementById("modalOverlay")
+            .style.display = "flex";
+
+    }
+
+    function closeModal() {
+
+        document.getElementById("modalOverlay")
+            .style.display = "none";
+
+    }
+
+</script>

@@ -1,0 +1,224 @@
+@media (max-width: 1200px) {
+    .feature-grid,
+    .features-section .feature-grid,
+    .stats-section,
+    .stats,
+    .jobs-grid,
+    .pricing-section,
+    .companies-grid,
+    .team-grid,
+    .timeline-public,
+    .faq-categories,
+    .faq-grid,
+    .analytics-cards,
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .dashboard-preview {
+        max-width: 720px;
+    }
+}
+
+@media (max-width: 992px) {
+    .landing-navbar {
+        min-height: auto;
+        padding: 18px 5%;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .landing-navbar nav,
+    nav {
+        flex-wrap: wrap;
+        gap: 14px 22px;
+    }
+
+    .page-content,
+    .navbar {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        min-height: auto;
+    }
+
+    .menu,
+    .sidebar-menu {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding-bottom: 4px;
+    }
+
+    .menu li,
+    .sidebar-menu li,
+    .sidebar-menu a {
+        white-space: nowrap;
+    }
+
+    .dashboard-layout {
+        flex-direction: column;
+    }
+
+    .dashboard-grid,
+    .profile-layout,
+    .resume-layout,
+    .candidate-settings-grid,
+    .job-layout,
+    .profile-grid,
+    .interview-layout,
+    .analytics-grid,
+    .settings-grid,
+    .admin-grid,
+    .contact-section,
+    .mission-section {
+        grid-template-columns: 1fr;
+    }
+
+    .preview-panel {
+        position: static;
+    }
+
+    .search-card,
+    .job-filters {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-content {
+        padding: 22px 16px;
+    }
+
+    .navbar {
+        min-height: auto;
+        padding: 16px;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .navbar-right,
+    .nav-buttons,
+    .hero-buttons,
+    .table-toolbar,
+    .filter-card,
+    .profile-banner,
+    .profile-header,
+    .application-header,
+    .version-item,
+    .setting-row,
+    .setting-item,
+    .switch-row {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .hero,
+    .jobs-hero,
+    .companies-hero,
+    .feature-hero,
+    .pricing-hero,
+    .about-hero,
+    .contact-hero,
+    .faq-hero,
+    .legal-hero {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .stats-section,
+    .stats,
+    .feature-grid,
+    .features-section .feature-grid,
+    .testimonial-grid,
+    .companies-grid,
+    .team-grid,
+    .faq-categories,
+    .faq-grid,
+    .jobs-grid,
+    .pricing-section,
+    .timeline-public,
+    .stats-grid,
+    .job-grid,
+    .saved-jobs-grid,
+    .analytics-cards,
+    .cards {
+        grid-template-columns: 1fr;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .form-grid,
+    .role-selection {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-left {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .progress {
+        width: 100%;
+    }
+
+    .candidate-actions,
+    .job-actions,
+    .social-login {
+        flex-direction: column;
+    }
+
+    .admin-table,
+    .jobs-table,
+    .pricing-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .dashboard-footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .auth-card,
+    .forgot-card,
+    .login-card {
+        padding: 26px;
+    }
+
+    .auth-right,
+    .login-right,
+    .auth-center-container {
+        padding: 22px 14px;
+    }
+
+    .login-left,
+    .auth-left {
+        display: none;
+    }
+
+    .login-container,
+    .auth-container {
+        display: block;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .modal-container {
+        max-width: 95%;
+    }
+}
