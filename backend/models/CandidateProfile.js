@@ -1,15 +1,13 @@
 /*
-candidate
-job
-company
+user
 
 profilePhoto
-
 headline
 summary
 
 dateOfBirth
 gender
+nationality
 
 phone
 
@@ -52,17 +50,8 @@ certifications
 jobPreferences
 availability
 
-coverLetter
-
-screeningAnswers
-
-status
-
-appliedAt
-lastStatusUpdatedAt
-
-isWithdrawn
-withdrawnAt
+isProfileComplete
+isVerified
 
 isDeleted
 deletedAt
@@ -72,26 +61,13 @@ timestamps
 
 const mongoose = require("mongoose");
 
-const applicationSchema = new mongoose.Schema(
+const candidateProfileSchema = new mongoose.Schema(
   {
-    candidate: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "CandidateProfile",
+      ref: "User",
       required: true,
-      index: true,
-    },
-
-    job: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Job",
-      required: true,
-      index: true,
-    },
-
-    company: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Company",
-      required: true,
+      unique: true,
       index: true,
     },
 
@@ -117,12 +93,7 @@ const applicationSchema = new mongoose.Schema(
 
     gender: {
       type: String,
-      enum: [
-        "Male",
-        "Female",
-        "Non-Binary",
-        "Prefer not to say",
-      ],
+      enum: ["Male", "Female", "Non-Binary", "Prefer not to say"],
     },
 
     phone: {
@@ -228,14 +199,7 @@ const applicationSchema = new mongoose.Schema(
 
     experienceLevel: {
       type: String,
-      enum: [
-        "Fresher",
-        "Junior",
-        "Mid-Level",
-        "Senior",
-        "Lead",
-        "Manager",
-      ],
+      enum: ["Fresher", "Junior", "Mid-Level", "Senior", "Lead", "Manager"],
       default: "Fresher",
     },
 
@@ -311,18 +275,13 @@ const applicationSchema = new mongoose.Schema(
 
         proficiency: {
           type: String,
-          enum: [
-            "Beginner",
-            "Intermediate",
-            "Professional",
-            "Native",
-          ],
+          enum: ["Beginner", "Intermediate", "Professional", "Native"],
           default: "Beginner",
         },
       },
     ],
 
-        education: [
+    education: [
       {
         institution: {
           type: String,
@@ -519,11 +478,7 @@ const applicationSchema = new mongoose.Schema(
       preferredWorkModes: [
         {
           type: String,
-          enum: [
-            "On-site",
-            "Hybrid",
-            "Remote",
-          ],
+          enum: ["On-site", "Hybrid", "Remote"],
         },
       ],
 
@@ -553,12 +508,7 @@ const applicationSchema = new mongoose.Schema(
 
       candidateStatus: {
         type: String,
-        enum: [
-          "Active",
-          "Open to Work",
-          "Not Looking",
-          "Unavailable",
-        ],
+        enum: ["Active", "Open to Work", "Not Looking", "Unavailable"],
         default: "Active",
       },
 
@@ -567,62 +517,15 @@ const applicationSchema = new mongoose.Schema(
       },
     },
 
-    coverLetter: {
-      type: String,
-      maxlength: 5000,
-    },
-
-    screeningAnswers: [
-      {
-        question: {
-          type: String,
-          required: true,
-          trim: true,
-        },
-
-        answer: {
-          type: String,
-          trim: true,
-        },
-      },
-    ],
-
-        status: {
-      type: String,
-      enum: [
-        "Applied",
-        "Under Review",
-        "Shortlisted",
-        "Interview Scheduled",
-        "Interviewing",
-        "Selected",
-        "Offered",
-        "Hired",
-        "Rejected",
-        "Withdrawn",
-      ],
-      default: "Applied",
+    isProfileComplete: {
+      type: Boolean,
+      default: false,
       index: true,
     },
 
-    appliedAt: {
-      type: Date,
-      default: Date.now,
-    },
-
-    lastStatusUpdatedAt: {
-      type: Date,
-      default: Date.now,
-    },
-
-    isWithdrawn: {
+    isVerified: {
       type: Boolean,
       default: false,
-    },
-
-    withdrawnAt: {
-      type: Date,
-      default: null,
     },
 
     isDeleted: {
@@ -638,7 +541,7 @@ const applicationSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-module.exports = mongoose.model("Application", applicationSchema);
+module.exports = mongoose.model("CandidateProfile", candidateProfileSchema);
