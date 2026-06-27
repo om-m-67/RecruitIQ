@@ -1,0 +1,154 @@
+/* ==========================================================
+   RecruitIQ — Admin Dashboard Styles
+========================================================== */
+
+@import url('./variables.css');
+
+/* ── Admin Stats accent variant ── */
+.admin-stat-btn { cursor: pointer; text-align: left; }
+.admin-stat-btn:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* ── Chart ── */
+.chart-container {
+  height: 180px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 0 4px;
+}
+.chart-bar {
+  flex: 1;
+  border-radius: 6px 6px 0 0;
+  background: #e2e8f0;
+  position: relative;
+  transition: background var(--transition);
+  cursor: pointer;
+}
+.chart-bar:hover { background: #bfdbfe; }
+.chart-bar.active { background: var(--gradient-primary); }
+.chart-bar span {
+  position: absolute;
+  bottom: -22px;
+  left: 50%; transform: translateX(-50%);
+  font-size: 11px; font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.chart-labels { height: 28px; }
+
+/* ── Quick Actions ── */
+.quick-action-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.quick-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: 13.5px; font-weight: 600;
+  color: var(--text-secondary);
+  text-align: left;
+  transition: all var(--transition);
+}
+.quick-action-btn:hover {
+  background: var(--primary-light);
+  border-color: #93c5fd;
+  color: var(--primary);
+}
+.quick-action-btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+
+/* ── Activity Feed ── */
+.activity-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+.activity-item:last-child { border-bottom: none; }
+.activity-icon {
+  width: 36px; height: 36px;
+  border-radius: var(--radius-full);
+  background: var(--surface);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.activity-icon svg { width: 16px; height: 16px; color: var(--primary); }
+.activity-text {
+  flex: 1;
+  font-size: 13.5px; color: var(--text-secondary); line-height: 1.5;
+}
+.activity-text strong { color: var(--text-primary); font-weight: 600; }
+.activity-time {
+  font-size: 11.5px; color: var(--text-muted);
+  white-space: nowrap; margin-top: 2px;
+}
+
+/* ── User list row ── */
+.user-cell {
+  display: flex; align-items: center; gap: 10px;
+}
+.user-cell-name  { font-size: 13.5px; font-weight: 600; color: var(--text-primary); }
+.user-cell-email { font-size: 12px; color: var(--text-muted); }
+
+/* ── Company card (grid view) ── */
+.company-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.company-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+.company-card:hover {
+  border-color: #93c5fd;
+  box-shadow: var(--shadow);
+  transform: translateY(-3px);
+}
+.company-logo-wrap {
+  width: 48px; height: 48px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-primary);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800; color: #fff;
+  margin-bottom: 14px;
+}
+.company-name  { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.company-meta  { font-size: 12.5px; color: var(--text-muted); margin-top: 3px; }
+.company-stats {
+  display: flex; gap: 14px; margin-top: 14px;
+  padding-top: 14px; border-top: 1px solid var(--border);
+}
+.company-stat-item { font-size: 12px; color: var(--text-muted); }
+.company-stat-item strong {
+  display: block;
+  font-size: 15px; font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* ── Analytics ── */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.kpi-list { display: flex; flex-direction: column; gap: 16px; }
+.kpi-item {
+  display: flex; align-items: center; gap: 14px;
+}
+.kpi-label { font-size: 13px; color: var(--text-muted); flex: 1; }
+.kpi-bar   { flex: 2; }
+.kpi-value { font-size: 13px; font-weight: 700; color: var(--text-primary); min-width: 36px; text-align: right; }
+
+/* ── Admin Modal extended ── */
+.admin-modal .modal-container { max-width: 560px; }

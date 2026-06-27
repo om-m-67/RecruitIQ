@@ -1,271 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Manage Jobs | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/recruiter.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Jobs | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/recruiter.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
+<div class="app-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- Sidebar -->
-
-    <div class="sidebar">
-
-        <div class="logo">
-            RecruitIQ
-        </div>
-
-        <ul class="menu">
-            <li>Dashboard</li>
-            <li class="active">Jobs</li>
-            <li>Candidates</li>
-            <li>Pipeline</li>
-            <li>Interviews</li>
-            <li>Analytics</li>
-            <li>Settings</li>
-        </ul>
-
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><span class="logo-text">Recruit<span class="logo-dot">IQ</span></span></div>
+    <nav>
+      <p class="sidebar-section-label">Recruiting</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./manage-jobs.html" class="active"><i data-lucide="briefcase"></i> My Jobs</a></li>
+        <li><a href="./applications.html"><i data-lucide="file-text"></i> Applications <span class="badge-count">245</span></a></li>
+        <li><a href="./hiring-pipeline.html"><i data-lucide="git-branch"></i> Pipeline</a></li>
+        <li><a href="./schedule-interview.html"><i data-lucide="calendar"></i> Interviews</a></li>
+        <li><a href="./analytics.html"><i data-lucide="bar-chart-2"></i> Analytics</a></li>
+      </ul>
+      <p class="sidebar-section-label">Account</p>
+      <ul class="sidebar-nav">
+        <li><a href="./notifications.html"><i data-lucide="bell"></i> Notifications</a></li>
+        <li><a href="./settings.html"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">JS</div>
+        <div class="sidebar-user-info"><div class="sidebar-user-name">John Smith</div><div class="sidebar-user-role">Recruiter</div></div>
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
     </div>
+  </aside>
 
-    <!-- Navbar -->
-
-    <div class="navbar">
-
-        <h2>Manage Jobs</h2>
-
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
         <div>
-            🔔 👤
+          <div class="topbar-title">My Jobs</div>
+          <div class="topbar-subtitle">Manage your job postings</div>
         </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <i data-lucide="search" style="width:15px;height:15px;color:#94a3b8;"></i>
+          <input type="text" placeholder="Search jobs…" aria-label="Search jobs">
+        </div>
+        <button class="topbar-icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">JS</div>
+          <div>
+            <div class="topbar-user-name">John Smith</div>
+            <div class="topbar-user-role">Recruiter</div>
+          </div>
+        </div>
+      </div>
+    </header>
 
+    <main class="page-content">
+
+      <!-- Welcome Banner -->
+      <div class="welcome-banner">
+        <div class="welcome-content">
+          <h1>Manage Your Job Postings</h1>
+          <p>Review, edit, and track all your active and past job listings.</p>
+        </div>
+        <a href="./create-job.html" class="btn btn-white" style="position:relative;z-index:1;">
+          <i data-lucide="plus"></i> Post New Job
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-icon blue"><i data-lucide="briefcase"></i></div>
+          <div class="stat-card-value">12</div>
+          <div class="stat-card-label">Active Jobs</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +2 this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon amber"><i data-lucide="file-edit"></i></div>
+          <div class="stat-card-value">4</div>
+          <div class="stat-card-label">Draft</div>
+          <div class="stat-card-change neutral">Ready to publish</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon purple"><i data-lucide="pause-circle"></i></div>
+          <div class="stat-card-value">2</div>
+          <div class="stat-card-label">Paused</div>
+          <div class="stat-card-change neutral">Temporarily paused</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon rose"><i data-lucide="archive"></i></div>
+          <div class="stat-card-value">8</div>
+          <div class="stat-card-label">Total Closed</div>
+          <div class="stat-card-change neutral">All time</div>
+        </div>
+      </div>
+
+      <!-- Jobs Table Card -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3>All Job Postings</h3>
+            <p>26 total positions across all statuses</p>
+          </div>
+          <button class="btn btn-primary btn-sm" id="openCreateModal">
+            <i data-lucide="plus"></i> Post New Job
+          </button>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Job Title</th>
+                <th>Location &amp; Type</th>
+                <th>Applications</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div style="font-weight:600;color:var(--text-primary);">Frontend Developer</div>
+                  <div style="font-size:12px;color:var(--text-muted);">Posted Jun 10, 2026</div>
+                </td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                    <span style="font-size:13px;">Mumbai</span>
+                    <span class="badge badge-info">Full-time</span>
+                  </div>
+                </td>
+                <td>
+                  <span style="font-weight:700;color:var(--text-primary);">48</span>
+                  <span style="font-size:12px;color:var(--text-muted);margin-left:4px;">applicants</span>
+                </td>
+                <td><span class="badge badge-success"><span class="badge-dot" style="background:var(--success);"></span>Active</span></td>
+                <td>
+                  <div class="flex gap-6">
+                    <a href="./candidate-profile.html" class="btn btn-ghost btn-sm"><i data-lucide="eye"></i> View</a>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="edit-3"></i> Edit</button>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="pause"></i> Pause</button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:600;color:var(--text-primary);">Product Designer</div>
+                  <div style="font-size:12px;color:var(--text-muted);">Posted Jun 8, 2026</div>
+                </td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                    <span style="font-size:13px;">Bangalore</span>
+                    <span class="badge badge-primary">Full-time</span>
+                  </div>
+                </td>
+                <td>
+                  <span style="font-weight:700;color:var(--text-primary);">31</span>
+                  <span style="font-size:12px;color:var(--text-muted);margin-left:4px;">applicants</span>
+                </td>
+                <td><span class="badge badge-success"><span class="badge-dot" style="background:var(--success);"></span>Active</span></td>
+                <td>
+                  <div class="flex gap-6">
+                    <a href="./candidate-profile.html" class="btn btn-ghost btn-sm"><i data-lucide="eye"></i> View</a>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="edit-3"></i> Edit</button>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="pause"></i> Pause</button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:600;color:var(--text-primary);">Backend Engineer</div>
+                  <div style="font-size:12px;color:var(--text-muted);">Posted Jun 5, 2026</div>
+                </td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                    <span style="font-size:13px;">Remote</span>
+                    <span class="badge badge-info">Contract</span>
+                  </div>
+                </td>
+                <td>
+                  <span style="font-weight:700;color:var(--text-primary);">62</span>
+                  <span style="font-size:12px;color:var(--text-muted);margin-left:4px;">applicants</span>
+                </td>
+                <td><span class="badge badge-warning"><span class="badge-dot" style="background:var(--warning);"></span>Paused</span></td>
+                <td>
+                  <div class="flex gap-6">
+                    <a href="./candidate-profile.html" class="btn btn-ghost btn-sm"><i data-lucide="eye"></i> View</a>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="edit-3"></i> Edit</button>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="play"></i> Resume</button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:600;color:var(--text-primary);">Data Analyst</div>
+                  <div style="font-size:12px;color:var(--text-muted);">Saved Jun 12, 2026</div>
+                </td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                    <span style="font-size:13px;">Pune</span>
+                    <span class="badge badge-neutral">Full-time</span>
+                  </div>
+                </td>
+                <td>
+                  <span style="font-weight:700;color:var(--text-primary);">—</span>
+                </td>
+                <td><span class="badge badge-neutral"><span class="badge-dot" style="background:#94a3b8;"></span>Draft</span></td>
+                <td>
+                  <div class="flex gap-6">
+                    <button class="btn btn-ghost btn-sm"><i data-lucide="eye"></i> View</button>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="edit-3"></i> Edit</button>
+                    <button class="btn btn-primary btn-sm"><i data-lucide="send"></i> Publish</button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div style="font-weight:600;color:var(--text-primary);">HR Executive</div>
+                  <div style="font-size:12px;color:var(--text-muted);">Closed May 28, 2026</div>
+                </td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                    <span style="font-size:13px;">Delhi</span>
+                    <span class="badge badge-neutral">Full-time</span>
+                  </div>
+                </td>
+                <td>
+                  <span style="font-weight:700;color:var(--text-primary);">19</span>
+                  <span style="font-size:12px;color:var(--text-muted);margin-left:4px;">applicants</span>
+                </td>
+                <td><span class="badge badge-danger"><span class="badge-dot" style="background:var(--danger);"></span>Closed</span></td>
+                <td>
+                  <div class="flex gap-6">
+                    <button class="btn btn-ghost btn-sm"><i data-lucide="eye"></i> View</button>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="refresh-cw"></i> Reopen</button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Create Job Modal -->
+<div class="modal-overlay" id="createJobModal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <div>
+        <h3>Post a New Job</h3>
+        <p>Fill in the details to publish or save as draft</p>
+      </div>
+      <button class="modal-close" id="closeModal"><i data-lucide="x"></i></button>
     </div>
-
-    <!-- Main Content -->
-
-    <div class="page-content">
-
-        <div class="page-header">
-
-            <div>
-                <h1>Job Management</h1>
-                <p>Manage all active and closed job postings.</p>
-            </div>
-
-            <button class="publish-btn">
-                + Create Job
-            </button>
-
-        </div>
-
-        <!-- Filters -->
-
-        <div class="card filter-card">
-
-            <input type="text" placeholder="Search job title..." class="search-input">
-
-            <select>
-                <option>All Departments</option>
-                <option>Engineering</option>
-                <option>Marketing</option>
-                <option>HR</option>
-            </select>
-
-            <select>
-                <option>All Status</option>
-                <option>Open</option>
-                <option>Closed</option>
-                <option>Draft</option>
-            </select>
-
-        </div>
-
-        <!-- Table -->
-
-        <div class="card">
-
-            <table class="jobs-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th>Job Title</th>
-                        <th>Department</th>
-                        <th>Location</th>
-                        <th>Applicants</th>
-                        <th>Status</th>
-                        <th>Posted</th>
-                        <th>Actions</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>
-                            Frontend Developer
-                        </td>
-
-                        <td>
-                            Engineering
-                        </td>
-
-                        <td>
-                            Mumbai
-                        </td>
-
-                        <td>
-                            45
-                        </td>
-
-                        <td>
-                            <span class="badge-open">
-                                Open
-                            </span>
-                        </td>
-
-                        <td>
-                            23 Jun 2026
-                        </td>
-
-                        <td>
-
-                            <button class="table-btn">
-                                View
-                            </button>
-
-                            <button class="table-btn edit">
-                                Edit
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>
-                            UI Designer
-                        </td>
-
-                        <td>
-                            Design
-                        </td>
-
-                        <td>
-                            Pune
-                        </td>
-
-                        <td>
-                            31
-                        </td>
-
-                        <td>
-                            <span class="badge-draft">
-                                Draft
-                            </span>
-                        </td>
-
-                        <td>
-                            18 Jun 2026
-                        </td>
-
-                        <td>
-
-                            <button class="table-btn">
-                                View
-                            </button>
-
-                            <button class="table-btn edit">
-                                Edit
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>
-                            HR Executive
-                        </td>
-
-                        <td>
-                            Human Resources
-                        </td>
-
-                        <td>
-                            Remote
-                        </td>
-
-                        <td>
-                            15
-                        </td>
-
-                        <td>
-                            <span class="badge-closed">
-                                Closed
-                            </span>
-                        </td>
-
-                        <td>
-                            10 Jun 2026
-                        </td>
-
-                        <td>
-
-                            <button class="table-btn">
-                                View
-                            </button>
-
-                            <button class="table-btn edit">
-                                Edit
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-            <!-- Pagination -->
-
-            <div class="pagination">
-
-                <button>Previous</button>
-
-                <button class="active-page">
-                    1
-                </button>
-
-                <button>2</button>
-
-                <button>3</button>
-
-                <button>Next</button>
-
-            </div>
-
-        </div>
-
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Job Title</label>
+        <input type="text" class="form-control" placeholder="e.g. Senior Frontend Developer">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Company</label>
+        <input type="text" class="form-control" placeholder="e.g. Acme Corp" value="TechCorp India">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Location</label>
+        <input type="text" class="form-control" placeholder="e.g. Mumbai, Bangalore, Remote">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Employment Type</label>
+        <select class="form-control">
+          <option>Full-time</option>
+          <option>Part-time</option>
+          <option>Contract</option>
+          <option>Internship</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Job Description</label>
+        <textarea class="form-control" rows="4" placeholder="Describe the role, responsibilities, and requirements…"></textarea>
+      </div>
     </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" id="saveDraftBtn">Save as Draft</button>
+      <button class="btn btn-primary" id="publishJobBtn"><i data-lucide="send"></i> Publish Job</button>
+    </div>
+  </div>
+</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  lucide.createIcons();
+
+  // Sidebar toggle
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('visible');
+  });
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('visible');
+  });
+
+  // Modal
+  const modal = document.getElementById('createJobModal');
+  document.getElementById('openCreateModal').addEventListener('click', () => modal.classList.add('is-open'));
+  document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('is-open'));
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('is-open'); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.classList.remove('is-open'); });
+
+  // Toast helper
+  function showToast(message, type = 'success') {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `<i data-lucide="${type === 'success' ? 'check-circle' : 'alert-circle'}" style="width:16px;height:16px;flex-shrink:0;"></i> ${message}`;
+    container.appendChild(toast);
+    lucide.createIcons();
+    setTimeout(() => toast.remove(), 3500);
+  }
+
+  document.getElementById('saveDraftBtn').addEventListener('click', () => {
+    modal.classList.remove('is-open');
+    showToast('Job saved as draft.', 'success');
+  });
+  document.getElementById('publishJobBtn').addEventListener('click', () => {
+    modal.classList.remove('is-open');
+    showToast('Job published successfully!', 'success');
+  });
+});
+</script>
 </body>
-
 </html>

@@ -1,0 +1,74 @@
+/* ==========================================================
+   RecruitIQ — Responsive Styles for Dashboard Shell
+========================================================== */
+
+/* ── Tablet (≤1024px) ── */
+@media (max-width: 1024px) {
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .job-rec-grid { grid-template-columns: 1fr 1fr; }
+  .analytics-grid { grid-template-columns: 1fr; }
+  .company-grid { grid-template-columns: 1fr 1fr; }
+  .schedule-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Mobile (≤768px) ── */
+@media (max-width: 768px) {
+  :root { --sidebar-width: 0px; }
+
+  .sidebar {
+    transform: translateX(-260px);
+    width: 260px;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .main-wrapper { margin-left: 0; }
+
+  .menu-toggle { display: flex !important; }
+
+  .topbar { padding: 0 16px; }
+  .topbar-search { display: none; }
+  .topbar-user-name, .topbar-user-role { display: none; }
+
+  .page-content { padding: 16px; }
+
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .job-rec-grid { grid-template-columns: 1fr; }
+  .company-grid { grid-template-columns: 1fr; }
+
+  .welcome-banner {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  .welcome-banner .btn-white { width: 100%; }
+
+  .pipeline-board { gap: 10px; }
+  .pipeline-col { min-width: 200px; }
+
+  .quick-action-grid { grid-template-columns: 1fr; }
+
+  .modal-overlay { padding: 12px; }
+  .modal-header, .modal-body, .modal-footer { padding-left: 18px; padding-right: 18px; }
+  .modal-footer { flex-direction: column; }
+  .modal-footer .btn { width: 100%; justify-content: center; }
+}
+
+/* ── Small mobile (≤480px) ── */
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .welcome-banner h1 { font-size: 18px; }
+  .page-header h1  { font-size: 20px; }
+}
+
+/* ── Sidebar overlay on mobile ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(15,23,42,.4);
+  z-index: 190;
+}
+.sidebar-overlay.visible { display: block; }

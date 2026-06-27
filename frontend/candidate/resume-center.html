@@ -1,249 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Resume Center | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/candidate.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resume Center | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/candidate.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
+<div class="app-layout">
 
-    <div class="sidebar">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <div class="logo">RecruitIQ</div>
-
-        <ul class="menu">
-
-            <li><a href="./dashboard.html">Dashboard</a></li>
-            <li><a href="./profile.html">Profile</a></li>
-            <li><a href="./my-applications.html">Applications</a></li>
-            <li><a href="./application-timeline.html">Timeline</a></li>
-            <li class="active"><a href="./resume-center.html">Resume Center</a></li>
-            <li><a href="./saved-jobs.html">Saved Jobs</a></li>
-            <li><a href="./notifications.html">Notifications</a></li>
-            <li><a href="./settings.html">Settings</a></li>
-
-        </ul>
-
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="logo-text">Recruit<span class="logo-dot">IQ</span></span>
     </div>
+    <nav>
+      <p class="sidebar-section-label">Main</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./profile.html"><i data-lucide="user"></i> My Profile</a></li>
+        <li><a href="./my-applications.html"><i data-lucide="file-text"></i> Applications <span class="badge-count">24</span></a></li>
+        <li><a href="./application-timeline.html"><i data-lucide="git-branch"></i> Timeline</a></li>
+        <li><a href="./resume-center.html" class="active"><i data-lucide="folder-open"></i> Resume Center</a></li>
+        <li><a href="./saved-jobs.html"><i data-lucide="bookmark"></i> Saved Jobs <span class="badge-count">18</span></a></li>
+      </ul>
+      <p class="sidebar-section-label">Account</p>
+      <ul class="sidebar-nav">
+        <li><a href="./notifications.html"><i data-lucide="bell"></i> Notifications <span class="badge-count">5</span></a></li>
+        <li><a href="./settings.html"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">RS</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Rahul Sharma</div>
+          <div class="sidebar-user-role">Candidate</div>
+        </div>
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
+    </div>
+  </aside>
 
-    <div class="navbar">
-
-        <h2>Resume Center</h2>
-
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
         <div>
-            🔔 👤
+          <div class="topbar-title">Resume Center</div>
         </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <i data-lucide="search" style="width:15px;height:15px;color:#94a3b8;"></i>
+          <input type="text" placeholder="Search resumes…" aria-label="Search">
+        </div>
+        <button class="topbar-icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">RS</div>
+          <div>
+            <div class="topbar-user-name">Rahul Sharma</div>
+            <div class="topbar-user-role">Candidate</div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    </div>
+    <main class="page-content">
 
-    <div class="page-content">
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>Resume Center</h1>
+        <p>Upload, manage, and analyze your resumes for ATS compatibility.</p>
+      </div>
 
-        <div class="page-header">
+      <!-- Upload Zone -->
+      <div class="resume-upload-zone mb-24" id="uploadZone" onclick="document.getElementById('resumeInput').click()"
+           ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+        <input type="file" id="resumeInput" accept=".pdf,.doc,.docx" style="display:none;" onchange="handleFile(this.files[0])">
+        <i data-lucide="upload-cloud"></i>
+        <h3>Drop your resume here or click to upload</h3>
+        <p>Supports PDF, DOC, DOCX — max file size 5 MB</p>
+        <button class="btn btn-primary mt-12" style="pointer-events:none;" tabindex="-1">
+          <i data-lucide="upload"></i> Choose File
+        </button>
+      </div>
 
+      <!-- Two column layout -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+
+        <!-- Uploaded Resumes -->
+        <div>
+          <div class="section-header">
             <div>
+              <h2>My Resumes</h2>
+              <p>3 resumes uploaded</p>
+            </div>
+            <span class="badge badge-info">3 / 5 slots used</span>
+          </div>
 
-                <h1>Resume Management</h1>
+          <div style="display:flex;flex-direction:column;gap:12px;" id="resumeList">
 
-                <p>
-                    Upload, analyze and optimize your resumes.
-                </p>
-
+            <div class="resume-card" id="resume-1">
+              <div class="resume-card-icon">
+                <i data-lucide="file-text"></i>
+              </div>
+              <div style="flex:1;min-width:0;">
+                <div class="resume-card-name">Rahul_Sharma_Resume_2026.pdf</div>
+                <div class="resume-card-meta">2.1 MB &nbsp;·&nbsp; Uploaded Jun 15, 2026</div>
+                <div style="display:flex;gap:6px;margin-top:6px;">
+                  <span class="badge badge-success">ATS Score: 94%</span>
+                  <span class="badge badge-primary">Primary</span>
+                </div>
+              </div>
+              <div class="resume-card-actions">
+                <button class="btn btn-secondary btn-sm" title="Download"><i data-lucide="download"></i></button>
+                <button class="btn btn-secondary btn-sm" title="Preview"><i data-lucide="eye"></i></button>
+                <button class="btn btn-danger btn-sm" title="Delete" onclick="deleteResume('resume-1', 'Rahul_Sharma_Resume_2026.pdf')"><i data-lucide="trash-2"></i></button>
+              </div>
             </div>
 
-            <button class="apply-btn">
-                Upload Resume
-            </button>
+            <div class="resume-card" id="resume-2">
+              <div class="resume-card-icon">
+                <i data-lucide="file-text"></i>
+              </div>
+              <div style="flex:1;min-width:0;">
+                <div class="resume-card-name">Rahul_Sharma_Frontend_CV.pdf</div>
+                <div class="resume-card-meta">1.8 MB &nbsp;·&nbsp; Uploaded May 30, 2026</div>
+                <div style="display:flex;gap:6px;margin-top:6px;">
+                  <span class="badge badge-warning">ATS Score: 78%</span>
+                </div>
+              </div>
+              <div class="resume-card-actions">
+                <button class="btn btn-secondary btn-sm" title="Download"><i data-lucide="download"></i></button>
+                <button class="btn btn-secondary btn-sm" title="Preview"><i data-lucide="eye"></i></button>
+                <button class="btn btn-danger btn-sm" title="Delete" onclick="deleteResume('resume-2', 'Rahul_Sharma_Frontend_CV.pdf')"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
 
+            <div class="resume-card" id="resume-3">
+              <div class="resume-card-icon">
+                <i data-lucide="file"></i>
+              </div>
+              <div style="flex:1;min-width:0;">
+                <div class="resume-card-name">Portfolio_Resume_Draft.docx</div>
+                <div class="resume-card-meta">940 KB &nbsp;·&nbsp; Uploaded Apr 10, 2026</div>
+                <div style="display:flex;gap:6px;margin-top:6px;">
+                  <span class="badge badge-danger">ATS Score: 55%</span>
+                  <span class="badge badge-neutral">Draft</span>
+                </div>
+              </div>
+              <div class="resume-card-actions">
+                <button class="btn btn-secondary btn-sm" title="Download"><i data-lucide="download"></i></button>
+                <button class="btn btn-secondary btn-sm" title="Preview"><i data-lucide="eye"></i></button>
+                <button class="btn btn-danger btn-sm" title="Delete" onclick="deleteResume('resume-3', 'Portfolio_Resume_Draft.docx')"><i data-lucide="trash-2"></i></button>
+              </div>
+            </div>
+
+          </div>
         </div>
 
-        <!-- ATS Score -->
-
-        <div class="stats-grid">
-
-            <div class="stat-card">
-
-                <h4>ATS Resume Score</h4>
-
-                <h2>92%</h2>
-
-                <span>Excellent Match</span>
-
-            </div>
-
-            <div class="stat-card">
-
-                <h4>Skills Found</h4>
-
-                <h2>18</h2>
-
-                <span>Strong Profile</span>
-
-            </div>
-
-            <div class="stat-card">
-
-                <h4>Keyword Match</h4>
-
-                <h2>87%</h2>
-
-                <span>Good Ranking</span>
-
-            </div>
-
-            <div class="stat-card">
-
-                <h4>Resume Versions</h4>
-
-                <h2>3</h2>
-
-                <span>Available</span>
-
-            </div>
-
-        </div>
-
-        <div class="resume-layout">
-
-            <!-- Left Side -->
-
+        <!-- ATS Score Analyzer -->
+        <div>
+          <div class="section-header">
             <div>
-
-                <div class="card">
-
-                    <h3>Upload Resume</h3>
-
-                    <div class="resume-upload-box">
-
-                        <div>
-
-                            <h2>📄</h2>
-
-                            <h4>Drag & Drop Resume</h4>
-
-                            <p>PDF, DOC, DOCX Supported</p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="card mt-20">
-
-                    <h3>Resume Preview</h3>
-
-                    <div class="resume-preview">
-
-                        Resume Preview Area
-
-                    </div>
-
-                </div>
-
+              <h2>ATS Score Analyzer</h2>
+              <p>How well your resume passes ATS filters</p>
             </div>
+          </div>
 
-            <!-- Right Side -->
-
-            <div>
-
-                <div class="card">
-
-                    <h3>AI Suggestions</h3>
-
-                    <ul class="suggestion-list">
-
-                        <li>
-                            Add more React projects.
-                        </li>
-
-                        <li>
-                            Include leadership experience.
-                        </li>
-
-                        <li>
-                            Improve ATS keywords.
-                        </li>
-
-                        <li>
-                            Add measurable achievements.
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <div class="card mt-20">
-
-                    <h3>Skills Analysis</h3>
-
-                    <div class="skills">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>React</span>
-                        <span>Bootstrap</span>
-                        <span>Figma</span>
-
-                    </div>
-
-                </div>
-
-                <div class="card mt-20">
-
-                    <h3>Resume Versions</h3>
-
-                    <div class="version-item">
-
-                        <strong>Frontend Developer Resume</strong>
-
-                        <button class="download-btn">
-                            Download
-                        </button>
-
-                    </div>
-
-                    <div class="version-item">
-
-                        <strong>UI Designer Resume</strong>
-
-                        <button class="download-btn">
-                            Download
-                        </button>
-
-                    </div>
-
-                    <div class="version-item">
-
-                        <strong>React Developer Resume</strong>
-
-                        <button class="download-btn">
-                            Download
-                        </button>
-
-                    </div>
-
-                </div>
-
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Primary Resume Analysis</h3>
+                <p>Rahul_Sharma_Resume_2026.pdf</p>
+              </div>
+              <span class="badge badge-success" style="font-size:14px;padding:6px 14px;">94%</span>
             </div>
+            <div class="card-body">
 
+              <!-- Score ring visual -->
+              <div style="text-align:center;padding:16px 0 20px;">
+                <div style="position:relative;width:120px;height:120px;margin:0 auto;">
+                  <svg width="120" height="120" viewBox="0 0 120 120" style="transform:rotate(-90deg);">
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="#e2e8f0" stroke-width="10"/>
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="url(#scoreGrad)" stroke-width="10"
+                      stroke-dasharray="314" stroke-dashoffset="19" stroke-linecap="round"/>
+                    <defs>
+                      <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#2563eb"/>
+                        <stop offset="100%" stop-color="#7c3aed"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+                    <span style="font-size:26px;font-weight:800;color:var(--text-primary);">94</span>
+                    <span style="font-size:11px;color:var(--text-muted);font-weight:600;">/ 100</span>
+                  </div>
+                </div>
+                <div style="font-size:13px;color:var(--success);font-weight:700;margin-top:10px;">Excellent ATS Compatibility</div>
+              </div>
+
+              <!-- Category scores -->
+              <div style="display:flex;flex-direction:column;gap:14px;">
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                    <span style="font-size:13px;font-weight:600;color:var(--text-primary);">Keywords Match</span>
+                    <span style="font-size:13px;font-weight:700;color:var(--success);">96%</span>
+                  </div>
+                  <div class="progress-bar"><div class="progress-fill" style="width:96%;"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                    <span style="font-size:13px;font-weight:600;color:var(--text-primary);">Format Readability</span>
+                    <span style="font-size:13px;font-weight:700;color:var(--success);">98%</span>
+                  </div>
+                  <div class="progress-bar"><div class="progress-fill" style="width:98%;"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                    <span style="font-size:13px;font-weight:600;color:var(--text-primary);">Skills Relevance</span>
+                    <span style="font-size:13px;font-weight:700;color:#2563eb;">88%</span>
+                  </div>
+                  <div class="progress-bar"><div class="progress-fill" style="width:88%;"></div></div>
+                </div>
+                <div>
+                  <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+                    <span style="font-size:13px;font-weight:600;color:var(--text-primary);">Experience Alignment</span>
+                    <span style="font-size:13px;font-weight:700;color:var(--warning);">82%</span>
+                  </div>
+                  <div class="progress-bar"><div class="progress-fill" style="width:82%;background:linear-gradient(90deg,#d97706,#f59e0b);"></div></div>
+                </div>
+              </div>
+
+              <!-- Suggestions -->
+              <div style="margin-top:20px;padding:14px;background:#eff6ff;border:1px solid #bfdbfe;border-radius:var(--radius-md);">
+                <div style="font-size:12.5px;font-weight:700;color:var(--primary);margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+                  <i data-lucide="lightbulb" style="width:14px;height:14px;"></i> AI Suggestions
+                </div>
+                <ul style="padding:0;margin:0;list-style:none;display:flex;flex-direction:column;gap:5px;">
+                  <li style="font-size:12.5px;color:#1e40af;display:flex;gap:6px;">
+                    <i data-lucide="check" style="width:13px;height:13px;flex-shrink:0;margin-top:1px;"></i>
+                    Add "TypeScript" to skills section to match more roles
+                  </li>
+                  <li style="font-size:12.5px;color:#1e40af;display:flex;gap:6px;">
+                    <i data-lucide="check" style="width:13px;height:13px;flex-shrink:0;margin-top:1px;"></i>
+                    Quantify achievements in Work Experience section
+                  </li>
+                  <li style="font-size:12.5px;color:#1e40af;display:flex;gap:6px;">
+                    <i data-lucide="check" style="width:13px;height:13px;flex-shrink:0;margin-top:1px;"></i>
+                    Include a professional summary paragraph at the top
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary w-full" onclick="showToast('Detailed report downloaded')">
+                <i data-lucide="download"></i> Download Full Report
+              </button>
+            </div>
+          </div>
         </div>
 
-    </div>
+      </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </main>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+lucide.createIcons();
+
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+document.getElementById('menuToggle').addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('visible');
+});
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('visible');
+});
+
+function showToast(msg, type = 'success') {
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  document.getElementById('toastContainer').appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+function handleDragOver(e) {
+  e.preventDefault();
+  document.getElementById('uploadZone').style.borderColor = 'var(--primary)';
+  document.getElementById('uploadZone').style.background = 'var(--primary-light)';
+}
+function handleDragLeave() {
+  document.getElementById('uploadZone').style.borderColor = '';
+  document.getElementById('uploadZone').style.background = '';
+}
+function handleDrop(e) {
+  e.preventDefault();
+  handleDragLeave();
+  if (e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+}
+function handleFile(file) {
+  if (!file) return;
+  if (file.size > 5 * 1024 * 1024) { showToast('File exceeds 5 MB limit', 'danger'); return; }
+  showToast(`"${file.name}" uploaded successfully`);
+}
+
+function deleteResume(id, name) {
+  if (confirm(`Delete "${name}"?`)) {
+    document.getElementById(id).remove();
+    showToast(`${name} deleted`, 'danger');
+  }
+}
+</script>
 </body>
-
 </html>

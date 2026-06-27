@@ -1,140 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Users Management | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/admin.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
+<div class="app-layout">
 
-    <div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h2>RecruitIQ</h2>
-            </div>
-
-            <ul class="sidebar-menu">
-                <li><a href="dashboard.html">📊 Dashboard</a></li>
-                <li><a class="active" href="#">👥 Users</a></li>
-                <li><a href="jobs.html">💼 Jobs</a></li>
-                <li><a href="companies.html">🏢 Companies</a></li>
-                <li><a href="analytics.html">📈 Analytics</a></li>
-                <li><a href="settings.html">⚙ Settings</a></li>
-            </ul>
-        </aside>
-
-        <main class="main-content">
-
-            <nav class="navbar">
-                <div class="logo">Users Management</div>
-            </nav>
-
-            <div class="page-header">
-
-                <h2>Manage Users</h2>
-
-                <button class="primary-btn">
-                    + Add User
-                </button>
-
-            </div>
-
-            <div class="dashboard-card">
-
-                <div class="table-toolbar">
-
-                    <input type="text" placeholder="Search users..." class="table-search">
-
-                    <select class="table-filter">
-                        <option>All Roles</option>
-                        <option>Candidate</option>
-                        <option>Recruiter</option>
-                        <option>Admin</option>
-                    </select>
-
-                </div>
-
-                <table class="admin-table">
-
-                    <thead>
-
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td>Sarah Johnson</td>
-                            <td>sarah@mail.com</td>
-                            <td>Candidate</td>
-                            <td>
-                                <span class="status active-status">
-                                    Active
-                                </span>
-                            </td>
-                            <td>
-                                <button class="action-btn">View</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>TechNova HR</td>
-                            <td>hr@technova.com</td>
-                            <td>Recruiter</td>
-                            <td>
-                                <span class="status active-status">
-                                    Active
-                                </span>
-                            </td>
-                            <td>
-                                <button class="action-btn">View</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>John Smith</td>
-                            <td>john@mail.com</td>
-                            <td>Candidate</td>
-                            <td>
-                                <span class="status inactive-status">
-                                    Inactive
-                                </span>
-                            </td>
-                            <td>
-                                <button class="action-btn">View</button>
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </main>
-
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="logo-text">Recruit<span class="logo-dot">IQ</span></span>
     </div>
+    <nav>
+      <p class="sidebar-section-label">Platform</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./users.html" class="active"><i data-lucide="users"></i> Users</a></li>
+        <li><a href="./jobs.html"><i data-lucide="briefcase"></i> Jobs</a></li>
+        <li><a href="./companies.html"><i data-lucide="building-2"></i> Companies</a></li>
+        <li><a href="./analytics.html"><i data-lucide="bar-chart-2"></i> Analytics</a></li>
+      </ul>
+      <p class="sidebar-section-label">System</p>
+      <ul class="sidebar-nav">
+        <li><a href="./settings.html"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">AD</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Admin</div>
+          <div class="sidebar-user-role">System Administrator</div>
+        </div>
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
+    </div>
+  </aside>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
+        <div>
+          <div class="topbar-title">User Management</div>
+          <div class="topbar-subtitle">Manage all platform users</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <i data-lucide="search" style="width:15px;height:15px;color:#94a3b8;"></i>
+          <input type="text" placeholder="Search users…" aria-label="Search users">
+        </div>
+        <button class="topbar-icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">AD</div>
+          <div>
+            <div class="topbar-user-name">Admin</div>
+            <div class="topbar-user-role">Administrator</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Page Header -->
+      <div class="page-header flex items-center justify-between">
+        <div>
+          <h1>Users</h1>
+          <p>View, manage, and invite all platform users.</p>
+        </div>
+        <button class="btn btn-primary" onclick="document.getElementById('addUserModal').classList.add('is-open')">
+          <i data-lucide="user-plus"></i> Add User
+        </button>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-icon blue"><i data-lucide="users"></i></div>
+          <div class="stat-card-value">12,450</div>
+          <div class="stat-card-label">Total Users</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +124 this month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon green"><i data-lucide="user-check"></i></div>
+          <div class="stat-card-value">9,820</div>
+          <div class="stat-card-label">Candidates</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +98 this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon amber"><i data-lucide="briefcase"></i></div>
+          <div class="stat-card-value">2,580</div>
+          <div class="stat-card-label">Recruiters</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +22 this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon purple"><i data-lucide="shield"></i></div>
+          <div class="stat-card-value">50</div>
+          <div class="stat-card-label">Admins</div>
+          <div class="stat-card-change neutral">4 super-admins</div>
+        </div>
+      </div>
+
+      <!-- Filter Tabs + Table -->
+      <div class="card">
+        <div class="card-header">
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" id="tab-all" onclick="filterTab('all')">All Users</button>
+            <button class="btn btn-secondary btn-sm" id="tab-candidate" onclick="filterTab('candidate')">Candidates</button>
+            <button class="btn btn-secondary btn-sm" id="tab-recruiter" onclick="filterTab('recruiter')">Recruiters</button>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-secondary btn-sm"><i data-lucide="download"></i> Export</button>
+          </div>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="usersTable">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Joined Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-role="candidate">
+                <td>
+                  <div class="user-cell">
+                    <div class="sidebar-user-avatar" style="width:38px;height:38px;font-size:13px;">SJ</div>
+                    <div>
+                      <div class="user-cell-name">Sarah Johnson</div>
+                      <div class="user-cell-email">sarah.j@example.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-info">Candidate</span></td>
+                <td><span class="badge badge-success"><span class="badge-dot" style="background:currentColor;"></span>Active</span></td>
+                <td>Jan 12, 2026</td>
+                <td>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn btn-secondary btn-sm" onclick="openEditUser('Sarah Johnson')"><i data-lucide="pencil"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="confirmDelete('Sarah Johnson')"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-role="recruiter">
+                <td>
+                  <div class="user-cell">
+                    <div class="sidebar-user-avatar" style="width:38px;height:38px;font-size:13px;background:linear-gradient(135deg,#0f766e,#0d9488);">MK</div>
+                    <div>
+                      <div class="user-cell-name">Mike Kumar</div>
+                      <div class="user-cell-email">mike.kumar@technova.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-warning">Recruiter</span></td>
+                <td><span class="badge badge-success"><span class="badge-dot" style="background:currentColor;"></span>Active</span></td>
+                <td>Feb 3, 2026</td>
+                <td>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn btn-secondary btn-sm" onclick="openEditUser('Mike Kumar')"><i data-lucide="pencil"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="confirmDelete('Mike Kumar')"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-role="candidate">
+                <td>
+                  <div class="user-cell">
+                    <div class="sidebar-user-avatar" style="width:38px;height:38px;font-size:13px;background:linear-gradient(135deg,#7c3aed,#a855f7);">RS</div>
+                    <div>
+                      <div class="user-cell-name">Rahul Sharma</div>
+                      <div class="user-cell-email">rahul.s@gmail.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-info">Candidate</span></td>
+                <td><span class="badge badge-success"><span class="badge-dot" style="background:currentColor;"></span>Active</span></td>
+                <td>Mar 15, 2026</td>
+                <td>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn btn-secondary btn-sm" onclick="openEditUser('Rahul Sharma')"><i data-lucide="pencil"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="confirmDelete('Rahul Sharma')"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-role="recruiter">
+                <td>
+                  <div class="user-cell">
+                    <div class="sidebar-user-avatar" style="width:38px;height:38px;font-size:13px;background:linear-gradient(135deg,#e11d48,#f43f5e);">AP</div>
+                    <div>
+                      <div class="user-cell-name">Anita Patel</div>
+                      <div class="user-cell-email">anita.p@infosys.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-warning">Recruiter</span></td>
+                <td><span class="badge badge-neutral">Inactive</span></td>
+                <td>Apr 2, 2026</td>
+                <td>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn btn-secondary btn-sm" onclick="openEditUser('Anita Patel')"><i data-lucide="pencil"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="confirmDelete('Anita Patel')"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-role="candidate">
+                <td>
+                  <div class="user-cell">
+                    <div class="sidebar-user-avatar" style="width:38px;height:38px;font-size:13px;background:linear-gradient(135deg,#0891b2,#06b6d4);">DM</div>
+                    <div>
+                      <div class="user-cell-name">David Miller</div>
+                      <div class="user-cell-email">d.miller@outlook.com</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-info">Candidate</span></td>
+                <td><span class="badge badge-success"><span class="badge-dot" style="background:currentColor;"></span>Active</span></td>
+                <td>May 10, 2026</td>
+                <td>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn btn-secondary btn-sm" onclick="openEditUser('David Miller')"><i data-lucide="pencil"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="confirmDelete('David Miller')"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-role="admin">
+                <td>
+                  <div class="user-cell">
+                    <div class="sidebar-user-avatar" style="width:38px;height:38px;font-size:13px;">AD</div>
+                    <div>
+                      <div class="user-cell-name">Admin</div>
+                      <div class="user-cell-email">admin@recruitiq.io</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge badge-danger">Admin</span></td>
+                <td><span class="badge badge-success"><span class="badge-dot" style="background:currentColor;"></span>Active</span></td>
+                <td>Jan 1, 2026</td>
+                <td>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="pencil"></i></button>
+                    <button class="btn btn-danger btn-sm" disabled style="opacity:.4;cursor:not-allowed;"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer flex items-center justify-between">
+          <span style="font-size:13px;color:var(--text-muted);">Showing 6 of 12,450 users</span>
+          <div style="display:flex;gap:6px;">
+            <button class="btn btn-secondary btn-sm" disabled>Previous</button>
+            <button class="btn btn-primary btn-sm">Next</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Add User Modal -->
+<div class="modal-overlay" id="addUserModal" aria-hidden="true">
+  <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="addUserTitle">
+    <div class="modal-header">
+      <div>
+        <h3 id="addUserTitle">Add New User</h3>
+        <p>Invite a new user to the RecruitIQ platform.</p>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('addUserModal').classList.remove('is-open')" aria-label="Close">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <form class="modal-body" id="addUserForm">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="form-group">
+          <label class="form-label" for="newFirstName">First Name</label>
+          <input class="form-control" id="newFirstName" type="text" placeholder="Sarah" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="newLastName">Last Name</label>
+          <input class="form-control" id="newLastName" type="text" placeholder="Johnson" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="newEmail">Email Address</label>
+        <input class="form-control" id="newEmail" type="email" placeholder="user@example.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="newRole">Role</label>
+        <select class="form-control" id="newRole" required>
+          <option value="">Select role</option>
+          <option>Candidate</option>
+          <option>Recruiter</option>
+          <option>Admin</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="newPassword">Temporary Password</label>
+        <input class="form-control" id="newPassword" type="password" placeholder="Min. 8 characters" required>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="document.getElementById('addUserModal').classList.remove('is-open')">Cancel</button>
+      <button class="btn btn-primary" form="addUserForm" type="submit">Create User</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+lucide.createIcons();
+
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+document.getElementById('menuToggle').addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('visible');
+});
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('visible');
+});
+
+document.getElementById('addUserModal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('is-open');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.is-open').forEach(m => m.classList.remove('is-open'));
+});
+
+function showToast(msg, type = 'success') {
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  document.getElementById('toastContainer').appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+document.getElementById('addUserForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const first = document.getElementById('newFirstName').value.trim();
+  const last  = document.getElementById('newLastName').value.trim();
+  document.getElementById('addUserModal').classList.remove('is-open');
+  showToast(`${first} ${last} added successfully`);
+  this.reset();
+});
+
+function openEditUser(name) { showToast(`Editing ${name}…`); }
+function confirmDelete(name) {
+  if (confirm(`Delete user "${name}"? This action cannot be undone.`)) showToast(`${name} deleted`, 'danger');
+}
+
+function filterTab(role) {
+  ['all','candidate','recruiter'].forEach(r => {
+    document.getElementById(`tab-${r}`).className = r === role ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm';
+  });
+  document.querySelectorAll('#usersTable tbody tr').forEach(row => {
+    row.style.display = (role === 'all' || row.dataset.role === role) ? '' : 'none';
+  });
+}
+</script>
 </body>
-
 </html>

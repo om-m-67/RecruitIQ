@@ -1,188 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Admin Settings | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/admin.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <style>
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .toggle-row:last-child { border-bottom: none; }
+    .toggle-label { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+    .toggle-desc  { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+    .toggle-switch {
+      position: relative;
+      width: 44px; height: 24px;
+      flex-shrink: 0;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-track {
+      position: absolute; inset: 0;
+      background: #e2e8f0;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: background var(--transition);
+    }
+    .toggle-track::after {
+      content: '';
+      position: absolute;
+      left: 3px; top: 3px;
+      width: 18px; height: 18px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform var(--transition);
+      box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    }
+    .toggle-switch input:checked + .toggle-track { background: var(--primary); }
+    .toggle-switch input:checked + .toggle-track::after { transform: translateX(20px); }
+    .settings-section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .danger-zone {
+      border: 1px solid var(--danger-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      background: var(--danger-bg);
+    }
+    .danger-zone h3 { font-size: 15px; font-weight: 700; color: var(--danger); margin-bottom: 6px; }
+    .danger-zone p  { font-size: 13.5px; color: #7f1d1d; margin-bottom: 18px; }
+  </style>
 </head>
-
 <body>
+<div class="app-layout">
 
-    <div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <aside class="sidebar">
-
-            <div class="sidebar-header">
-                <h2>RecruitIQ</h2>
-            </div>
-
-            <ul class="sidebar-menu">
-                <li><a href="dashboard.html">📊 Dashboard</a></li>
-                <li><a href="users.html">👥 Users</a></li>
-                <li><a href="jobs.html">💼 Jobs</a></li>
-                <li><a href="companies.html">🏢 Companies</a></li>
-                <li><a href="analytics.html">📈 Analytics</a></li>
-                <li><a class="active" href="#">⚙ Settings</a></li>
-            </ul>
-
-        </aside>
-
-        <main class="main-content">
-
-            <nav class="navbar">
-                <div class="logo">Platform Settings</div>
-            </nav>
-
-            <div class="settings-grid">
-
-                <!-- Profile -->
-
-                <div class="dashboard-card">
-
-                    <h3>Admin Profile</h3>
-
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" value="System Administrator">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" value="admin@recruitiq.com">
-                    </div>
-
-                    <button class="primary-btn">
-                        Save Profile
-                    </button>
-
-                </div>
-
-                <!-- Platform -->
-
-                <div class="dashboard-card">
-
-                    <h3>Platform Configuration</h3>
-
-                    <div class="form-group">
-                        <label>Platform Name</label>
-                        <input type="text" value="RecruitIQ">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Support Email</label>
-                        <input type="email" value="support@recruitiq.com">
-                    </div>
-
-                    <button class="primary-btn">
-                        Save Configuration
-                    </button>
-
-                </div>
-
-                <!-- Email -->
-
-                <div class="dashboard-card">
-
-                    <h3>Email Settings</h3>
-
-                    <div class="form-group">
-                        <label>SMTP Host</label>
-                        <input type="text" placeholder="smtp.example.com">
-                    </div>
-
-                    <div class="form-group">
-                        <label>SMTP Port</label>
-                        <input type="text" placeholder="587">
-                    </div>
-
-                    <button class="primary-btn">
-                        Update Email Settings
-                    </button>
-
-                </div>
-
-                <!-- Security -->
-
-                <div class="dashboard-card">
-
-                    <h3>Security Settings</h3>
-
-                    <label class="switch-row">
-                        <span>Two Factor Authentication</span>
-                        <input type="checkbox" checked>
-                    </label>
-
-                    <label class="switch-row">
-                        <span>Login Alerts</span>
-                        <input type="checkbox" checked>
-                    </label>
-
-                    <label class="switch-row">
-                        <span>Password Expiry Policy</span>
-                        <input type="checkbox">
-                    </label>
-
-                </div>
-
-                <!-- Notifications -->
-
-                <div class="dashboard-card">
-
-                    <h3>Notification Preferences</h3>
-
-                    <label class="switch-row">
-                        <span>Email Notifications</span>
-                        <input type="checkbox" checked>
-                    </label>
-
-                    <label class="switch-row">
-                        <span>Recruiter Alerts</span>
-                        <input type="checkbox" checked>
-                    </label>
-
-                    <label class="switch-row">
-                        <span>Weekly Reports</span>
-                        <input type="checkbox">
-                    </label>
-
-                </div>
-
-                <!-- Appearance -->
-
-                <div class="dashboard-card">
-
-                    <h3>Appearance</h3>
-
-                    <label class="switch-row">
-                        <span>Dark Mode</span>
-                        <input type="checkbox">
-                    </label>
-
-                    <label class="switch-row">
-                        <span>Compact Layout</span>
-                        <input type="checkbox">
-                    </label>
-
-                </div>
-
-            </div>
-
-        </main>
-
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="logo-text">Recruit<span class="logo-dot">IQ</span></span>
     </div>
+    <nav>
+      <p class="sidebar-section-label">Platform</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./users.html"><i data-lucide="users"></i> Users</a></li>
+        <li><a href="./jobs.html"><i data-lucide="briefcase"></i> Jobs</a></li>
+        <li><a href="./companies.html"><i data-lucide="building-2"></i> Companies</a></li>
+        <li><a href="./analytics.html"><i data-lucide="bar-chart-2"></i> Analytics</a></li>
+      </ul>
+      <p class="sidebar-section-label">System</p>
+      <ul class="sidebar-nav">
+        <li><a href="./settings.html" class="active"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">AD</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Admin</div>
+          <div class="sidebar-user-role">System Administrator</div>
+        </div>
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
+    </div>
+  </aside>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
+        <div>
+          <div class="topbar-title">Settings</div>
+          <div class="topbar-subtitle">Platform configuration and preferences</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <i data-lucide="search" style="width:15px;height:15px;color:#94a3b8;"></i>
+          <input type="text" placeholder="Search settings…" aria-label="Search settings">
+        </div>
+        <button class="topbar-icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">AD</div>
+          <div>
+            <div class="topbar-user-name">Admin</div>
+            <div class="topbar-user-role">Administrator</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>Settings</h1>
+        <p>Manage platform configuration, email, and security preferences.</p>
+      </div>
+
+      <div class="settings-grid">
+
+        <!-- LEFT COLUMN -->
+        <div style="display:flex;flex-direction:column;gap:24px;">
+
+          <!-- Platform Settings -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Platform Settings</h3>
+                <p>Global configuration for RecruitIQ</p>
+              </div>
+              <i data-lucide="settings" style="width:18px;height:18px;color:var(--text-muted);"></i>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label" for="siteName">Site Name</label>
+                <input class="form-control" id="siteName" type="text" value="RecruitIQ">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="siteTagline">Tagline</label>
+                <input class="form-control" id="siteTagline" type="text" value="AI-Powered Recruitment Platform">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="supportEmail">Support Email</label>
+                <input class="form-control" id="supportEmail" type="email" value="support@recruitiq.io">
+              </div>
+              <div class="form-group mb-0">
+                <label class="form-label" for="timezone">Timezone</label>
+                <select class="form-control" id="timezone">
+                  <option selected>Asia/Kolkata (IST)</option>
+                  <option>UTC</option>
+                  <option>America/New_York (EST)</option>
+                  <option>Europe/London (GMT)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Toggles -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Feature Toggles</h3>
+                <p>Enable or disable platform features</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Maintenance Mode</div>
+                  <div class="toggle-desc">Temporarily disable public access to the platform</div>
+                </div>
+                <label class="toggle-switch" aria-label="Toggle maintenance mode">
+                  <input type="checkbox" onchange="toggleChanged('Maintenance Mode', this.checked)">
+                  <span class="toggle-track"></span>
+                </label>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Open Registration</div>
+                  <div class="toggle-desc">Allow new users to register without an invite</div>
+                </div>
+                <label class="toggle-switch" aria-label="Toggle open registration">
+                  <input type="checkbox" checked onchange="toggleChanged('Open Registration', this.checked)">
+                  <span class="toggle-track"></span>
+                </label>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">AI Matching Engine</div>
+                  <div class="toggle-desc">Use AI to match candidates to relevant job listings</div>
+                </div>
+                <label class="toggle-switch" aria-label="Toggle AI matching">
+                  <input type="checkbox" checked onchange="toggleChanged('AI Matching Engine', this.checked)">
+                  <span class="toggle-track"></span>
+                </label>
+              </div>
+              <div class="toggle-row">
+                <div>
+                  <div class="toggle-label">Email Notifications</div>
+                  <div class="toggle-desc">Send automated emails for key hiring events</div>
+                </div>
+                <label class="toggle-switch" aria-label="Toggle email notifications">
+                  <input type="checkbox" checked onchange="toggleChanged('Email Notifications', this.checked)">
+                  <span class="toggle-track"></span>
+                </label>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-primary btn-sm" onclick="savePlatformSettings()">
+                <i data-lucide="save"></i> Save Changes
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div style="display:flex;flex-direction:column;gap:24px;">
+
+          <!-- Email / SMTP Settings -->
+          <div class="card">
+            <div class="card-header">
+              <div>
+                <h3>Email Settings</h3>
+                <p>SMTP configuration for outbound mail</p>
+              </div>
+              <i data-lucide="mail" style="width:18px;height:18px;color:var(--text-muted);"></i>
+            </div>
+            <div class="card-body">
+              <div class="form-group">
+                <label class="form-label" for="smtpHost">SMTP Host</label>
+                <input class="form-control" id="smtpHost" type="text" value="smtp.recruitiq.io" placeholder="smtp.example.com">
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                <div class="form-group">
+                  <label class="form-label" for="smtpPort">SMTP Port</label>
+                  <input class="form-control" id="smtpPort" type="number" value="587">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="smtpEncryption">Encryption</label>
+                  <select class="form-control" id="smtpEncryption">
+                    <option selected>TLS</option>
+                    <option>SSL</option>
+                    <option>None</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="smtpUser">SMTP Username</label>
+                <input class="form-control" id="smtpUser" type="text" value="noreply@recruitiq.io">
+              </div>
+              <div class="form-group mb-0">
+                <label class="form-label" for="smtpPass">SMTP Password</label>
+                <input class="form-control" id="smtpPass" type="password" placeholder="••••••••••••">
+              </div>
+            </div>
+            <div class="card-footer flex items-center justify-between">
+              <button class="btn btn-secondary btn-sm" onclick="testEmail()">
+                <i data-lucide="send"></i> Send Test Email
+              </button>
+              <button class="btn btn-primary btn-sm" onclick="saveEmailSettings()">
+                <i data-lucide="save"></i> Save
+              </button>
+            </div>
+          </div>
+
+          <!-- Danger Zone -->
+          <div class="card">
+            <div class="card-header" style="border-bottom-color:#fecaca;">
+              <div>
+                <h3 style="color:var(--danger);">Danger Zone</h3>
+                <p>Irreversible and destructive actions</p>
+              </div>
+              <i data-lucide="alert-triangle" style="width:18px;height:18px;color:var(--danger);"></i>
+            </div>
+            <div class="card-body">
+              <div style="padding:18px 0;border-bottom:1px solid #fecaca;">
+                <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Purge All Applications</div>
+                <div style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">Permanently delete all job applications from the database. This cannot be undone.</div>
+                <button class="btn btn-danger btn-sm" onclick="confirmDanger('purge all applications')">
+                  <i data-lucide="trash-2"></i> Purge Applications
+                </button>
+              </div>
+              <div style="padding:18px 0;border-bottom:1px solid #fecaca;">
+                <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Reset Platform Data</div>
+                <div style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">Delete all users, jobs, applications, and company data. Platform will reset to factory defaults.</div>
+                <button class="btn btn-danger btn-sm" onclick="confirmDanger('reset all platform data')">
+                  <i data-lucide="rotate-ccw"></i> Reset Platform
+                </button>
+              </div>
+              <div style="padding:18px 0;">
+                <div style="font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:4px;">Delete All User Data</div>
+                <div style="font-size:13px;color:var(--text-muted);margin-bottom:14px;">Permanently delete all user accounts, profiles, and associated data. Compliant with data deletion requests.</div>
+                <button class="btn btn-danger btn-sm" onclick="confirmDanger('delete all user data')">
+                  <i data-lucide="user-x"></i> Delete All Data
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+lucide.createIcons();
+
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+document.getElementById('menuToggle').addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('visible');
+});
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('visible');
+});
+
+function showToast(msg, type = 'success') {
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  document.getElementById('toastContainer').appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+function toggleChanged(name, state) {
+  showToast(`${name} ${state ? 'enabled' : 'disabled'}`);
+}
+
+function savePlatformSettings() { showToast('Platform settings saved'); }
+function saveEmailSettings()    { showToast('Email settings saved'); }
+function testEmail()            { showToast('Test email sent to support@recruitiq.io'); }
+
+function confirmDanger(action) {
+  if (confirm(`⚠️ Are you absolutely sure you want to ${action}?\n\nThis action is IRREVERSIBLE.`)) {
+    showToast(`Action "${action}" initiated — this may take a moment.`, 'danger');
+  }
+}
+</script>
 </body>
-
 </html>

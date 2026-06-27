@@ -1,278 +1,368 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Applications | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/recruiter.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Applications | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/recruiter.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <style>
+    .filter-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .filter-tab {
+      padding: 7px 16px;
+      border-radius: var(--radius-full);
+      font-size: 13px; font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .filter-tab:hover { border-color: var(--primary); color: var(--primary); }
+    .filter-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: var(--shadow-blue); }
+    .ats-bar { display: flex; align-items: center; gap: 8px; }
+    .ats-bar .progress-bar { width: 60px; }
+    .ats-score-text { font-size: 12.5px; font-weight: 700; min-width: 32px; }
+    .ats-score-text.high { color: var(--success); }
+    .ats-score-text.medium { color: var(--warning); }
+    .ats-score-text.low { color: var(--danger); }
+    .candidate-cell { display: flex; align-items: center; gap: 10px; }
+    .cand-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #fff;
+      flex-shrink: 0;
+    }
+  </style>
 </head>
-
 <body>
+<div class="app-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <div class="sidebar">
-
-        <div class="logo">
-            RecruitIQ
-        </div>
-
-        <ul class="menu">
-
-            <li>Dashboard</li>
-            <li>Jobs</li>
-            <li class="active">Applications</li>
-            <li>Pipeline</li>
-            <li>Interviews</li>
-            <li>Analytics</li>
-            <li>Settings</li>
-
-        </ul>
-
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><span class="logo-text">Recruit<span class="logo-dot">IQ</span></span></div>
+    <nav>
+      <p class="sidebar-section-label">Recruiting</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./manage-jobs.html"><i data-lucide="briefcase"></i> My Jobs</a></li>
+        <li><a href="./applications.html" class="active"><i data-lucide="file-text"></i> Applications <span class="badge-count">245</span></a></li>
+        <li><a href="./hiring-pipeline.html"><i data-lucide="git-branch"></i> Pipeline</a></li>
+        <li><a href="./schedule-interview.html"><i data-lucide="calendar"></i> Interviews</a></li>
+        <li><a href="./analytics.html"><i data-lucide="bar-chart-2"></i> Analytics</a></li>
+      </ul>
+      <p class="sidebar-section-label">Account</p>
+      <ul class="sidebar-nav">
+        <li><a href="./notifications.html"><i data-lucide="bell"></i> Notifications</a></li>
+        <li><a href="./settings.html"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">JS</div>
+        <div class="sidebar-user-info"><div class="sidebar-user-name">John Smith</div><div class="sidebar-user-role">Recruiter</div></div>
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
     </div>
+  </aside>
 
-    <div class="navbar">
-
-        <h2>Applications</h2>
-
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
         <div>
-            🔔 👤
+          <div class="topbar-title">Applications</div>
+          <div class="topbar-subtitle">Track and manage all candidates</div>
         </div>
-
-    </div>
-
-    <div class="page-content">
-
-        <div class="page-header">
-
-            <div>
-
-                <h1>Applications Management</h1>
-
-                <p>
-                    Track and manage all candidate applications.
-                </p>
-
-            </div>
-
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <i data-lucide="search" style="width:15px;height:15px;color:#94a3b8;"></i>
+          <input type="text" placeholder="Search candidates…" aria-label="Search candidates">
         </div>
-
-        <!-- Filters -->
-
-        <div class="card filter-card">
-
-            <input type="text" placeholder="Search candidate..." class="search-input">
-
-            <select>
-
-                <option>All Jobs</option>
-                <option>Frontend Developer</option>
-                <option>UI Designer</option>
-
-            </select>
-
-            <select>
-
-                <option>All Status</option>
-                <option>Applied</option>
-                <option>Under Review</option>
-                <option>Shortlisted</option>
-                <option>Interview</option>
-                <option>Rejected</option>
-
-            </select>
-
+        <button class="topbar-icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">JS</div>
+          <div>
+            <div class="topbar-user-name">John Smith</div>
+            <div class="topbar-user-role">Recruiter</div>
+          </div>
         </div>
-
-        <!-- Applications Table -->
-
-        <div class="card">
-
-            <table class="jobs-table">
-
-                <thead>
-
-                    <tr>
-
-                        <th>Candidate</th>
-                        <th>Job Title</th>
-                        <th>Applied Date</th>
-                        <th>Status</th>
-                        <th>Match Score</th>
-                        <th>Resume</th>
-                        <th>Actions</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>
-
-                            <div class="candidate-info">
-
-                                <img src="https://ui-avatars.com/api/?name=Rahul+Sharma">
-
-                                <div>
-
-                                    <strong>
-                                        Rahul Sharma
-                                    </strong>
-
-                                    <p>
-                                        rahul@email.com
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </td>
-
-                        <td>
-                            Frontend Developer
-                        </td>
-
-                        <td>
-                            23 Jun 2026
-                        </td>
-
-                        <td>
-
-                            <span class="badge-open">
-                                Shortlisted
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <div class="score high">
-                                92%
-                            </div>
-
-                        </td>
-
-                        <td>
-
-                            <button class="resume-btn">
-                                View
-                            </button>
-
-                        </td>
-
-                        <td>
-
-                            <button class="table-btn">
-                                Profile
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>
-
-                            <div class="candidate-info">
-
-                                <img src="https://ui-avatars.com/api/?name=Priya+Patil">
-
-                                <div>
-
-                                    <strong>
-                                        Priya Patil
-                                    </strong>
-
-                                    <p>
-                                        priya@email.com
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </td>
-
-                        <td>
-                            UI Designer
-                        </td>
-
-                        <td>
-                            20 Jun 2026
-                        </td>
-
-                        <td>
-
-                            <span class="badge-draft">
-                                Interview
-                            </span>
-
-                        </td>
-
-                        <td>
-
-                            <div class="score medium">
-                                78%
-                            </div>
-
-                        </td>
-
-                        <td>
-
-                            <button class="resume-btn">
-                                View
-                            </button>
-
-                        </td>
-
-                        <td>
-
-                            <button class="table-btn">
-                                Profile
-                            </button>
-
-                        </td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-            <div class="pagination">
-
-                <button>Previous</button>
-
-                <button class="active-page">
-                    1
-                </button>
-
-                <button>2</button>
-
-                <button>3</button>
-
-                <button>Next</button>
-
-            </div>
-
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <div class="page-header">
+        <h1>All Applications</h1>
+        <p>Review, screen, and advance candidates through the hiring process.</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-icon blue"><i data-lucide="users"></i></div>
+          <div class="stat-card-value">245</div>
+          <div class="stat-card-label">Total Applications</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +14 today</div>
         </div>
+        <div class="stat-card">
+          <div class="stat-card-icon green"><i data-lucide="sparkles"></i></div>
+          <div class="stat-card-value">48</div>
+          <div class="stat-card-label">New Today</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> Needs review</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon amber"><i data-lucide="eye"></i></div>
+          <div class="stat-card-value">19</div>
+          <div class="stat-card-label">In Review</div>
+          <div class="stat-card-change neutral">Being screened</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon purple"><i data-lucide="calendar-check"></i></div>
+          <div class="stat-card-value">8</div>
+          <div class="stat-card-label">Interview Scheduled</div>
+          <div class="stat-card-change neutral">This week</div>
+        </div>
+      </div>
 
-    </div>
+      <!-- Filter Tabs -->
+      <div class="filter-tabs" role="tablist">
+        <button class="filter-tab active" data-filter="all" role="tab">All <span style="opacity:.65;font-weight:500;"> · 245</span></button>
+        <button class="filter-tab" data-filter="new" role="tab">New <span style="opacity:.65;font-weight:500;"> · 48</span></button>
+        <button class="filter-tab" data-filter="screening" role="tab">Screening <span style="opacity:.65;font-weight:500;"> · 19</span></button>
+        <button class="filter-tab" data-filter="interview" role="tab">Interview <span style="opacity:.65;font-weight:500;"> · 8</span></button>
+        <button class="filter-tab" data-filter="offered" role="tab">Offered <span style="opacity:.65;font-weight:500;"> · 3</span></button>
+        <button class="filter-tab" data-filter="rejected" role="tab">Rejected <span style="opacity:.65;font-weight:500;"> · 14</span></button>
+      </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Applications Table -->
+      <div class="card">
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="applicationsTable">
+            <thead>
+              <tr>
+                <th>Candidate</th>
+                <th>Applied For</th>
+                <th>Applied Date</th>
+                <th>ATS Score</th>
+                <th>Stage</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-stage="new">
+                <td>
+                  <div class="candidate-cell">
+                    <div class="cand-avatar" style="background:linear-gradient(135deg,#2563eb,#4f46e5);">RS</div>
+                    <div>
+                      <div style="font-weight:600;color:var(--text-primary);">Rahul Sharma</div>
+                      <div style="font-size:12px;color:var(--text-muted);">Frontend Developer</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="font-weight:500;">Frontend Developer</td>
+                <td style="color:var(--text-muted);font-size:13px;">Jun 23, 2026</td>
+                <td>
+                  <div class="ats-bar">
+                    <div class="progress-bar"><div class="progress-fill" style="width:94%;background:var(--success);"></div></div>
+                    <span class="ats-score-text high">94%</span>
+                  </div>
+                </td>
+                <td><span class="badge badge-info">New</span></td>
+                <td>
+                  <div class="flex gap-6">
+                    <a href="./candidate-profile.html" class="btn btn-ghost btn-sm"><i data-lucide="eye"></i> View</a>
+                    <button class="btn btn-primary btn-sm"><i data-lucide="arrow-right"></i> Move</button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="x"></i> Reject</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-stage="interview">
+                <td>
+                  <div class="candidate-cell">
+                    <div class="cand-avatar" style="background:linear-gradient(135deg,#0f766e,#0d9488);">PK</div>
+                    <div>
+                      <div style="font-weight:600;color:var(--text-primary);">Priya Kumar</div>
+                      <div style="font-size:12px;color:var(--text-muted);">Product Designer</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="font-weight:500;">Product Designer</td>
+                <td style="color:var(--text-muted);font-size:13px;">Jun 20, 2026</td>
+                <td>
+                  <div class="ats-bar">
+                    <div class="progress-bar"><div class="progress-fill" style="width:89%;background:var(--success);"></div></div>
+                    <span class="ats-score-text high">89%</span>
+                  </div>
+                </td>
+                <td><span class="badge badge-warning">Interview</span></td>
+                <td>
+                  <div class="flex gap-6">
+                    <a href="./candidate-profile.html" class="btn btn-ghost btn-sm"><i data-lucide="eye"></i> View</a>
+                    <button class="btn btn-primary btn-sm"><i data-lucide="arrow-right"></i> Move</button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="x"></i> Reject</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-stage="screening">
+                <td>
+                  <div class="candidate-cell">
+                    <div class="cand-avatar" style="background:linear-gradient(135deg,#7c3aed,#6d28d9);">AP</div>
+                    <div>
+                      <div style="font-weight:600;color:var(--text-primary);">Arjun Patel</div>
+                      <div style="font-size:12px;color:var(--text-muted);">Backend Engineer</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="font-weight:500;">Backend Engineer</td>
+                <td style="color:var(--text-muted);font-size:13px;">Jun 19, 2026</td>
+                <td>
+                  <div class="ats-bar">
+                    <div class="progress-bar"><div class="progress-fill" style="width:78%;background:var(--warning);"></div></div>
+                    <span class="ats-score-text medium">78%</span>
+                  </div>
+                </td>
+                <td><span class="badge badge-primary">Screening</span></td>
+                <td>
+                  <div class="flex gap-6">
+                    <a href="./candidate-profile.html" class="btn btn-ghost btn-sm"><i data-lucide="eye"></i> View</a>
+                    <button class="btn btn-primary btn-sm"><i data-lucide="arrow-right"></i> Move</button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="x"></i> Reject</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-stage="offered">
+                <td>
+                  <div class="candidate-cell">
+                    <div class="cand-avatar" style="background:linear-gradient(135deg,#d97706,#b45309);">SR</div>
+                    <div>
+                      <div style="font-weight:600;color:var(--text-primary);">Sneha Roy</div>
+                      <div style="font-size:12px;color:var(--text-muted);">Frontend Developer</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="font-weight:500;">Frontend Developer</td>
+                <td style="color:var(--text-muted);font-size:13px;">Jun 15, 2026</td>
+                <td>
+                  <div class="ats-bar">
+                    <div class="progress-bar"><div class="progress-fill" style="width:96%;background:var(--success);"></div></div>
+                    <span class="ats-score-text high">96%</span>
+                  </div>
+                </td>
+                <td><span class="badge badge-success">Offered</span></td>
+                <td>
+                  <div class="flex gap-6">
+                    <a href="./candidate-profile.html" class="btn btn-ghost btn-sm"><i data-lucide="eye"></i> View</a>
+                    <button class="btn btn-primary btn-sm"><i data-lucide="arrow-right"></i> Move</button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="x"></i> Reject</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-stage="rejected">
+                <td>
+                  <div class="candidate-cell">
+                    <div class="cand-avatar" style="background:linear-gradient(135deg,#64748b,#475569);">AM</div>
+                    <div>
+                      <div style="font-weight:600;color:var(--text-primary);">Anika Mehta</div>
+                      <div style="font-size:12px;color:var(--text-muted);">Data Analyst</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="font-weight:500;">Data Analyst</td>
+                <td style="color:var(--text-muted);font-size:13px;">Jun 14, 2026</td>
+                <td>
+                  <div class="ats-bar">
+                    <div class="progress-bar"><div class="progress-fill" style="width:42%;background:var(--danger);"></div></div>
+                    <span class="ats-score-text low">42%</span>
+                  </div>
+                </td>
+                <td><span class="badge badge-danger">Rejected</span></td>
+                <td>
+                  <div class="flex gap-6">
+                    <a href="./candidate-profile.html" class="btn btn-ghost btn-sm"><i data-lucide="eye"></i> View</a>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="refresh-cw"></i> Restore</button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-stage="new">
+                <td>
+                  <div class="candidate-cell">
+                    <div class="cand-avatar" style="background:linear-gradient(135deg,#0891b2,#0e7490);">VN</div>
+                    <div>
+                      <div style="font-weight:600;color:var(--text-primary);">Vikram Nair</div>
+                      <div style="font-size:12px;color:var(--text-muted);">DevOps Engineer</div>
+                    </div>
+                  </div>
+                </td>
+                <td style="font-weight:500;">DevOps Engineer</td>
+                <td style="color:var(--text-muted);font-size:13px;">Jun 23, 2026</td>
+                <td>
+                  <div class="ats-bar">
+                    <div class="progress-bar"><div class="progress-fill" style="width:71%;background:var(--warning);"></div></div>
+                    <span class="ats-score-text medium">71%</span>
+                  </div>
+                </td>
+                <td><span class="badge badge-info">New</span></td>
+                <td>
+                  <div class="flex gap-6">
+                    <a href="./candidate-profile.html" class="btn btn-ghost btn-sm"><i data-lucide="eye"></i> View</a>
+                    <button class="btn btn-primary btn-sm"><i data-lucide="arrow-right"></i> Move</button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="x"></i> Reject</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  lucide.createIcons();
+
+  // Sidebar toggle
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('visible');
+  });
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('visible');
+  });
+
+  // Filter tabs
+  const tabs = document.querySelectorAll('.filter-tab');
+  const rows = document.querySelectorAll('#applicationsTable tbody tr');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      rows.forEach(row => {
+        row.style.display = (filter === 'all' || row.dataset.stage === filter) ? '' : 'none';
+      });
+    });
+  });
+});
+</script>
 </body>
-
 </html>

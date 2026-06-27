@@ -1,209 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Saved Jobs | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/candidate.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saved Jobs | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/candidate.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
+<div class="app-layout">
 
-    <div class="sidebar">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <div class="logo">RecruitIQ</div>
-
-        <ul class="menu">
-
-            <li><a href="./dashboard.html">Dashboard</a></li>
-            <li><a href="./profile.html">Profile</a></li>
-            <li><a href="./my-applications.html">Applications</a></li>
-            <li><a href="./application-timeline.html">Timeline</a></li>
-            <li><a href="./resume-center.html">Resume Center</a></li>
-            <li class="active"><a href="./saved-jobs.html">Saved Jobs</a></li>
-            <li><a href="./notifications.html">Notifications</a></li>
-            <li><a href="./settings.html">Settings</a></li>
-
-        </ul>
-
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="logo-text">Recruit<span class="logo-dot">IQ</span></span>
     </div>
+    <nav>
+      <p class="sidebar-section-label">Main</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./profile.html"><i data-lucide="user"></i> My Profile</a></li>
+        <li><a href="./my-applications.html"><i data-lucide="file-text"></i> Applications <span class="badge-count">24</span></a></li>
+        <li><a href="./application-timeline.html"><i data-lucide="git-branch"></i> Timeline</a></li>
+        <li><a href="./resume-center.html"><i data-lucide="folder-open"></i> Resume Center</a></li>
+        <li><a href="./saved-jobs.html" class="active"><i data-lucide="bookmark"></i> Saved Jobs <span class="badge-count">18</span></a></li>
+      </ul>
+      <p class="sidebar-section-label">Account</p>
+      <ul class="sidebar-nav">
+        <li><a href="./notifications.html"><i data-lucide="bell"></i> Notifications <span class="badge-count">5</span></a></li>
+        <li><a href="./settings.html"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">RS</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Rahul Sharma</div>
+          <div class="sidebar-user-role">Candidate</div>
+        </div>
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
+    </div>
+  </aside>
 
-    <div class="navbar">
-
-        <h2>Saved Jobs</h2>
-
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
         <div>
-            🔔 👤
+          <div class="topbar-title">Saved Jobs</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <i data-lucide="search" style="width:15px;height:15px;color:#94a3b8;"></i>
+          <input type="text" placeholder="Search saved jobs…" aria-label="Search" oninput="filterSaved(this.value)">
+        </div>
+        <button class="topbar-icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">RS</div>
+          <div>
+            <div class="topbar-user-name">Rahul Sharma</div>
+            <div class="topbar-user-role">Candidate</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Page Header -->
+      <div class="page-header flex items-center justify-between">
+        <div>
+          <h1>Saved Jobs</h1>
+          <p>Jobs you've bookmarked for later. Apply before they close!</p>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="badge badge-primary" style="font-size:13px;padding:6px 14px;">18 saved</span>
+          <select class="form-control" style="width:auto;padding:8px 14px;font-size:13px;" onchange="sortSaved(this.value)">
+            <option value="recent">Most Recent</option>
+            <option value="salary">Salary: High to Low</option>
+            <option value="match">Best Match</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Jobs Grid -->
+      <div class="job-rec-grid" id="savedJobsGrid">
+
+        <!-- Job Card 1 -->
+        <div class="job-rec-card" id="job-1" data-title="frontend developer" data-salary="18">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">
+            <div class="job-rec-logo">G</div>
+            <button class="btn btn-ghost btn-sm" style="color:#e11d48;" onclick="removeJob('job-1', 'Frontend Developer')" title="Remove from saved">
+              <i data-lucide="bookmark" style="fill:#e11d48;"></i>
+            </button>
+          </div>
+          <div class="job-rec-title">Frontend Developer</div>
+          <div class="job-rec-company">Google &nbsp;·&nbsp; California, USA</div>
+          <div class="job-rec-tags">
+            <span class="job-rec-tag"><i data-lucide="map-pin" style="width:10px;height:10px;"></i> Remote</span>
+            <span class="job-rec-tag"><i data-lucide="clock" style="width:10px;height:10px;"></i> Full-time</span>
+            <span class="job-rec-tag">₹15–22 LPA</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <span class="badge badge-success">Active</span>
+            <span style="font-size:12px;color:var(--text-muted);">Saved Jun 20</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-primary flex-1" onclick="applyNow('Frontend Developer at Google')">Apply Now</button>
+            <button class="btn btn-danger btn-sm" onclick="removeJob('job-1', 'Frontend Developer')" title="Remove">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
         </div>
 
-    </div>
-
-    <div class="page-content">
-
-        <div class="page-header">
-
-            <div>
-
-                <h1>Saved Opportunities</h1>
-
-                <p>
-                    Jobs you've bookmarked for later.
-                </p>
-
-            </div>
-
+        <!-- Job Card 2 -->
+        <div class="job-rec-card" id="job-2" data-title="ui engineer" data-salary="16">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">
+            <div class="job-rec-logo" style="background:linear-gradient(135deg,#0f766e,#0d9488);">M</div>
+            <button class="btn btn-ghost btn-sm" style="color:#e11d48;" onclick="removeJob('job-2', 'UI Engineer')" title="Remove from saved">
+              <i data-lucide="bookmark" style="fill:#e11d48;"></i>
+            </button>
+          </div>
+          <div class="job-rec-title">UI Engineer</div>
+          <div class="job-rec-company">Microsoft &nbsp;·&nbsp; Hyderabad</div>
+          <div class="job-rec-tags">
+            <span class="job-rec-tag"><i data-lucide="map-pin" style="width:10px;height:10px;"></i> Hybrid</span>
+            <span class="job-rec-tag"><i data-lucide="clock" style="width:10px;height:10px;"></i> Full-time</span>
+            <span class="job-rec-tag">₹14–20 LPA</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <span class="badge badge-success">Active</span>
+            <span style="font-size:12px;color:var(--text-muted);">Saved Jun 18</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-primary flex-1" onclick="applyNow('UI Engineer at Microsoft')">Apply Now</button>
+            <button class="btn btn-danger btn-sm" onclick="removeJob('job-2', 'UI Engineer')" title="Remove">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
         </div>
 
-        <!-- Filters -->
-
-        <div class="card">
-
-            <div class="job-filters">
-
-                <input type="text" placeholder="Search Saved Jobs">
-
-                <select>
-                    <option>All Locations</option>
-                    <option>Pune</option>
-                    <option>Mumbai</option>
-                    <option>Remote</option>
-                </select>
-
-                <select>
-                    <option>All Types</option>
-                    <option>Full Time</option>
-                    <option>Remote</option>
-                    <option>Internship</option>
-                </select>
-
-            </div>
-
+        <!-- Job Card 3 -->
+        <div class="job-rec-card" id="job-3" data-title="react developer" data-salary="12">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">
+            <div class="job-rec-logo" style="background:linear-gradient(135deg,#7c3aed,#a855f7);">I</div>
+            <button class="btn btn-ghost btn-sm" style="color:#e11d48;" onclick="removeJob('job-3', 'React Developer')" title="Remove from saved">
+              <i data-lucide="bookmark" style="fill:#e11d48;"></i>
+            </button>
+          </div>
+          <div class="job-rec-title">React Developer</div>
+          <div class="job-rec-company">Infosys &nbsp;·&nbsp; Pune</div>
+          <div class="job-rec-tags">
+            <span class="job-rec-tag"><i data-lucide="map-pin" style="width:10px;height:10px;"></i> On-site</span>
+            <span class="job-rec-tag"><i data-lucide="clock" style="width:10px;height:10px;"></i> Contract</span>
+            <span class="job-rec-tag">₹10–14 LPA</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <span class="badge badge-warning">Closing Soon</span>
+            <span style="font-size:12px;color:var(--text-muted);">Saved Jun 15</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-primary flex-1" onclick="applyNow('React Developer at Infosys')">Apply Now</button>
+            <button class="btn btn-danger btn-sm" onclick="removeJob('job-3', 'React Developer')" title="Remove">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
         </div>
 
-        <!-- Saved Jobs -->
-
-        <div class="saved-jobs-grid">
-
-            <div class="saved-job-card">
-
-                <div class="job-top">
-
-                    <h3>Frontend Developer</h3>
-
-                    <span class="save-icon">❤️</span>
-
-                </div>
-
-                <p>Google</p>
-
-                <div class="job-tags">
-
-                    <span>Pune</span>
-                    <span>Full Time</span>
-
-                </div>
-
-                <h4>₹12 LPA - ₹18 LPA</h4>
-
-                <div class="job-actions">
-
-                    <button class="apply-btn-small">
-                        Apply Now
-                    </button>
-
-                    <button class="remove-btn">
-                        Remove
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="saved-job-card">
-
-                <div class="job-top">
-
-                    <h3>React Developer</h3>
-
-                    <span class="save-icon">❤️</span>
-
-                </div>
-
-                <p>Microsoft</p>
-
-                <div class="job-tags">
-
-                    <span>Mumbai</span>
-                    <span>Hybrid</span>
-
-                </div>
-
-                <h4>₹10 LPA - ₹15 LPA</h4>
-
-                <div class="job-actions">
-
-                    <button class="apply-btn-small">
-                        Apply Now
-                    </button>
-
-                    <button class="remove-btn">
-                        Remove
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="saved-job-card">
-
-                <div class="job-top">
-
-                    <h3>UI/UX Designer</h3>
-
-                    <span class="save-icon">❤️</span>
-
-                </div>
-
-                <p>Adobe</p>
-
-                <div class="job-tags">
-
-                    <span>Remote</span>
-                    <span>Full Time</span>
-
-                </div>
-
-                <h4>₹8 LPA - ₹14 LPA</h4>
-
-                <div class="job-actions">
-
-                    <button class="apply-btn-small">
-                        Apply Now
-                    </button>
-
-                    <button class="remove-btn">
-                        Remove
-                    </button>
-
-                </div>
-
-            </div>
-
+        <!-- Job Card 4 -->
+        <div class="job-rec-card" id="job-4" data-title="data scientist" data-salary="20">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">
+            <div class="job-rec-logo" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">T</div>
+            <button class="btn btn-ghost btn-sm" style="color:#e11d48;" onclick="removeJob('job-4', 'Data Scientist')" title="Remove from saved">
+              <i data-lucide="bookmark" style="fill:#e11d48;"></i>
+            </button>
+          </div>
+          <div class="job-rec-title">Data Scientist</div>
+          <div class="job-rec-company">TCS &nbsp;·&nbsp; Bengaluru</div>
+          <div class="job-rec-tags">
+            <span class="job-rec-tag"><i data-lucide="map-pin" style="width:10px;height:10px;"></i> Hybrid</span>
+            <span class="job-rec-tag"><i data-lucide="clock" style="width:10px;height:10px;"></i> Full-time</span>
+            <span class="job-rec-tag">₹18–25 LPA</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <span class="badge badge-success">Active</span>
+            <span style="font-size:12px;color:var(--text-muted);">Saved Jun 12</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-primary flex-1" onclick="applyNow('Data Scientist at TCS')">Apply Now</button>
+            <button class="btn btn-danger btn-sm" onclick="removeJob('job-4', 'Data Scientist')" title="Remove">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
         </div>
 
-    </div>
+        <!-- Job Card 5 -->
+        <div class="job-rec-card" id="job-5" data-title="ux designer" data-salary="10">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">
+            <div class="job-rec-logo" style="background:linear-gradient(135deg,#e11d48,#f43f5e);">W</div>
+            <button class="btn btn-ghost btn-sm" style="color:#e11d48;" onclick="removeJob('job-5', 'UX Designer')" title="Remove from saved">
+              <i data-lucide="bookmark" style="fill:#e11d48;"></i>
+            </button>
+          </div>
+          <div class="job-rec-title">UX Designer</div>
+          <div class="job-rec-company">Wipro &nbsp;·&nbsp; Remote</div>
+          <div class="job-rec-tags">
+            <span class="job-rec-tag"><i data-lucide="map-pin" style="width:10px;height:10px;"></i> Remote</span>
+            <span class="job-rec-tag"><i data-lucide="clock" style="width:10px;height:10px;"></i> Full-time</span>
+            <span class="job-rec-tag">₹8–12 LPA</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <span class="badge badge-neutral">Paused</span>
+            <span style="font-size:12px;color:var(--text-muted);">Saved Jun 10</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-secondary flex-1" disabled style="opacity:.5;cursor:not-allowed;">Paused</button>
+            <button class="btn btn-danger btn-sm" onclick="removeJob('job-5', 'UX Designer')" title="Remove">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Job Card 6 -->
+        <div class="job-rec-card" id="job-6" data-title="backend engineer" data-salary="22">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:12px;">
+            <div class="job-rec-logo" style="background:linear-gradient(135deg,#d97706,#f59e0b);">A</div>
+            <button class="btn btn-ghost btn-sm" style="color:#e11d48;" onclick="removeJob('job-6', 'Backend Engineer')" title="Remove from saved">
+              <i data-lucide="bookmark" style="fill:#e11d48;"></i>
+            </button>
+          </div>
+          <div class="job-rec-title">Backend Engineer</div>
+          <div class="job-rec-company">Amazon &nbsp;·&nbsp; Bengaluru</div>
+          <div class="job-rec-tags">
+            <span class="job-rec-tag"><i data-lucide="map-pin" style="width:10px;height:10px;"></i> Hybrid</span>
+            <span class="job-rec-tag"><i data-lucide="clock" style="width:10px;height:10px;"></i> Full-time</span>
+            <span class="job-rec-tag">₹20–28 LPA</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;">
+            <span class="badge badge-success">Active</span>
+            <span style="font-size:12px;color:var(--text-muted);">Saved Jun 8</span>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <button class="btn btn-primary flex-1" onclick="applyNow('Backend Engineer at Amazon')">Apply Now</button>
+            <button class="btn btn-danger btn-sm" onclick="removeJob('job-6', 'Backend Engineer')" title="Remove">
+              <i data-lucide="trash-2"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+lucide.createIcons();
+
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+document.getElementById('menuToggle').addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('visible');
+});
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('visible');
+});
+
+function showToast(msg, type = 'success') {
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  document.getElementById('toastContainer').appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+function applyNow(jobName) { showToast(`Application submitted for ${jobName}`); }
+
+function removeJob(id, name) {
+  const card = document.getElementById(id);
+  card.style.opacity = '0';
+  card.style.transform = 'scale(.95)';
+  card.style.transition = 'all .25s ease';
+  setTimeout(() => { card.remove(); showToast(`"${name}" removed from saved jobs`, 'danger'); }, 250);
+}
+
+function filterSaved(query) {
+  const q = query.toLowerCase();
+  document.querySelectorAll('#savedJobsGrid .job-rec-card').forEach(card => {
+    card.style.display = card.dataset.title.includes(q) ? '' : 'none';
+  });
+}
+
+function sortSaved(by) {
+  const grid = document.getElementById('savedJobsGrid');
+  const cards = Array.from(grid.querySelectorAll('.job-rec-card'));
+  cards.sort((a, b) => {
+    if (by === 'salary') return parseInt(b.dataset.salary) - parseInt(a.dataset.salary);
+    if (by === 'match')  return Math.random() - .5;
+    return 0;
+  });
+  cards.forEach(c => grid.appendChild(c));
+}
+</script>
 </body>
-
 </html>

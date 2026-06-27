@@ -1,208 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Admin Dashboard | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/admin.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
-    <div class="dashboard-layout">
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                <h2>RecruitIQ</h2>
-            </div>
+<div class="app-layout">
 
-            <ul class="sidebar-menu">
-                <li><a class="active" href="dashboard.html">Dashboard</a></li>
-                <li><a href="users.html">Users</a></li>
-                <li><a href="jobs.html">Jobs</a></li>
-                <li><a href="companies.html">Companies</a></li>
-                <li><a href="analytics.html">Analytics</a></li>
-                <li><a href="settings.html">Settings</a></li>
-            </ul>
-        </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <main class="main-content">
-            <nav class="navbar admin-topbar">
-                <div>
-                    <div class="logo">Admin Dashboard</div>
-                    <p class="admin-subtitle">Monitor platform health, hiring activity, and user operations.</p>
-                </div>
-
-                <div class="profile-menu">
-                    <div class="admin-avatar">AD</div>
-                    <div>
-                        <h4>Admin</h4>
-                        <span>System Administrator</span>
-                    </div>
-                </div>
-            </nav>
-
-            <section class="admin-hero">
-                <div>
-                    <span class="admin-kicker">Platform Overview</span>
-                    <h1>RecruitIQ control center</h1>
-                    <p>Track users, companies, jobs, and hiring performance from one clean workspace.</p>
-                </div>
-
-                <div class="admin-hero-actions">
-                    <button class="secondary-btn" data-route="analytics.html">View Analytics</button>
-                    <button class="primary-btn" data-action="open-company-modal">Add Company</button>
-                </div>
-            </section>
-
-            <section class="stats-grid">
-                <button class="stat-card admin-stat-button" data-route="users.html">
-                    <span>Total Users</span>
-                    <h3>12,450</h3>
-                    <p>View users</p>
-                </button>
-
-                <button class="stat-card admin-stat-button" data-route="jobs.html">
-                    <span>Active Jobs</span>
-                    <h3>2,890</h3>
-                    <p>Manage jobs</p>
-                </button>
-
-                <button class="stat-card admin-stat-button" data-route="companies.html">
-                    <span>Companies</span>
-                    <h3>510</h3>
-                    <p>Open companies</p>
-                </button>
-
-                <button class="stat-card admin-stat-button" data-route="analytics.html">
-                    <span>Hiring Success</span>
-                    <h3>95%</h3>
-                    <p>See analytics</p>
-                </button>
-            </section>
-
-            <section class="admin-grid">
-                <div class="dashboard-card">
-                    <div class="card-title-row">
-                        <div>
-                            <h3>Recruitment Analytics</h3>
-                            <p>Monthly platform performance snapshot.</p>
-                        </div>
-
-                        <button class="secondary-btn admin-small-btn" data-route="analytics.html">View Reports</button>
-                    </div>
-
-                    <div class="admin-chart" aria-label="Monthly hiring analytics chart">
-                        <div class="chart-bar" style="height: 46%"><span>Jan</span></div>
-                        <div class="chart-bar" style="height: 58%"><span>Feb</span></div>
-                        <div class="chart-bar" style="height: 52%"><span>Mar</span></div>
-                        <div class="chart-bar" style="height: 74%"><span>Apr</span></div>
-                        <div class="chart-bar" style="height: 68%"><span>May</span></div>
-                        <div class="chart-bar active-bar" style="height: 86%"><span>Jun</span></div>
-                    </div>
-                </div>
-
-                <div class="dashboard-card">
-                    <h3>Quick Actions</h3>
-                    <p class="admin-muted">Use these shortcuts to run common admin workflows.</p>
-
-                    <button class="admin-btn" data-action="open-company-modal">Add Company</button>
-                    <button class="admin-btn" data-route="jobs.html">Create Job</button>
-                    <button class="admin-btn" data-route="users.html">Manage Users</button>
-                    <button class="admin-btn admin-btn-light" data-route="settings.html">Platform Settings</button>
-                </div>
-            </section>
-
-            <section class="dashboard-card admin-activity-card">
-                <div class="card-title-row">
-                    <div>
-                        <h3>Recent Activity</h3>
-                        <p>Latest movement across users, companies, and jobs.</p>
-                    </div>
-
-                    <button class="secondary-btn admin-small-btn" data-action="refresh-activity">Refresh</button>
-                </div>
-
-                <table class="admin-table">
-                    <thead>
-                        <tr>
-                            <th>User</th>
-                            <th>Action</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td>Sarah</td>
-                            <td>Applied Job</td>
-                            <td>5 mins ago</td>
-                        </tr>
-
-                        <tr>
-                            <td>TechNova</td>
-                            <td>Created Job</td>
-                            <td>20 mins ago</td>
-                        </tr>
-
-                        <tr>
-                            <td>Admin</td>
-                            <td>Updated platform settings</td>
-                            <td>1 hour ago</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-        </main>
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="logo-text">Recruit<span class="logo-dot">IQ</span></span>
     </div>
-
-    <div class="modal-overlay" id="addCompanyModal" aria-hidden="true">
-        <div class="modal-container admin-modal" role="dialog" aria-modal="true" aria-labelledby="addCompanyTitle">
-            <div class="modal-header">
-                <div>
-                    <h3 id="addCompanyTitle">Add Company</h3>
-                    <p>Register a new hiring company in RecruitIQ.</p>
-                </div>
-                <button class="modal-close" type="button" data-action="close-company-modal">x</button>
-            </div>
-
-            <form class="modal-body" id="addCompanyForm">
-                <div class="form-group">
-                    <label for="companyName">Company Name</label>
-                    <input id="companyName" type="text" placeholder="TechNova Solutions" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="companyEmail">Admin Email</label>
-                    <input id="companyEmail" type="email" placeholder="admin@company.com" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="companyPlan">Plan</label>
-                    <select id="companyPlan" required>
-                        <option value="">Select plan</option>
-                        <option>Starter</option>
-                        <option>Professional</option>
-                        <option>Enterprise</option>
-                    </select>
-                </div>
-
-                <div class="modal-footer">
-                    <button class="secondary-btn" type="button" data-action="close-company-modal">Cancel</button>
-                    <button class="primary-btn" type="submit">Save Company</button>
-                </div>
-            </form>
+    <nav>
+      <p class="sidebar-section-label">Platform</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html" class="active"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./users.html"><i data-lucide="users"></i> Users</a></li>
+        <li><a href="./jobs.html"><i data-lucide="briefcase"></i> Jobs</a></li>
+        <li><a href="./companies.html"><i data-lucide="building-2"></i> Companies</a></li>
+        <li><a href="./analytics.html"><i data-lucide="bar-chart-2"></i> Analytics</a></li>
+      </ul>
+      <p class="sidebar-section-label">System</p>
+      <ul class="sidebar-nav">
+        <li><a href="./settings.html"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">AD</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Admin</div>
+          <div class="sidebar-user-role">System Administrator</div>
         </div>
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
     </div>
+  </aside>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/admin-dashboard.js"></script>
+  <!-- Main -->
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
+        <div>
+          <div class="topbar-title">Admin Dashboard</div>
+          <div class="topbar-subtitle">Monitor platform health and hiring activity</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <i data-lucide="search" style="width:15px;height:15px;color:#94a3b8;"></i>
+          <input type="text" placeholder="Search users, jobs…" aria-label="Search">
+        </div>
+        <button class="topbar-icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">AD</div>
+          <div>
+            <div class="topbar-user-name">Admin</div>
+            <div class="topbar-user-role">Administrator</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Welcome -->
+      <div class="welcome-banner">
+        <div class="welcome-content">
+          <h1>Platform Overview</h1>
+          <p>RecruitIQ is running smoothly. 12 new sign-ups today.</p>
+        </div>
+        <div class="flex gap-10" style="position:relative;z-index:1;">
+          <button class="btn btn-white" onclick="document.getElementById('addCompanyModal').classList.add('is-open')">
+            <i data-lucide="plus"></i> Add Company
+          </button>
+          <a href="./analytics.html" class="btn btn-white">
+            <i data-lucide="bar-chart-2"></i> Analytics
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <a href="./users.html" class="stat-card admin-stat-btn">
+          <div class="stat-card-icon blue"><i data-lucide="users"></i></div>
+          <div class="stat-card-value">12,450</div>
+          <div class="stat-card-label">Total Users</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +124 this month</div>
+        </a>
+        <a href="./jobs.html" class="stat-card admin-stat-btn">
+          <div class="stat-card-icon green"><i data-lucide="briefcase"></i></div>
+          <div class="stat-card-value">2,890</div>
+          <div class="stat-card-label">Active Jobs</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +48 this week</div>
+        </a>
+        <a href="./companies.html" class="stat-card admin-stat-btn">
+          <div class="stat-card-icon purple"><i data-lucide="building-2"></i></div>
+          <div class="stat-card-value">510</div>
+          <div class="stat-card-label">Companies</div>
+          <div class="stat-card-change neutral">12 pending approval</div>
+        </a>
+        <a href="./analytics.html" class="stat-card admin-stat-btn">
+          <div class="stat-card-icon amber"><i data-lucide="check-circle"></i></div>
+          <div class="stat-card-value">95%</div>
+          <div class="stat-card-label">Hiring Success</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +2% vs last month</div>
+        </a>
+      </div>
+
+      <!-- Grid -->
+      <div class="dashboard-grid">
+
+        <!-- Chart -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3>Recruitment Analytics</h3>
+              <p>Monthly platform performance</p>
+            </div>
+            <a href="./analytics.html" class="btn btn-secondary btn-sm">View Reports</a>
+          </div>
+          <div class="card-body">
+            <div class="chart-container" role="img" aria-label="Monthly hiring chart">
+              <div class="chart-bar" style="height:46%"><span>Jan</span></div>
+              <div class="chart-bar" style="height:58%"><span>Feb</span></div>
+              <div class="chart-bar" style="height:52%"><span>Mar</span></div>
+              <div class="chart-bar" style="height:74%"><span>Apr</span></div>
+              <div class="chart-bar" style="height:68%"><span>May</span></div>
+              <div class="chart-bar active" style="height:86%"><span>Jun</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3>Quick Actions</h3>
+              <p>Common admin shortcuts</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="quick-action-grid">
+              <button class="quick-action-btn" onclick="document.getElementById('addCompanyModal').classList.add('is-open')">
+                <i data-lucide="building-2"></i> Add Company
+              </button>
+              <a href="./jobs.html" class="quick-action-btn">
+                <i data-lucide="plus-circle"></i> Create Job
+              </a>
+              <a href="./users.html" class="quick-action-btn">
+                <i data-lucide="users"></i> Manage Users
+              </a>
+              <a href="./analytics.html" class="quick-action-btn">
+                <i data-lucide="bar-chart-2"></i> Analytics
+              </a>
+              <a href="./settings.html" class="quick-action-btn">
+                <i data-lucide="settings"></i> Settings
+              </a>
+              <button class="quick-action-btn" id="exportBtn">
+                <i data-lucide="download"></i> Export Data
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3>Recent Activity</h3>
+            <p>Latest movement across users, companies, and jobs</p>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="refreshBtn">
+            <i data-lucide="refresh-cw"></i> Refresh
+          </button>
+        </div>
+        <div class="card-body" id="activityFeed">
+          <div class="activity-item">
+            <div class="activity-icon"><i data-lucide="user-plus"></i></div>
+            <div style="flex:1;">
+              <div class="activity-text"><strong>Sarah Johnson</strong> applied for Frontend Developer at Google</div>
+              <div class="activity-time">5 minutes ago</div>
+            </div>
+            <span class="badge badge-primary">Applied</span>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon"><i data-lucide="briefcase"></i></div>
+            <div style="flex:1;">
+              <div class="activity-text"><strong>TechNova Inc.</strong> posted a new job opening</div>
+              <div class="activity-time">20 minutes ago</div>
+            </div>
+            <span class="badge badge-success">New Job</span>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon"><i data-lucide="building-2"></i></div>
+            <div style="flex:1;">
+              <div class="activity-text"><strong>Wipro</strong> registered as a new company</div>
+              <div class="activity-time">1 hour ago</div>
+            </div>
+            <span class="badge badge-warning">New</span>
+          </div>
+          <div class="activity-item">
+            <div class="activity-icon"><i data-lucide="settings"></i></div>
+            <div style="flex:1;">
+              <div class="activity-text"><strong>Admin</strong> updated platform notification settings</div>
+              <div class="activity-time">2 hours ago</div>
+            </div>
+            <span class="badge badge-neutral">System</span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Add Company Modal -->
+<div class="modal-overlay" id="addCompanyModal" aria-hidden="true">
+  <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <div>
+        <h3 id="modalTitle">Add Company</h3>
+        <p>Register a new hiring company in RecruitIQ.</p>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('addCompanyModal').classList.remove('is-open')" aria-label="Close modal">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <form class="modal-body" id="addCompanyForm">
+      <div class="form-group">
+        <label class="form-label" for="companyName">Company Name</label>
+        <input class="form-control" id="companyName" type="text" placeholder="TechNova Solutions" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="companyEmail">Admin Email</label>
+        <input class="form-control" id="companyEmail" type="email" placeholder="admin@company.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="companyPlan">Plan</label>
+        <select class="form-control" id="companyPlan" required>
+          <option value="">Select a plan</option>
+          <option>Starter</option>
+          <option>Professional</option>
+          <option>Enterprise</option>
+        </select>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="document.getElementById('addCompanyModal').classList.remove('is-open')">Cancel</button>
+      <button class="btn btn-primary" form="addCompanyForm" type="submit">Save Company</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+lucide.createIcons();
+
+// Sidebar toggle
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+document.getElementById('menuToggle').addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('visible');
+});
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('visible');
+});
+
+// Modal close on backdrop
+document.getElementById('addCompanyModal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('is-open');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('addCompanyModal').classList.remove('is-open');
+});
+
+// Toast helper
+function showToast(msg, type = 'success') {
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  document.getElementById('toastContainer').appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+// Form submit
+document.getElementById('addCompanyForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('companyName').value.trim();
+  document.getElementById('addCompanyModal').classList.remove('is-open');
+  showToast(`${name} added successfully`);
+  this.reset();
+});
+
+// Export
+document.getElementById('exportBtn').addEventListener('click', () => showToast('Data export started'));
+
+// Refresh
+document.getElementById('refreshBtn').addEventListener('click', function() {
+  this.innerHTML = '<i data-lucide="check"></i> Updated';
+  lucide.createIcons();
+  showToast('Activity feed refreshed');
+  setTimeout(() => {
+    this.innerHTML = '<i data-lucide="refresh-cw"></i> Refresh';
+    lucide.createIcons();
+  }, 2000);
+});
+</script>
 </body>
-
 </html>

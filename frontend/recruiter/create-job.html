@@ -1,217 +1,357 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Create Job | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/recruiter.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Job | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/recruiter.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <script src="../js/api.js" defer></script>
+  <style>
+    .form-section {
+      padding: 28px 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .form-section:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .form-section-title {
+      font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .7px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .form-section-title i { width: 15px; height: 15px; }
+    .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .toggle-switch { display: flex; align-items: center; gap: 12px; }
+    .toggle-input { position: relative; display: inline-block; width: 40px; height: 22px; }
+    .toggle-input input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider {
+      position: absolute; inset: 0;
+      background: #cbd5e1; border-radius: 99px;
+      cursor: pointer; transition: background var(--transition);
+    }
+    .toggle-slider::before {
+      content: ''; position: absolute;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: #fff; top: 3px; left: 3px;
+      transition: transform var(--transition);
+    }
+    .toggle-input input:checked + .toggle-slider { background: var(--primary); }
+    .toggle-input input:checked + .toggle-slider::before { transform: translateX(18px); }
+    .toggle-label { font-size: 13.5px; font-weight: 500; color: var(--text-secondary); }
+    .form-hint { font-size: 12px; color: var(--text-muted); margin-top: 5px; }
+    @media (max-width: 640px) {
+      .form-grid-2, .form-grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
-
 <body>
+<div class="app-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- Sidebar -->
-
-    <div class="sidebar">
-
-        <div class="logo">
-            RecruitIQ
-        </div>
-
-        <ul class="menu">
-            <li class="active">Dashboard</li>
-            <li>Jobs</li>
-            <li>Candidates</li>
-            <li>Pipeline</li>
-            <li>Interviews</li>
-            <li>Analytics</li>
-            <li>Settings</li>
-        </ul>
-
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"><span class="logo-text">Recruit<span class="logo-dot">IQ</span></span></div>
+    <nav>
+      <p class="sidebar-section-label">Recruiting</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./manage-jobs.html" class="active"><i data-lucide="briefcase"></i> My Jobs</a></li>
+        <li><a href="./applications.html"><i data-lucide="file-text"></i> Applications <span class="badge-count">245</span></a></li>
+        <li><a href="./hiring-pipeline.html"><i data-lucide="git-branch"></i> Pipeline</a></li>
+        <li><a href="./schedule-interview.html"><i data-lucide="calendar"></i> Interviews</a></li>
+        <li><a href="./analytics.html"><i data-lucide="bar-chart-2"></i> Analytics</a></li>
+      </ul>
+      <p class="sidebar-section-label">Account</p>
+      <ul class="sidebar-nav">
+        <li><a href="./notifications.html"><i data-lucide="bell"></i> Notifications</a></li>
+        <li><a href="./settings.html"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">JS</div>
+        <div class="sidebar-user-info"><div class="sidebar-user-name">John Smith</div><div class="sidebar-user-role">Recruiter</div></div>
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
     </div>
+  </aside>
 
-    <!-- Navbar -->
-
-    <div class="navbar">
-
-        <h2>Create New Job</h2>
-
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
         <div>
-            🔔 👤
+          <div class="topbar-title">Create Job</div>
+          <div class="topbar-subtitle">Post a new position</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <i data-lucide="search" style="width:15px;height:15px;color:#94a3b8;"></i>
+          <input type="text" placeholder="Search…" aria-label="Search">
+        </div>
+        <button class="topbar-icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">JS</div>
+          <div>
+            <div class="topbar-user-name">John Smith</div>
+            <div class="topbar-user-role">Recruiter</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <div class="page-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <h1>Post a New Job</h1>
+          <p>Fill in all details to attract the right candidates.</p>
+        </div>
+        <a href="./manage-jobs.html" class="btn btn-secondary">
+          <i data-lucide="arrow-left"></i> Back to Jobs
+        </a>
+      </div>
+
+      <form id="createJobForm" novalidate>
+        <div class="card mb-24">
+
+          <!-- Job Details -->
+          <div class="form-section">
+            <div class="form-section-title"><i data-lucide="briefcase"></i> Job Details</div>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Job Title <span style="color:var(--danger);">*</span></label>
+                <input type="text" class="form-control" placeholder="e.g. Senior Frontend Developer" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Company <span style="color:var(--danger);">*</span></label>
+                <select class="form-control" required>
+                  <option value="">Select company</option>
+                  <option selected>TechCorp India</option>
+                  <option>Infosys</option>
+                  <option>Wipro</option>
+                  <option>HCL Technologies</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Department</label>
+                <input type="text" class="form-control" placeholder="e.g. Engineering, Design, Marketing">
+              </div>
+              <!-- employmentType enum: "Full-time"|"Part-time"|"Internship"|"Contract"|"Freelance"|"Temporary" -->
+              <div class="form-group">
+                <label class="form-label">Employment Type <span style="color:var(--danger);">*</span></label>
+                <select class="form-control" id="employmentType" required>
+                  <option value="Full-time">Full-time</option>
+                  <option value="Part-time">Part-time</option>
+                  <option value="Contract">Contract</option>
+                  <option value="Internship">Internship</option>
+                  <option value="Freelance">Freelance</option>
+                  <option value="Temporary">Temporary</option>
+                </select>
+              </div>
+              <!-- workMode enum: "On-site"|"Hybrid"|"Remote" -->
+              <div class="form-group">
+                <label class="form-label">Work Mode <span style="color:var(--danger);">*</span></label>
+                <select class="form-control" id="workMode" required>
+                  <option value="On-site">On-site</option>
+                  <option value="Hybrid">Hybrid</option>
+                  <option value="Remote">Remote</option>
+                </select>
+              </div>
+              <!-- location.city -->
+              <div class="form-group">
+                <label class="form-label">City</label>
+                <input type="text" class="form-control" id="locationCity" placeholder="e.g. Mumbai">
+              </div>
+              <!-- location.country -->
+              <div class="form-group">
+                <label class="form-label">Country</label>
+                <input type="text" class="form-control" id="locationCountry" placeholder="e.g. India">
+              </div>
+            </div>
+            <div style="padding-bottom:24px;"></div>
+          </div>
+
+          <!-- Compensation -->
+          <div class="form-section" style="padding-top:24px;">
+            <div class="form-section-title"><i data-lucide="indian-rupee"></i> Compensation</div>
+            <!-- salary.minimum, salary.maximum, salary.currency, salary.isNegotiable -->
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label">Min Salary</label>
+                <input type="number" class="form-control" id="salaryMin" placeholder="e.g. 800000" min="0">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Max Salary</label>
+                <input type="number" class="form-control" id="salaryMax" placeholder="e.g. 1500000" min="0">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Currency</label>
+                <select class="form-control" id="salaryCurrency">
+                  <option value="INR">INR (₹)</option>
+                  <option value="USD">USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-grid-2">
+              <div class="form-group" style="display:flex;align-items:center;gap:10px;padding-top:8px;">
+                <input type="checkbox" id="salaryIsNegotiable" checked style="width:16px;height:16px;accent-color:var(--primary);">
+                <label for="salaryIsNegotiable" class="form-label" style="margin:0;cursor:pointer;">Salary is negotiable</label>
+              </div>
+              <div class="form-group" style="display:flex;align-items:center;gap:10px;padding-top:8px;">
+                <input type="checkbox" id="salaryIsVisible" checked style="width:16px;height:16px;accent-color:var(--primary);">
+                <label for="salaryIsVisible" class="form-label" style="margin:0;cursor:pointer;">Show salary on listing</label>
+              </div>
+            </div>
+            <div style="padding-bottom:24px;"></div>
+          </div>
+
+          <!-- Requirements -->
+          <div class="form-section" style="padding-top:24px;">
+            <div class="form-section-title"><i data-lucide="list-checks"></i> Requirements</div>
+            <!-- experience.minimum / experience.maximum -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Min Experience (years) <span style="color:var(--danger);">*</span></label>
+                <input type="number" class="form-control" id="expMin" placeholder="0" min="0" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Max Experience (years) <span style="color:var(--danger);">*</span></label>
+                <input type="number" class="form-control" id="expMax" placeholder="5" min="0" required>
+              </div>
+            </div>
+            <!-- vacancies -->
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Vacancies <span style="color:var(--danger);">*</span></label>
+                <input type="number" class="form-control" id="vacancies" placeholder="1" min="1" required>
+              </div>
+              <!-- educationRequirement -->
+              <div class="form-group">
+                <label class="form-label">Education Requirement</label>
+                <input type="text" class="form-control" id="educationRequirement" placeholder="e.g. B.Tech in Computer Science" maxlength="150">
+              </div>
+            </div>
+            <!-- requiredSkills (comma-separated → array) -->
+            <div class="form-group">
+              <label class="form-label">Required Skills</label>
+              <textarea class="form-control" id="requiredSkills" rows="2"
+                placeholder="e.g. React, TypeScript, Node.js — separate with commas"></textarea>
+            </div>
+            <!-- preferredSkills -->
+            <div class="form-group">
+              <label class="form-label">Preferred Skills <span style="font-weight:400;color:var(--text-muted);">(nice-to-have)</span></label>
+              <textarea class="form-control" id="preferredSkills" rows="2"
+                placeholder="e.g. GraphQL, Docker, AWS — separate with commas"></textarea>
+            </div>
+            <div style="padding-bottom:24px;"></div>
+          </div>
+
+          <!-- Description -->
+          <div class="form-section" style="padding-top:24px;">
+            <div class="form-section-title"><i data-lucide="file-text"></i> Description</div>
+            <div class="form-group">
+              <label class="form-label">Job Description <span style="color:var(--danger);">*</span></label>
+              <textarea class="form-control" rows="5" placeholder="Describe the role, its purpose, team context, and what success looks like…" required></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Key Responsibilities</label>
+              <textarea class="form-control" rows="5" placeholder="List main responsibilities, one per line or as bullet points…"></textarea>
+            </div>
+            <div style="padding-bottom:24px;"></div>
+          </div>
+
+          <!-- Settings -->
+          <div class="form-section" style="padding-top:24px;">
+            <div class="form-section-title"><i data-lucide="settings-2"></i> Settings</div>
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label">Application Deadline</label>
+                <input type="date" class="form-control">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Max Applications</label>
+                <input type="number" class="form-control" placeholder="e.g. 200" min="1">
+                <p class="form-hint">Leave blank for unlimited.</p>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Auto-Reject Below ATS Score (%)</label>
+                <input type="number" class="form-control" placeholder="e.g. 40" min="0" max="100">
+                <p class="form-hint">Candidates below this score are auto-rejected.</p>
+              </div>
+            </div>
+            <div style="padding-bottom:28px;"></div>
+          </div>
+
         </div>
 
-    </div>
-
-    <!-- Content -->
-
-    <div class="page-content">
-
-        <div class="page-header">
-
-            <div>
-                <h1>Create Job Posting</h1>
-                <p>Create and publish a new job opening.</p>
-            </div>
-
-            <button class="publish-btn">
-                Publish Job
-            </button>
-
+        <!-- Action Buttons -->
+        <div class="flex gap-12 justify-end mb-24">
+          <button type="button" class="btn btn-secondary btn-lg" id="saveDraftBtn">
+            <i data-lucide="save"></i> Save as Draft
+          </button>
+          <button type="submit" class="btn btn-primary btn-lg" id="publishBtn">
+            <i data-lucide="send"></i> Publish Job
+          </button>
         </div>
 
-        <div class="job-layout">
+      </form>
 
-            <!-- Form -->
+    </main>
+  </div>
+</div>
 
-            <div class="job-form">
+<div class="toast-container" id="toastContainer"></div>
 
-                <div class="card">
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  lucide.createIcons();
 
-                    <h3>Basic Information</h3>
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('visible');
+  });
+  overlay.addEventListener('click', () => {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('visible');
+  });
 
-                    <div class="form-grid">
+  function showToast(message, type = 'success') {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerHTML = `<i data-lucide="${type === 'success' ? 'check-circle' : 'alert-circle'}" style="width:16px;height:16px;flex-shrink:0;"></i> ${message}`;
+    container.appendChild(toast);
+    lucide.createIcons();
+    setTimeout(() => toast.remove(), 3500);
+  }
 
-                        <div class="form-group">
-                            <label>Job Title</label>
-                            <input type="text" placeholder="Frontend Developer">
-                        </div>
+  document.getElementById('saveDraftBtn').addEventListener('click', () => {
+    showToast('Job saved as draft.', 'success');
+  });
 
-                        <div class="form-group">
-                            <label>Department</label>
-                            <select>
-                                <option>Engineering</option>
-                                <option>Marketing</option>
-                                <option>HR</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Location</label>
-                            <input type="text" placeholder="Mumbai">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Employment Type</label>
-                            <select>
-                                <option>Full Time</option>
-                                <option>Part Time</option>
-                                <option>Remote</option>
-                            </select>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="card">
-
-                    <h3>Salary Information</h3>
-
-                    <div class="form-grid">
-
-                        <div class="form-group">
-                            <label>Minimum Salary</label>
-                            <input type="number" placeholder="300000">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Maximum Salary</label>
-                            <input type="number" placeholder="800000">
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="card">
-
-                    <h3>Required Skills</h3>
-
-                    <div class="skills">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>React</span>
-                        <span>Node.js</span>
-
-                    </div>
-
-                </div>
-
-                <div class="card">
-
-                    <h3>Job Description</h3>
-
-                    <textarea rows="8" placeholder="Write detailed job description..."></textarea>
-
-                </div>
-
-                <div class="card">
-
-                    <h3>Requirements</h3>
-
-                    <textarea rows="6" placeholder="Enter candidate requirements..."></textarea>
-
-                </div>
-
-            </div>
-
-            <!-- Preview -->
-
-            <div class="preview-panel">
-
-                <div class="card">
-
-                    <h3>Live Preview</h3>
-
-                    <div class="preview-job">
-
-                        <h2>Frontend Developer</h2>
-
-                        <p class="company">
-                            RecruitIQ Technologies
-                        </p>
-
-                        <div class="job-meta">
-
-                            <span>Mumbai</span>
-                            <span>Full Time</span>
-                            <span>₹6 LPA</span>
-
-                        </div>
-
-                        <hr>
-
-                        <h4>Skills</h4>
-
-                        <div class="skills">
-
-                            <span>React</span>
-                            <span>JavaScript</span>
-                            <span>CSS</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  document.getElementById('createJobForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    showToast('Job published successfully! Redirecting…', 'success');
+    setTimeout(() => { window.location.href = './manage-jobs.html'; }, 2000);
+  });
+});
+</script>
 </body>
-
 </html>

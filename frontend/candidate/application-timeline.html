@@ -1,185 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Application Timeline | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/candidate.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Timeline | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/candidate.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
+<div class="app-layout">
 
-    <div class="sidebar">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <div class="logo">RecruitIQ</div>
-
-        <ul class="menu">
-
-            <li><a href="./dashboard.html">Dashboard</a></li>
-            <li><a href="./profile.html">Profile</a></li>
-            <li><a href="./my-applications.html">Applications</a></li>
-            <li class="active"><a href="./application-timeline.html">Timeline</a></li>
-            <li><a href="./resume-center.html">Resume Center</a></li>
-            <li><a href="./saved-jobs.html">Saved Jobs</a></li>
-            <li><a href="./notifications.html">Notifications</a></li>
-            <li><a href="./settings.html">Settings</a></li>
-
-        </ul>
-
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="logo-text">Recruit<span class="logo-dot">IQ</span></span>
     </div>
+    <nav>
+      <p class="sidebar-section-label">Main</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./profile.html"><i data-lucide="user"></i> My Profile</a></li>
+        <li><a href="./my-applications.html"><i data-lucide="file-text"></i> Applications <span class="badge-count">24</span></a></li>
+        <li><a href="./application-timeline.html" class="active"><i data-lucide="git-branch"></i> Timeline</a></li>
+        <li><a href="./resume-center.html"><i data-lucide="folder-open"></i> Resume Center</a></li>
+        <li><a href="./saved-jobs.html"><i data-lucide="bookmark"></i> Saved Jobs <span class="badge-count">18</span></a></li>
+      </ul>
+      <p class="sidebar-section-label">Account</p>
+      <ul class="sidebar-nav">
+        <li><a href="./notifications.html"><i data-lucide="bell"></i> Notifications <span class="badge-count">5</span></a></li>
+        <li><a href="./settings.html"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">RS</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Rahul Sharma</div>
+          <div class="sidebar-user-role">Candidate</div>
+        </div>
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
+    </div>
+  </aside>
 
-    <div class="navbar">
-
-        <h2>Application Timeline</h2>
-
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
         <div>
-            🔔 👤
+          <div class="topbar-title">Application Timeline</div>
         </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <i data-lucide="search" style="width:15px;height:15px;color:#94a3b8;"></i>
+          <input type="text" placeholder="Search applications…" aria-label="Search">
+        </div>
+        <button class="topbar-icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">RS</div>
+          <div>
+            <div class="topbar-user-name">Rahul Sharma</div>
+            <div class="topbar-user-role">Candidate</div>
+          </div>
+        </div>
+      </div>
+    </header>
 
-    </div>
+    <main class="page-content">
 
-    <div class="page-content">
+      <!-- Page Header -->
+      <div class="page-header flex items-center justify-between">
+        <div>
+          <h1>Application Timeline</h1>
+          <p>Track the progress of your active job applications.</p>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <span class="badge badge-primary" style="font-size:13px;padding:6px 14px;">3 Active</span>
+          <a href="./my-applications.html" class="btn btn-secondary">View All</a>
+        </div>
+      </div>
 
-        <div class="card application-header">
+      <!-- Stats Row -->
+      <div class="stats-grid" style="grid-template-columns:repeat(5,1fr);">
+        <div class="stat-card" style="padding:16px 18px;">
+          <div class="stat-card-icon blue" style="width:36px;height:36px;"><i data-lucide="send" style="width:16px;height:16px;"></i></div>
+          <div class="stat-card-value" style="font-size:22px;">24</div>
+          <div class="stat-card-label">Applied</div>
+        </div>
+        <div class="stat-card" style="padding:16px 18px;">
+          <div class="stat-card-icon amber" style="width:36px;height:36px;"><i data-lucide="search" style="width:16px;height:16px;"></i></div>
+          <div class="stat-card-value" style="font-size:22px;">8</div>
+          <div class="stat-card-label">Screened</div>
+        </div>
+        <div class="stat-card" style="padding:16px 18px;">
+          <div class="stat-card-icon cyan" style="width:36px;height:36px;"><i data-lucide="users" style="width:16px;height:16px;"></i></div>
+          <div class="stat-card-value" style="font-size:22px;">5</div>
+          <div class="stat-card-label">Interviews</div>
+        </div>
+        <div class="stat-card" style="padding:16px 18px;">
+          <div class="stat-card-icon green" style="width:36px;height:36px;"><i data-lucide="file-check" style="width:16px;height:16px;"></i></div>
+          <div class="stat-card-value" style="font-size:22px;">2</div>
+          <div class="stat-card-label">Offers</div>
+        </div>
+        <div class="stat-card" style="padding:16px 18px;">
+          <div class="stat-card-icon purple" style="width:36px;height:36px;"><i data-lucide="trophy" style="width:16px;height:16px;"></i></div>
+          <div class="stat-card-value" style="font-size:22px;">1</div>
+          <div class="stat-card-label">Accepted</div>
+        </div>
+      </div>
 
+      <!-- Application 1: Google – Interview stage (most advanced active one) -->
+      <div class="card mb-20">
+        <div class="card-header">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div class="app-company-logo" style="width:42px;height:42px;font-size:14px;border-radius:var(--radius-md);">G</div>
             <div>
-
-                <h2>Frontend Developer</h2>
-
-                <p>Google • Pune, India</p>
-
+              <div style="font-size:16px;font-weight:700;color:var(--text-primary);">Frontend Developer</div>
+              <div style="font-size:13px;color:var(--text-muted);">Google &nbsp;·&nbsp; Remote &nbsp;·&nbsp; Applied Jun 10, 2026</div>
             </div>
-
-            <span class="badge-open">
-                Interview Stage
-            </span>
-
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span class="badge badge-primary">Interview Stage</span>
+            <button class="btn btn-secondary btn-sm"><i data-lucide="external-link"></i> View Job</button>
+          </div>
         </div>
+        <div class="card-body">
 
-        <div class="timeline-container">
-
-            <div class="timeline-item completed">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-content">
-
-                    <h3>Application Submitted</h3>
-
-                    <p>Your application was successfully submitted.</p>
-
-                    <span>20 Jun 2026</span>
-
-                </div>
-
+          <!-- Stage progress bar -->
+          <div style="display:flex;gap:0;margin-bottom:32px;" role="progressbar" aria-label="Application stages">
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:var(--success);border-radius:4px 0 0 4px;margin-bottom:10px;"></div>
+              <div style="font-size:12px;font-weight:700;color:var(--success);">Applied</div>
             </div>
-
-            <div class="timeline-item completed">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-content">
-
-                    <h3>Application Reviewed</h3>
-
-                    <p>Your profile was reviewed by recruiters.</p>
-
-                    <span>21 Jun 2026</span>
-
-                </div>
-
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:var(--success);margin-bottom:10px;"></div>
+              <div style="font-size:12px;font-weight:700;color:var(--success);">Screened</div>
             </div>
-
-            <div class="timeline-item completed">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-content">
-
-                    <h3>Shortlisted</h3>
-
-                    <p>You have been shortlisted for the next round.</p>
-
-                    <span>22 Jun 2026</span>
-
-                </div>
-
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:var(--primary);margin-bottom:10px;position:relative;">
+                <div style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:12px;height:12px;background:var(--primary);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--primary);"></div>
+              </div>
+              <div style="font-size:12px;font-weight:700;color:var(--primary);">Interview</div>
             </div>
-
-            <div class="timeline-item active">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-content">
-
-                    <h3>Interview Scheduled</h3>
-
-                    <p>Technical interview scheduled with hiring team.</p>
-
-                    <span>24 Jun 2026 • 10:00 AM</span>
-
-                </div>
-
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:#e2e8f0;margin-bottom:10px;"></div>
+              <div style="font-size:12px;color:var(--text-muted);">Offer</div>
             </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:#e2e8f0;border-radius:0 4px 4px 0;margin-bottom:10px;"></div>
+              <div style="font-size:12px;color:var(--text-muted);">Accepted</div>
+            </div>
+          </div>
 
+          <!-- Timeline items -->
+          <div class="timeline-list">
             <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-content">
-
-                    <h3>Offer Letter</h3>
-
-                    <p>Awaiting decision from company.</p>
-
-                </div>
-
+              <div class="timeline-dot done"><i data-lucide="check"></i></div>
+              <div class="timeline-info">
+                <h4>Application Submitted</h4>
+                <p>Your application was received and confirmed by the hiring team.</p>
+                <time>Jun 10, 2026 &nbsp;·&nbsp; 10:32 AM</time>
+              </div>
             </div>
-
             <div class="timeline-item">
-
-                <div class="timeline-dot"></div>
-
-                <div class="timeline-content">
-
-                    <h3>Hired</h3>
-
-                    <p>Final onboarding process.</p>
-
-                </div>
-
+              <div class="timeline-dot done"><i data-lucide="check"></i></div>
+              <div class="timeline-info">
+                <h4>Resume Screened</h4>
+                <p>Your resume passed the ATS screening with a 94% match score.</p>
+                <time>Jun 13, 2026 &nbsp;·&nbsp; 2:15 PM</time>
+              </div>
             </div>
-
-        </div>
-
-        <div class="card mt-20">
-
-            <h3>Interview Details</h3>
-
-            <div class="interview-details">
-
-                <p><strong>Round:</strong> Technical Interview</p>
-                <p><strong>Date:</strong> 24 Jun 2026</p>
-                <p><strong>Time:</strong> 10:00 AM</p>
-                <p><strong>Mode:</strong> Google Meet</p>
-
+            <div class="timeline-item">
+              <div class="timeline-dot active"><i data-lucide="video"></i></div>
+              <div class="timeline-info">
+                <h4>Technical Interview Scheduled</h4>
+                <p>Round 1 video call with the engineering team. 45-minute technical session.</p>
+                <time>Jun 24, 2026 &nbsp;·&nbsp; 10:00 AM &nbsp;— <strong style="color:var(--primary);">Upcoming</strong></time>
+              </div>
             </div>
-
+            <div class="timeline-item">
+              <div class="timeline-dot pending"><i data-lucide="gift"></i></div>
+              <div class="timeline-info">
+                <h4>Offer &amp; Negotiation</h4>
+                <p>If selected, you'll receive an offer letter within 3–5 business days.</p>
+                <time style="color:#d1d5db;">Pending</time>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"><i data-lucide="star"></i></div>
+              <div class="timeline-info">
+                <h4>Offer Accepted</h4>
+                <p>Final step — confirm your acceptance and onboarding date.</p>
+                <time style="color:#d1d5db;">Pending</time>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-    </div>
+      <!-- Application 2: Microsoft – Screened -->
+      <div class="card mb-20">
+        <div class="card-header">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div class="app-company-logo" style="width:42px;height:42px;font-size:14px;border-radius:var(--radius-md);background:linear-gradient(135deg,#0f766e,#0d9488);">M</div>
+            <div>
+              <div style="font-size:16px;font-weight:700;color:var(--text-primary);">UI Engineer</div>
+              <div style="font-size:13px;color:var(--text-muted);">Microsoft &nbsp;·&nbsp; Hyderabad &nbsp;·&nbsp; Applied Jun 8, 2026</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span class="badge badge-warning">Under Review</span>
+            <button class="btn btn-secondary btn-sm"><i data-lucide="external-link"></i> View Job</button>
+          </div>
+        </div>
+        <div class="card-body">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+          <div style="display:flex;gap:0;margin-bottom:32px;">
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:var(--success);border-radius:4px 0 0 4px;margin-bottom:10px;"></div>
+              <div style="font-size:12px;font-weight:700;color:var(--success);">Applied</div>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:var(--warning);margin-bottom:10px;position:relative;">
+                <div style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:12px;height:12px;background:var(--warning);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--warning);"></div>
+              </div>
+              <div style="font-size:12px;font-weight:700;color:var(--warning);">Screened</div>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:#e2e8f0;margin-bottom:10px;"></div>
+              <div style="font-size:12px;color:var(--text-muted);">Interview</div>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:#e2e8f0;margin-bottom:10px;"></div>
+              <div style="font-size:12px;color:var(--text-muted);">Offer</div>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:#e2e8f0;border-radius:0 4px 4px 0;margin-bottom:10px;"></div>
+              <div style="font-size:12px;color:var(--text-muted);">Accepted</div>
+            </div>
+          </div>
+
+          <div class="timeline-list">
+            <div class="timeline-item">
+              <div class="timeline-dot done"><i data-lucide="check"></i></div>
+              <div class="timeline-info">
+                <h4>Application Submitted</h4>
+                <p>Application received and acknowledged by Microsoft HR.</p>
+                <time>Jun 8, 2026 &nbsp;·&nbsp; 3:45 PM</time>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot active"><i data-lucide="search"></i></div>
+              <div class="timeline-info">
+                <h4>Resume Under Review</h4>
+                <p>The hiring team is reviewing your profile. Expected response in 3–5 days.</p>
+                <time>Jun 11, 2026 &nbsp;·&nbsp; 9:00 AM &nbsp;— <strong style="color:var(--warning);">In Progress</strong></time>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"><i data-lucide="users"></i></div>
+              <div class="timeline-info">
+                <h4>Interview Round</h4>
+                <p>Technical + HR rounds pending recruiter confirmation.</p>
+                <time style="color:#d1d5db;">Pending</time>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"><i data-lucide="gift"></i></div>
+              <div class="timeline-info">
+                <h4>Offer &amp; Negotiation</h4>
+                <p>Compensation package and joining details.</p>
+                <time style="color:#d1d5db;">Pending</time>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"><i data-lucide="star"></i></div>
+              <div class="timeline-info">
+                <h4>Offer Accepted</h4>
+                <p>Final confirmation and onboarding.</p>
+                <time style="color:#d1d5db;">Pending</time>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Application 3: TCS – Applied (earliest stage) -->
+      <div class="card">
+        <div class="card-header">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div class="app-company-logo" style="width:42px;height:42px;font-size:14px;border-radius:var(--radius-md);background:linear-gradient(135deg,#0891b2,#06b6d4);">T</div>
+            <div>
+              <div style="font-size:16px;font-weight:700;color:var(--text-primary);">Data Scientist</div>
+              <div style="font-size:13px;color:var(--text-muted);">TCS &nbsp;·&nbsp; Bengaluru &nbsp;·&nbsp; Applied Jun 12, 2026</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span class="badge badge-neutral">Applied</span>
+            <button class="btn btn-secondary btn-sm"><i data-lucide="external-link"></i> View Job</button>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <div style="display:flex;gap:0;margin-bottom:32px;">
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:var(--primary);border-radius:4px 0 0 4px;margin-bottom:10px;position:relative;">
+                <div style="position:absolute;top:-4px;left:50%;transform:translateX(-50%);width:12px;height:12px;background:var(--primary);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--primary);"></div>
+              </div>
+              <div style="font-size:12px;font-weight:700;color:var(--primary);">Applied</div>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:#e2e8f0;margin-bottom:10px;"></div>
+              <div style="font-size:12px;color:var(--text-muted);">Screened</div>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:#e2e8f0;margin-bottom:10px;"></div>
+              <div style="font-size:12px;color:var(--text-muted);">Interview</div>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:#e2e8f0;margin-bottom:10px;"></div>
+              <div style="font-size:12px;color:var(--text-muted);">Offer</div>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <div style="height:4px;background:#e2e8f0;border-radius:0 4px 4px 0;margin-bottom:10px;"></div>
+              <div style="font-size:12px;color:var(--text-muted);">Accepted</div>
+            </div>
+          </div>
+
+          <div class="timeline-list">
+            <div class="timeline-item">
+              <div class="timeline-dot active"><i data-lucide="send"></i></div>
+              <div class="timeline-info">
+                <h4>Application Submitted</h4>
+                <p>Your application has been submitted to TCS. Confirmation sent to rahul.s@gmail.com.</p>
+                <time>Jun 12, 2026 &nbsp;·&nbsp; 11:20 AM &nbsp;— <strong style="color:var(--primary);">Awaiting Response</strong></time>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"><i data-lucide="search"></i></div>
+              <div class="timeline-info">
+                <h4>Resume Screening</h4>
+                <p>ATS and recruiter review of your profile and resume.</p>
+                <time style="color:#d1d5db;">Pending &nbsp;·&nbsp; Est. 2–4 business days</time>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"><i data-lucide="users"></i></div>
+              <div class="timeline-info">
+                <h4>Interview Round</h4>
+                <p>Technical assessment and HR discussion.</p>
+                <time style="color:#d1d5db;">Pending</time>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"><i data-lucide="gift"></i></div>
+              <div class="timeline-info">
+                <h4>Offer &amp; Negotiation</h4>
+                <p>Compensation discussion and offer letter.</p>
+                <time style="color:#d1d5db;">Pending</time>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot pending"><i data-lucide="star"></i></div>
+              <div class="timeline-info">
+                <h4>Offer Accepted</h4>
+                <p>Accept the offer and confirm your start date.</p>
+                <time style="color:#d1d5db;">Pending</time>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script>
+lucide.createIcons();
+
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+document.getElementById('menuToggle').addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('visible');
+});
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('visible');
+});
+</script>
 </body>
-
 </html>

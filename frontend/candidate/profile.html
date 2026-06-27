@@ -1,221 +1,423 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>My Profile | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/candidate.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/candidate.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <script src="../js/api.js" defer></script>
 </head>
-
 <body>
+<div class="app-layout">
 
-    <div class="sidebar">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <div class="logo">RecruitIQ</div>
-
-        <ul class="menu">
-
-            <li><a href="./dashboard.html">Dashboard</a></li>
-            <li class="active"><a href="./profile.html">Profile</a></li>
-            <li><a href="./my-applications.html">Applications</a></li>
-            <li><a href="./application-timeline.html">Timeline</a></li>
-            <li><a href="./resume-center.html">Resume Center</a></li>
-            <li><a href="./saved-jobs.html">Saved Jobs</a></li>
-            <li><a href="./notifications.html">Notifications</a></li>
-            <li><a href="./settings.html">Settings</a></li>
-
-        </ul>
-
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="logo-text">Recruit<span class="logo-dot">IQ</span></span>
     </div>
-
-    <div class="navbar">
-
-        <h2>My Profile</h2>
-
-        <div>
-            🔔 👤
+    <nav>
+      <p class="sidebar-section-label">Main</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./profile.html" class="active"><i data-lucide="user"></i> My Profile</a></li>
+        <li><a href="./my-applications.html"><i data-lucide="file-text"></i> Applications <span class="badge-count">24</span></a></li>
+        <li><a href="./application-timeline.html"><i data-lucide="git-branch"></i> Timeline</a></li>
+        <li><a href="./resume-center.html"><i data-lucide="folder-open"></i> Resume Center</a></li>
+        <li><a href="./saved-jobs.html"><i data-lucide="bookmark"></i> Saved Jobs</a></li>
+      </ul>
+      <p class="sidebar-section-label">Account</p>
+      <ul class="sidebar-nav">
+        <li><a href="./notifications.html"><i data-lucide="bell"></i> Notifications</a></li>
+        <li><a href="./settings.html"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">RS</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Rahul Sharma</div>
+          <div class="sidebar-user-role">Candidate</div>
         </div>
-
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
     </div>
+  </aside>
 
-    <div class="page-content">
-
-        <!-- Profile Header -->
-
-        <div class="card profile-banner">
-
-            <div class="profile-left">
-
-                <img src="https://ui-avatars.com/api/?name=Rahul+Sharma&size=150" class="profile-avatar">
-
-                <div>
-
-                    <h2>Rahul Sharma</h2>
-
-                    <p>Frontend Developer</p>
-
-                    <div class="profile-score">
-
-                        <span>Profile Completion</span>
-
-                        <div class="progress">
-
-                            <div class="progress-fill">
-                                92%
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <button class="apply-btn">
-                Edit Profile
-            </button>
-
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
+        <div><div class="topbar-title">My Profile</div></div>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-icon-btn" aria-label="Notifications"><i data-lucide="bell"></i></button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">RS</div>
+          <div>
+            <div class="topbar-user-name">Rahul Sharma</div>
+            <div class="topbar-user-role">Candidate</div>
+          </div>
         </div>
+      </div>
+    </header>
 
-        <!-- Grid -->
+    <main class="page-content">
 
-        <div class="profile-layout">
-
-            <!-- Left -->
-
-            <div>
-
-                <div class="card">
-
-                    <h3>Personal Information</h3>
-
-                    <div class="form-grid">
-
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" value="Rahul Sharma">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" value="rahul@gmail.com">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" value="+91 9876543210">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Location</label>
-                            <input type="text" value="Pune">
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="card mt-20">
-
-                    <h3>Skills</h3>
-
-                    <div class="skills">
-
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>React</span>
-                        <span>Bootstrap</span>
-                        <span>Figma</span>
-
-                    </div>
-
-                </div>
-
-                <div class="card mt-20">
-
-                    <h3>Experience</h3>
-
-                    <div class="experience-item">
-
-                        <h4>Frontend Developer</h4>
-
-                        <p>ABC Technologies</p>
-
-                        <span>2024 - Present</span>
-
-                    </div>
-
-                </div>
-
+      <!-- Profile Header -->
+      <div class="card mb-20">
+        <div class="profile-header-card">
+          <div class="profile-avatar-wrap">
+            <img class="profile-avatar-img" src="https://ui-avatars.com/api/?name=Rahul+Sharma&size=120&background=2563eb&color=fff" alt="Rahul Sharma">
+            <div class="profile-avatar-badge"></div>
+          </div>
+          <div style="flex:1;">
+            <div class="profile-name">Rahul Sharma</div>
+            <div class="profile-title">Frontend Developer</div>
+            <div class="profile-meta">
+              <span class="profile-meta-item"><i data-lucide="map-pin"></i> Pune, India</span>
+              <span class="profile-meta-item"><i data-lucide="mail"></i> rahul@gmail.com</span>
+              <span class="profile-meta-item"><i data-lucide="phone"></i> +91 98765 43210</span>
             </div>
-
-            <!-- Right -->
-
-            <div>
-
-                <div class="card">
-
-                    <h3>Education</h3>
-
-                    <div class="education-item">
-
-                        <h4>B.Tech Computer Engineering</h4>
-
-                        <p>Pune University</p>
-
-                        <span>2020 - 2024</span>
-
-                    </div>
-
-                </div>
-
-                <div class="card mt-20">
-
-                    <h3>Certifications</h3>
-
-                    <ul class="certification-list">
-
-                        <li>Google UX Design</li>
-
-                        <li>Meta Frontend Developer</li>
-
-                        <li>React Professional Certificate</li>
-
-                    </ul>
-
-                </div>
-
-                <div class="card mt-20">
-
-                    <h3>Upload Photo</h3>
-
-                    <div class="upload-box">
-
-                        📷 Upload Profile Image
-
-                    </div>
-
-                </div>
-
+          </div>
+          <div class="profile-completion">
+            <div class="profile-completion-ring">
+              <svg width="72" height="72" viewBox="0 0 72 72">
+                <circle cx="36" cy="36" r="30" fill="none" stroke="#e2e8f0" stroke-width="6"/>
+                <circle cx="36" cy="36" r="30" fill="none" stroke="#2563eb" stroke-width="6"
+                  stroke-dasharray="188.5" stroke-dashoffset="15" stroke-linecap="round"/>
+              </svg>
+              <div class="profile-completion-pct">92%</div>
             </div>
+            <div class="profile-completion-label">Profile Complete</div>
+          </div>
+          <button class="btn btn-primary">
+            <i data-lucide="edit-2"></i> Edit Profile
+          </button>
+        </div>
+      </div>
+
+      <!-- Two-column layout -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+
+        <!-- Left -->
+        <div style="display:flex;flex-direction:column;gap:20px;">
+
+          <!-- Personal Info -->
+          <div class="card">
+            <div class="card-header">
+              <div><h3>Personal Information</h3></div>
+              <button class="btn btn-ghost btn-sm"><i data-lucide="edit-2"></i></button>
+            </div>
+            <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div class="form-group" style="margin:0;">
+                <label class="form-label">Full Name</label>
+                <input class="form-control" type="text" value="Rahul Sharma">
+              </div>
+              <div class="form-group" style="margin:0;">
+                <label class="form-label">Email</label>
+                <input class="form-control" type="email" value="rahul@gmail.com">
+              </div>
+              <div class="form-group" style="margin:0;">
+                <label class="form-label">Phone</label>
+                <input class="form-control" type="text" value="+91 98765 43210">
+              </div>
+              <div class="form-group" style="margin:0;">
+                <label class="form-label">Location</label>
+                <input class="form-control" type="text" value="Pune, India">
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="card">
+            <div class="card-header">
+              <div><h3>Skills</h3></div>
+              <button class="btn btn-secondary btn-sm"><i data-lucide="plus"></i> Add</button>
+            </div>
+            <div class="card-body" style="display:flex;flex-wrap:wrap;gap:8px;">
+              <span class="skill-tag">HTML5</span>
+              <span class="skill-tag">CSS3</span>
+              <span class="skill-tag">JavaScript</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Bootstrap</span>
+              <span class="skill-tag">Figma</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">Node.js</span>
+            </div>
+          </div>
+
+          <!-- Experience -->
+          <div class="card">
+            <div class="card-header">
+              <div><h3>Work Experience</h3></div>
+              <button class="btn btn-secondary btn-sm"><i data-lucide="plus"></i> Add</button>
+            </div>
+            <div class="card-body">
+              <div class="timeline-list">
+                <div class="timeline-item">
+                  <div class="timeline-dot active"><i data-lucide="briefcase"></i></div>
+                  <div class="timeline-info">
+                    <h4>Frontend Developer</h4>
+                    <p>ABC Technologies</p>
+                    <time>Jan 2024 – Present</time>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <div class="timeline-dot done"><i data-lucide="briefcase"></i></div>
+                  <div class="timeline-info">
+                    <h4>UI Developer Intern</h4>
+                    <p>XYZ Corp</p>
+                    <time>Jun 2023 – Dec 2023</time>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
 
-    </div>
+        <!-- Right -->
+        <div style="display:flex;flex-direction:column;gap:20px;">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+          <!-- Education -->
+          <div class="card">
+            <div class="card-header">
+              <div><h3>Education</h3></div>
+              <button class="btn btn-secondary btn-sm"><i data-lucide="plus"></i> Add</button>
+            </div>
+            <div class="card-body">
+              <div class="timeline-list">
+                <div class="timeline-item">
+                  <div class="timeline-dot done"><i data-lucide="graduation-cap"></i></div>
+                  <div class="timeline-info">
+                    <h4>B.Tech Computer Engineering</h4>
+                    <p>Pune University</p>
+                    <time>2020 – 2024</time>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Certifications -->
+          <div class="card">
+            <div class="card-header">
+              <div><h3>Certifications</h3></div>
+              <button class="btn btn-secondary btn-sm"><i data-lucide="plus"></i> Add</button>
+            </div>
+            <div class="card-body" style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);">
+                <i data-lucide="award" style="width:16px;height:16px;color:var(--primary);flex-shrink:0;"></i>
+                <span style="font-size:13.5px;font-weight:500;color:var(--text-secondary);">Google UX Design</span>
+                <span class="badge badge-success" style="margin-left:auto;">Verified</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);">
+                <i data-lucide="award" style="width:16px;height:16px;color:var(--primary);flex-shrink:0;"></i>
+                <span style="font-size:13.5px;font-weight:500;color:var(--text-secondary);">Meta Frontend Developer</span>
+                <span class="badge badge-success" style="margin-left:auto;">Verified</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);">
+                <i data-lucide="award" style="width:16px;height:16px;color:var(--primary);flex-shrink:0;"></i>
+                <span style="font-size:13.5px;font-weight:500;color:var(--text-secondary);">React Professional Certificate</span>
+                <span class="badge badge-warning" style="margin-left:auto;">Pending</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload Photo -->
+          <div class="card">
+            <div class="card-header"><div><h3>Profile Photo</h3></div></div>
+            <div class="card-body">
+              <div class="resume-upload-zone" role="button" tabindex="0" aria-label="Upload profile photo">
+                <i data-lucide="camera"></i>
+                <h3>Upload Photo</h3>
+                <p>PNG, JPG up to 5MB</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="../js/api.js"></script>
+<script>
+lucide.createIcons();
+
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+document.getElementById('menuToggle').addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('visible');
+});
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('visible');
+});
+
+/* ── Toast ── */
+function showToast(msg, type = 'success') {
+  let c = document.getElementById('toastContainer');
+  if (!c) { c = document.createElement('div'); c.className = 'toast-container'; c.id = 'toastContainer'; document.body.appendChild(c); }
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  c.appendChild(t);
+  setTimeout(() => t.remove(), 3500);
+}
+
+/* ── Load profile from API → populate all fields ── */
+async function loadProfile() {
+  try {
+    const user = Auth.getUser();
+    if (!user) return;
+
+    // Populate User fields from localStorage session
+    if (document.getElementById('firstName')) document.getElementById('firstName').value = user.firstName || '';
+    if (document.getElementById('lastName'))  document.getElementById('lastName').value  = user.lastName  || '';
+    if (document.getElementById('email'))     document.getElementById('email').value     = user.email     || '';
+    if (document.getElementById('phone'))     document.getElementById('phone').value     = user.phone     || '';
+
+    // Update header display
+    const fullName = `${user.firstName || ''} ${user.lastName || ''}`.trim();
+    const nameEl = document.getElementById('displayName');
+    if (nameEl) nameEl.textContent = fullName || 'Your Name';
+
+    // Fetch full CandidateProfile
+    const data = await CandidateProfile.get();
+    const p = data.profile || data; // handle { profile: {...} } or direct object
+
+    // Basic fields
+    setValue('headline',         p.headline         || '');
+    setValue('summary',          p.summary          || '');
+    setValue('gender',           p.gender           || '');
+    setValue('dateOfBirth',      p.dateOfBirth ? p.dateOfBirth.split('T')[0] : '');
+    setValue('addressCity',      p.address?.city    || '');
+    setValue('addressCountry',   p.address?.country || '');
+    setValue('experienceLevel',  p.experienceLevel  || 'Fresher');
+    setValue('totalExperience',  p.totalExperience  ?? 0);
+    setValue('expectedSalary',   p.jobPreferences?.expectedSalary || '');
+    setValue('noticePeriod',     p.jobPreferences?.noticePeriod   || '30 Days');
+    setValue('candidateStatus',  p.availability?.candidateStatus  || 'Active');
+    if (p.jobPreferences?.preferredWorkModes?.[0])
+      setValue('preferredWorkMode', p.jobPreferences.preferredWorkModes[0]);
+
+    // Social links
+    setValue('socialLinkedin',  p.socialLinks?.linkedin  || '');
+    setValue('socialGithub',    p.socialLinks?.github    || '');
+    setValue('socialPortfolio', p.socialLinks?.portfolio || '');
+    setValue('socialLeetcode',  p.socialLinks?.leetcode  || '');
+
+    // Update header display
+    if (p.headline && document.getElementById('displayHeadline'))
+      document.getElementById('displayHeadline').textContent = p.headline;
+    if (p.address?.city && document.getElementById('displayCity'))
+      document.getElementById('displayCity').innerHTML = `<i data-lucide="map-pin"></i> ${p.address.city}, ${p.address.country || ''}`;
+    if (p.availability?.candidateStatus && document.getElementById('displayStatus'))
+      document.getElementById('displayStatus').textContent = p.availability.candidateStatus;
+    if (p.experienceLevel && document.getElementById('displayExpLevel'))
+      document.getElementById('displayExpLevel').textContent = p.experienceLevel;
+    if (p.profilePhoto && document.getElementById('profilePhotoDisplay'))
+      document.getElementById('profilePhotoDisplay').src = p.profilePhoto;
+
+    lucide.createIcons();
+  } catch (err) {
+    // Not logged in or API not running — silently skip in dev
+    console.warn('Profile load skipped:', err.message);
+  }
+}
+
+function setValue(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.value = val;
+}
+
+/* ── Build save payload matching CandidateProfile schema ── */
+function buildPayload() {
+  return {
+    headline:        getVal('headline'),
+    summary:         getVal('summary'),
+    gender:          getVal('gender')        || undefined,
+    dateOfBirth:     getVal('dateOfBirth')   || undefined,
+    phone:           getVal('phone'),
+    address: {
+      city:    getVal('addressCity'),
+      country: getVal('addressCountry'),
+    },
+    socialLinks: {
+      linkedin:  getVal('socialLinkedin'),
+      github:    getVal('socialGithub'),
+      portfolio: getVal('socialPortfolio'),
+      leetcode:  getVal('socialLeetcode'),
+    },
+    experienceLevel: getVal('experienceLevel'),
+    totalExperience: Number(getVal('totalExperience')) || 0,
+    jobPreferences: {
+      expectedSalary:       Number(getVal('expectedSalary')) || undefined,
+      noticePeriod:         getVal('noticePeriod'),
+      preferredWorkModes:   [getVal('preferredWorkMode')].filter(Boolean),
+    },
+    availability: {
+      candidateStatus: getVal('candidateStatus'),
+      openToWork: getVal('candidateStatus') === 'Open to Work',
+    },
+  };
+}
+
+function getVal(id) {
+  const el = document.getElementById(id);
+  return el ? el.value.trim() : '';
+}
+
+/* ── Save ── */
+document.getElementById('saveProfileBtn')?.addEventListener('click', async () => {
+  const btn = document.getElementById('saveProfileBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<i data-lucide="loader-2" style="animation:spin .8s linear infinite;width:15px;height:15px;"></i> Saving…';
+  lucide.createIcons();
+  try {
+    await CandidateProfile.update(buildPayload());
+    showToast('Profile saved successfully!');
+  } catch (err) {
+    showToast(err.message || 'Save failed. Is the server running?', 'danger');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i data-lucide="save"></i> Save Profile';
+    lucide.createIcons();
+  }
+});
+
+/* ── Photo upload ── */
+document.getElementById('photoUploadZone')?.addEventListener('click', () => {
+  document.getElementById('photoInput')?.click();
+});
+document.getElementById('photoInput')?.addEventListener('change', async function() {
+  if (!this.files[0]) return;
+  if (this.files[0].size > 5 * 1024 * 1024) { showToast('Photo must be under 5MB', 'danger'); return; }
+  const fd = new FormData();
+  fd.append('profilePhoto', this.files[0]);
+  try {
+    const data = await CandidateProfile.uploadResume(fd); // reuses multipart helper
+    if (data.url) document.getElementById('profilePhotoDisplay').src = data.url;
+    showToast('Photo uploaded!');
+  } catch { showToast('Upload failed', 'danger'); }
+});
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', loadProfile);
+</script>
+<style>@keyframes spin { to { transform: rotate(360deg); } }</style>
 </body>
-
 </html>

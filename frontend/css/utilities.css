@@ -1,0 +1,115 @@
+/* ==========================================================
+   RecruitIQ — Utility Classes
+========================================================== */
+
+/* ── Spacing ── */
+.mt-4  { margin-top: 4px; }  .mb-4  { margin-bottom: 4px; }
+.mt-8  { margin-top: 8px; }  .mb-8  { margin-bottom: 8px; }
+.mt-12 { margin-top: 12px; } .mb-12 { margin-bottom: 12px; }
+.mt-16 { margin-top: 16px; } .mb-16 { margin-bottom: 16px; }
+.mt-20 { margin-top: 20px; } .mb-20 { margin-bottom: 20px; }
+.mt-24 { margin-top: 24px; } .mb-24 { margin-bottom: 24px; }
+.mt-32 { margin-top: 32px; } .mb-32 { margin-bottom: 32px; }
+
+.p-0  { padding: 0; }
+.p-16 { padding: 16px; }
+.p-20 { padding: 20px; }
+.p-24 { padding: 24px; }
+
+/* ── Flex ── */
+.flex       { display: flex; }
+.flex-col   { display: flex; flex-direction: column; }
+.items-center { align-items: center; }
+.items-start  { align-items: flex-start; }
+.justify-between { justify-content: space-between; }
+.justify-end     { justify-content: flex-end; }
+.justify-center  { justify-content: center; }
+.flex-1 { flex: 1; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-4  { gap: 4px; }
+.gap-6  { gap: 6px; }
+.gap-8  { gap: 8px; }
+.gap-10 { gap: 10px; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.gap-20 { gap: 20px; }
+.gap-24 { gap: 24px; }
+
+/* ── Grid ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); }
+
+/* ── Text ── */
+.text-xs    { font-size: 11px; }
+.text-sm    { font-size: 12.5px; }
+.text-base  { font-size: 14px; }
+.text-lg    { font-size: 16px; }
+.text-xl    { font-size: 18px; }
+.text-2xl   { font-size: 22px; }
+.text-3xl   { font-size: 28px; }
+
+.font-medium  { font-weight: 500; }
+.font-semi    { font-weight: 600; }
+.font-bold    { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+.text-primary   { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted     { color: var(--text-muted); }
+.text-brand     { color: var(--primary); }
+.text-success   { color: var(--success); }
+.text-danger    { color: var(--danger); }
+.text-warning   { color: var(--warning); }
+
+.text-center { text-align: center; }
+.text-right  { text-align: right; }
+.truncate    { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── Display ── */
+.hidden  { display: none !important; }
+.block   { display: block; }
+.w-full  { width: 100%; }
+.h-full  { height: 100%; }
+
+/* ── Section divider ── */
+.divider-h {
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0;
+}
+
+/* ── Rounded ── */
+.rounded    { border-radius: var(--radius); }
+.rounded-md { border-radius: var(--radius-md); }
+.rounded-full { border-radius: var(--radius-full); }
+
+/* ── Shadow ── */
+.shadow-sm { box-shadow: var(--shadow-sm); }
+.shadow    { box-shadow: var(--shadow); }
+
+/* ── Background ── */
+.bg-white   { background: var(--white); }
+.bg-surface { background: var(--surface); }
+.bg-primary-light { background: var(--primary-light); }
+
+/* ── Overflow ── */
+.overflow-hidden { overflow: hidden; }
+.overflow-auto   { overflow: auto; }
+
+/* ── Cursor ── */
+.cursor-pointer { cursor: pointer; }
+
+/* ── Section header row ── */
+.section-header {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.section-header h2 {
+  font-size: 16px; font-weight: 700;
+  color: var(--text-primary); letter-spacing: -.2px;
+}
+.section-header p {
+  font-size: 13px; color: var(--text-muted); margin-top: 2px;
+}

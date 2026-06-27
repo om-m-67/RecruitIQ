@@ -1,147 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Jobs Management | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/admin.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jobs | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
+<div class="app-layout">
 
-    <div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <aside class="sidebar">
-
-            <div class="sidebar-header">
-                <h2>RecruitIQ</h2>
-            </div>
-
-            <ul class="sidebar-menu">
-                <li><a href="dashboard.html">📊 Dashboard</a></li>
-                <li><a href="users.html">👥 Users</a></li>
-                <li><a class="active" href="#">💼 Jobs</a></li>
-                <li><a href="companies.html">🏢 Companies</a></li>
-                <li><a href="analytics.html">📈 Analytics</a></li>
-                <li><a href="settings.html">⚙ Settings</a></li>
-            </ul>
-
-        </aside>
-
-        <main class="main-content">
-
-            <nav class="navbar">
-                <div class="logo">Jobs Management</div>
-            </nav>
-
-            <div class="page-header">
-
-                <h2>Manage Jobs</h2>
-
-                <button class="primary-btn">
-                    + Create Job
-                </button>
-
-            </div>
-
-            <div class="dashboard-card">
-
-                <div class="table-toolbar">
-
-                    <input type="text" placeholder="Search jobs..." class="table-search">
-
-                    <select class="table-filter">
-                        <option>All Status</option>
-                        <option>Open</option>
-                        <option>Closed</option>
-                    </select>
-
-                </div>
-
-                <table class="admin-table">
-
-                    <thead>
-
-                        <tr>
-                            <th>Job Title</th>
-                            <th>Company</th>
-                            <th>Applicants</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td>Frontend Developer</td>
-                            <td>TechNova</td>
-                            <td>42</td>
-                            <td>
-                                <span class="status open-status">
-                                    Open
-                                </span>
-                            </td>
-                            <td>
-                                <button class="action-btn">
-                                    Manage
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Backend Engineer</td>
-                            <td>CloudSoft</td>
-                            <td>25</td>
-                            <td>
-                                <span class="status open-status">
-                                    Open
-                                </span>
-                            </td>
-                            <td>
-                                <button class="action-btn">
-                                    Manage
-                                </button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>UI/UX Designer</td>
-                            <td>DesignHub</td>
-                            <td>18</td>
-                            <td>
-                                <span class="status closed-status">
-                                    Closed
-                                </span>
-                            </td>
-                            <td>
-                                <button class="action-btn">
-                                    Manage
-                                </button>
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </main>
-
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="logo-text">Recruit<span class="logo-dot">IQ</span></span>
     </div>
+    <nav>
+      <p class="sidebar-section-label">Platform</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./users.html"><i data-lucide="users"></i> Users</a></li>
+        <li><a href="./jobs.html" class="active"><i data-lucide="briefcase"></i> Jobs</a></li>
+        <li><a href="./companies.html"><i data-lucide="building-2"></i> Companies</a></li>
+        <li><a href="./analytics.html"><i data-lucide="bar-chart-2"></i> Analytics</a></li>
+      </ul>
+      <p class="sidebar-section-label">System</p>
+      <ul class="sidebar-nav">
+        <li><a href="./settings.html"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">AD</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Admin</div>
+          <div class="sidebar-user-role">System Administrator</div>
+        </div>
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
+    </div>
+  </aside>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
+        <div>
+          <div class="topbar-title">Job Management</div>
+          <div class="topbar-subtitle">Monitor and manage all job listings</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <i data-lucide="search" style="width:15px;height:15px;color:#94a3b8;"></i>
+          <input type="text" id="jobSearch" placeholder="Search jobs…" aria-label="Search jobs" oninput="searchJobs(this.value)">
+        </div>
+        <button class="topbar-icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">AD</div>
+          <div>
+            <div class="topbar-user-name">Admin</div>
+            <div class="topbar-user-role">Administrator</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Page Header -->
+      <div class="page-header flex items-center justify-between">
+        <div>
+          <h1>Jobs</h1>
+          <p>All active, paused, and closed job listings across the platform.</p>
+        </div>
+        <button class="btn btn-primary" onclick="document.getElementById('postJobModal').classList.add('is-open')">
+          <i data-lucide="plus"></i> Post Job
+        </button>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-icon blue"><i data-lucide="briefcase"></i></div>
+          <div class="stat-card-value">4,210</div>
+          <div class="stat-card-label">Total Jobs</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +48 this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon green"><i data-lucide="check-circle"></i></div>
+          <div class="stat-card-value">2,890</div>
+          <div class="stat-card-label">Active</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +30 this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon amber"><i data-lucide="pause-circle"></i></div>
+          <div class="stat-card-value">580</div>
+          <div class="stat-card-label">Paused</div>
+          <div class="stat-card-change neutral">12 pending review</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon rose"><i data-lucide="x-circle"></i></div>
+          <div class="stat-card-value">740</div>
+          <div class="stat-card-label">Closed</div>
+          <div class="stat-card-change down"><i data-lucide="trending-down" style="width:12px;height:12px;"></i> 8 this week</div>
+        </div>
+      </div>
+
+      <!-- Jobs Table -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3>All Job Listings</h3>
+            <p>Click a job title to view details</p>
+          </div>
+          <div style="display:flex;gap:8px;">
+            <select class="form-control" style="width:auto;padding:7px 12px;font-size:13px;" onchange="filterStatus(this.value)">
+              <option value="all">All Statuses</option>
+              <option value="active">Active</option>
+              <option value="paused">Paused</option>
+              <option value="closed">Closed</option>
+            </select>
+            <button class="btn btn-secondary btn-sm"><i data-lucide="download"></i> Export</button>
+          </div>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="data-table" id="jobsTable">
+            <thead>
+              <tr>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Location</th>
+                <th>Type</th>
+                <th>Applications</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-status="active" data-title="frontend developer">
+                <td>
+                  <div style="font-weight:600;color:var(--text-primary);">Frontend Developer</div>
+                  <div style="font-size:12px;color:var(--text-muted);">Posted Jun 10, 2026</div>
+                </td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <div class="sidebar-user-avatar" style="width:30px;height:30px;font-size:11px;border-radius:8px;">G</div>
+                    Google
+                  </div>
+                </td>
+                <td><i data-lucide="map-pin" style="width:13px;height:13px;vertical-align:middle;margin-right:4px;"></i>Remote</td>
+                <td><span class="badge badge-info">Full-time</span></td>
+                <td><span style="font-weight:700;color:var(--text-primary);">148</span></td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="eye"></i></button>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="pencil"></i></button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-status="active" data-title="ui engineer">
+                <td>
+                  <div style="font-weight:600;color:var(--text-primary);">UI Engineer</div>
+                  <div style="font-size:12px;color:var(--text-muted);">Posted Jun 8, 2026</div>
+                </td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <div class="sidebar-user-avatar" style="width:30px;height:30px;font-size:11px;border-radius:8px;background:linear-gradient(135deg,#0f766e,#0d9488);">M</div>
+                    Microsoft
+                  </div>
+                </td>
+                <td><i data-lucide="map-pin" style="width:13px;height:13px;vertical-align:middle;margin-right:4px;"></i>Hyderabad</td>
+                <td><span class="badge badge-info">Full-time</span></td>
+                <td><span style="font-weight:700;color:var(--text-primary);">93</span></td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="eye"></i></button>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="pencil"></i></button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-status="paused" data-title="react developer">
+                <td>
+                  <div style="font-weight:600;color:var(--text-primary);">React Developer</div>
+                  <div style="font-size:12px;color:var(--text-muted);">Posted May 30, 2026</div>
+                </td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <div class="sidebar-user-avatar" style="width:30px;height:30px;font-size:11px;border-radius:8px;background:linear-gradient(135deg,#7c3aed,#a855f7);">I</div>
+                    Infosys
+                  </div>
+                </td>
+                <td><i data-lucide="map-pin" style="width:13px;height:13px;vertical-align:middle;margin-right:4px;"></i>Pune</td>
+                <td><span class="badge badge-warning">Contract</span></td>
+                <td><span style="font-weight:700;color:var(--text-primary);">67</span></td>
+                <td><span class="badge badge-warning">Paused</span></td>
+                <td>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="eye"></i></button>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="pencil"></i></button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-status="active" data-title="data scientist">
+                <td>
+                  <div style="font-weight:600;color:var(--text-primary);">Data Scientist</div>
+                  <div style="font-size:12px;color:var(--text-muted);">Posted Jun 12, 2026</div>
+                </td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <div class="sidebar-user-avatar" style="width:30px;height:30px;font-size:11px;border-radius:8px;background:linear-gradient(135deg,#0891b2,#06b6d4);">T</div>
+                    TCS
+                  </div>
+                </td>
+                <td><i data-lucide="map-pin" style="width:13px;height:13px;vertical-align:middle;margin-right:4px;"></i>Bengaluru</td>
+                <td><span class="badge badge-info">Full-time</span></td>
+                <td><span style="font-weight:700;color:var(--text-primary);">205</span></td>
+                <td><span class="badge badge-success">Active</span></td>
+                <td>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="eye"></i></button>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="pencil"></i></button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-status="closed" data-title="devops engineer">
+                <td>
+                  <div style="font-weight:600;color:var(--text-primary);">DevOps Engineer</div>
+                  <div style="font-size:12px;color:var(--text-muted);">Posted Apr 20, 2026</div>
+                </td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <div class="sidebar-user-avatar" style="width:30px;height:30px;font-size:11px;border-radius:8px;background:linear-gradient(135deg,#e11d48,#f43f5e);">W</div>
+                    Wipro
+                  </div>
+                </td>
+                <td><i data-lucide="map-pin" style="width:13px;height:13px;vertical-align:middle;margin-right:4px;"></i>Mumbai</td>
+                <td><span class="badge badge-neutral">Part-time</span></td>
+                <td><span style="font-weight:700;color:var(--text-primary);">34</span></td>
+                <td><span class="badge badge-danger">Closed</span></td>
+                <td>
+                  <div style="display:flex;gap:6px;">
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="eye"></i></button>
+                    <button class="btn btn-secondary btn-sm"><i data-lucide="pencil"></i></button>
+                    <button class="btn btn-danger btn-sm"><i data-lucide="trash-2"></i></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card-footer flex items-center justify-between">
+          <span style="font-size:13px;color:var(--text-muted);">Showing 5 of 4,210 jobs</span>
+          <div style="display:flex;gap:6px;">
+            <button class="btn btn-secondary btn-sm" disabled>Previous</button>
+            <button class="btn btn-primary btn-sm">Next</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Post Job Modal -->
+<div class="modal-overlay" id="postJobModal" aria-hidden="true">
+  <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="postJobTitle">
+    <div class="modal-header">
+      <div>
+        <h3 id="postJobTitle">Post New Job</h3>
+        <p>Create a new job listing on the platform.</p>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('postJobModal').classList.remove('is-open')" aria-label="Close">
+        <i data-lucide="x"></i>
+      </button>
+    </div>
+    <form class="modal-body" id="postJobForm">
+      <div class="form-group">
+        <label class="form-label" for="jobTitle">Job Title</label>
+        <input class="form-control" id="jobTitle" type="text" placeholder="e.g. Senior React Developer" required>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+        <div class="form-group">
+          <label class="form-label" for="jobCompany">Company</label>
+          <select class="form-control" id="jobCompany" required>
+            <option value="">Select company</option>
+            <option>Google</option>
+            <option>Microsoft</option>
+            <option>Infosys</option>
+            <option>TCS</option>
+            <option>Wipro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="jobType">Job Type</label>
+          <select class="form-control" id="jobType" required>
+            <option value="">Select type</option>
+            <option>Full-time</option>
+            <option>Part-time</option>
+            <option>Contract</option>
+            <option>Internship</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="jobLocation">Location</label>
+        <input class="form-control" id="jobLocation" type="text" placeholder="e.g. Remote, Bengaluru" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="jobDesc">Job Description</label>
+        <textarea class="form-control" id="jobDesc" rows="3" placeholder="Describe the role and requirements…"></textarea>
+      </div>
+    </form>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="document.getElementById('postJobModal').classList.remove('is-open')">Cancel</button>
+      <button class="btn btn-primary" form="postJobForm" type="submit">Post Job</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+lucide.createIcons();
+
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+document.getElementById('menuToggle').addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('visible');
+});
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('visible');
+});
+
+document.getElementById('postJobModal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('is-open');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.is-open').forEach(m => m.classList.remove('is-open'));
+});
+
+function showToast(msg, type = 'success') {
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.textContent = msg;
+  document.getElementById('toastContainer').appendChild(t);
+  setTimeout(() => t.remove(), 3000);
+}
+
+document.getElementById('postJobForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const title = document.getElementById('jobTitle').value.trim();
+  document.getElementById('postJobModal').classList.remove('is-open');
+  showToast(`"${title}" posted successfully`);
+  this.reset();
+});
+
+function searchJobs(query) {
+  const q = query.toLowerCase();
+  document.querySelectorAll('#jobsTable tbody tr').forEach(row => {
+    row.style.display = row.dataset.title.includes(q) ? '' : 'none';
+  });
+}
+
+function filterStatus(status) {
+  document.querySelectorAll('#jobsTable tbody tr').forEach(row => {
+    row.style.display = (status === 'all' || row.dataset.status === status) ? '' : 'none';
+  });
+}
+</script>
 </body>
-
 </html>

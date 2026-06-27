@@ -1,114 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Analytics | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/admin.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/utilities.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
+<div class="app-layout">
 
-    <div class="dashboard-layout">
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-        <aside class="sidebar">
-
-            <div class="sidebar-header">
-                <h2>RecruitIQ</h2>
-            </div>
-
-            <ul class="sidebar-menu">
-                <li><a href="dashboard.html">📊 Dashboard</a></li>
-                <li><a href="users.html">👥 Users</a></li>
-                <li><a href="jobs.html">💼 Jobs</a></li>
-                <li><a href="companies.html">🏢 Companies</a></li>
-                <li><a class="active" href="#">📈 Analytics</a></li>
-                <li><a href="settings.html">⚙ Settings</a></li>
-            </ul>
-
-        </aside>
-
-        <main class="main-content">
-
-            <nav class="navbar">
-                <div class="logo">Analytics Dashboard</div>
-            </nav>
-
-            <section class="stats-grid">
-
-                <div class="stat-card">
-                    <h3>₹12.4L</h3>
-                    <p>Monthly Revenue</p>
-                </div>
-
-                <div class="stat-card">
-                    <h3>+28%</h3>
-                    <p>User Growth</p>
-                </div>
-
-                <div class="stat-card">
-                    <h3>5,430</h3>
-                    <p>Applications</p>
-                </div>
-
-                <div class="stat-card">
-                    <h3>1,120</h3>
-                    <p>Interviews</p>
-                </div>
-
-            </section>
-
-            <div class="analytics-grid">
-
-                <div class="dashboard-card">
-
-                    <h3>User Growth</h3>
-
-                    <div class="chart-box">
-                        Growth Chart
-                    </div>
-
-                </div>
-
-                <div class="dashboard-card">
-
-                    <h3>Hiring Trends</h3>
-
-                    <div class="chart-box">
-                        Hiring Chart
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="dashboard-card">
-
-                <h3>Platform Performance</h3>
-
-                <div class="chart-box large-chart">
-
-                    Analytics Visualization Area
-
-                </div>
-
-            </div>
-
-        </main>
-
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <span class="logo-text">Recruit<span class="logo-dot">IQ</span></span>
     </div>
+    <nav>
+      <p class="sidebar-section-label">Platform</p>
+      <ul class="sidebar-nav">
+        <li><a href="./dashboard.html"><i data-lucide="layout-dashboard"></i> Dashboard</a></li>
+        <li><a href="./users.html"><i data-lucide="users"></i> Users</a></li>
+        <li><a href="./jobs.html"><i data-lucide="briefcase"></i> Jobs</a></li>
+        <li><a href="./companies.html"><i data-lucide="building-2"></i> Companies</a></li>
+        <li><a href="./analytics.html" class="active"><i data-lucide="bar-chart-2"></i> Analytics</a></li>
+      </ul>
+      <p class="sidebar-section-label">System</p>
+      <ul class="sidebar-nav">
+        <li><a href="./settings.html"><i data-lucide="settings"></i> Settings</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar">AD</div>
+        <div class="sidebar-user-info">
+          <div class="sidebar-user-name">Admin</div>
+          <div class="sidebar-user-role">System Administrator</div>
+        </div>
+        <i data-lucide="log-out" style="width:15px;height:15px;color:#64748b;flex-shrink:0;"></i>
+      </div>
+    </div>
+  </aside>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <div class="main-wrapper">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle sidebar">
+          <i data-lucide="menu" style="width:20px;height:20px;"></i>
+        </button>
+        <div>
+          <div class="topbar-title">Analytics</div>
+          <div class="topbar-subtitle">Platform performance and hiring insights</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="topbar-search">
+          <i data-lucide="search" style="width:15px;height:15px;color:#94a3b8;"></i>
+          <input type="text" placeholder="Search reports…" aria-label="Search">
+        </div>
+        <button class="topbar-icon-btn" aria-label="Notifications">
+          <i data-lucide="bell"></i>
+          <span class="topbar-notif-dot"></span>
+        </button>
+        <div class="topbar-user">
+          <div class="topbar-avatar">AD</div>
+          <div>
+            <div class="topbar-user-name">Admin</div>
+            <div class="topbar-user-role">Administrator</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+
+      <!-- Page Header -->
+      <div class="page-header flex items-center justify-between">
+        <div>
+          <h1>Analytics</h1>
+          <p>Key performance indicators and recruitment trends.</p>
+        </div>
+        <div style="display:flex;gap:8px;">
+          <select class="form-control" style="width:auto;padding:8px 14px;font-size:13px;">
+            <option>Last 30 days</option>
+            <option>Last 90 days</option>
+            <option>This Year</option>
+          </select>
+          <button class="btn btn-secondary"><i data-lucide="download"></i> Export</button>
+        </div>
+      </div>
+
+      <!-- KPI Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-icon blue"><i data-lucide="users"></i></div>
+          <div class="stat-card-value">12,450</div>
+          <div class="stat-card-label">Total Users</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +8.4% vs last month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon green"><i data-lucide="file-check"></i></div>
+          <div class="stat-card-value">38,720</div>
+          <div class="stat-card-label">Total Applications</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +12.1% vs last month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon amber"><i data-lucide="check-circle-2"></i></div>
+          <div class="stat-card-value">95%</div>
+          <div class="stat-card-label">Hiring Success Rate</div>
+          <div class="stat-card-change up"><i data-lucide="trending-up" style="width:12px;height:12px;"></i> +2% vs last month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon cyan"><i data-lucide="clock"></i></div>
+          <div class="stat-card-value">18 days</div>
+          <div class="stat-card-label">Avg. Time to Hire</div>
+          <div class="stat-card-change down"><i data-lucide="trending-down" style="width:12px;height:12px;"></i> -2 days improved</div>
+        </div>
+      </div>
+
+      <!-- Charts + KPI Grid -->
+      <div class="analytics-grid">
+
+        <!-- Bar Chart -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3>Monthly Hiring Activity</h3>
+              <p>Applications submitted per month</p>
+            </div>
+            <span class="badge badge-success">+12.1% MoM</span>
+          </div>
+          <div class="card-body">
+            <div class="chart-container" role="img" aria-label="Monthly applications bar chart" style="height:200px;">
+              <div class="chart-bar" style="height:42%"><span>Jan</span></div>
+              <div class="chart-bar" style="height:55%"><span>Feb</span></div>
+              <div class="chart-bar" style="height:50%"><span>Mar</span></div>
+              <div class="chart-bar" style="height:72%"><span>Apr</span></div>
+              <div class="chart-bar" style="height:63%"><span>May</span></div>
+              <div class="chart-bar active" style="height:88%"><span>Jun</span></div>
+            </div>
+            <div class="chart-labels"></div>
+            <div class="flex items-center gap-16 mt-16" style="padding-top:8px;border-top:1px solid var(--border);">
+              <div style="font-size:13px;color:var(--text-muted);">Peak month: <strong style="color:var(--text-primary);">June</strong></div>
+              <div style="font-size:13px;color:var(--text-muted);">Total: <strong style="color:var(--text-primary);">38,720 applications</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI List -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3>KPI Breakdown</h3>
+              <p>Key metrics at a glance</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="kpi-list">
+              <div class="kpi-item">
+                <div class="kpi-label">Application Rate</div>
+                <div class="kpi-bar">
+                  <div class="progress-bar"><div class="progress-fill" style="width:88%;"></div></div>
+                </div>
+                <div class="kpi-value">88%</div>
+              </div>
+              <div class="kpi-item">
+                <div class="kpi-label">Interview Conversion</div>
+                <div class="kpi-bar">
+                  <div class="progress-bar"><div class="progress-fill" style="width:62%;"></div></div>
+                </div>
+                <div class="kpi-value">62%</div>
+              </div>
+              <div class="kpi-item">
+                <div class="kpi-label">Offer Acceptance</div>
+                <div class="kpi-bar">
+                  <div class="progress-bar"><div class="progress-fill" style="width:78%;"></div></div>
+                </div>
+                <div class="kpi-value">78%</div>
+              </div>
+              <div class="kpi-item">
+                <div class="kpi-label">Profile Completion</div>
+                <div class="kpi-bar">
+                  <div class="progress-bar"><div class="progress-fill" style="width:73%;"></div></div>
+                </div>
+                <div class="kpi-value">73%</div>
+              </div>
+              <div class="kpi-item">
+                <div class="kpi-label">Job Fill Rate</div>
+                <div class="kpi-bar">
+                  <div class="progress-bar"><div class="progress-fill" style="width:95%;"></div></div>
+                </div>
+                <div class="kpi-value">95%</div>
+              </div>
+              <div class="kpi-item">
+                <div class="kpi-label">Retention (90 days)</div>
+                <div class="kpi-bar">
+                  <div class="progress-bar"><div class="progress-fill" style="width:81%;"></div></div>
+                </div>
+                <div class="kpi-value">81%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Top Jobs by Applications -->
+      <div class="card">
+        <div class="card-header">
+          <div>
+            <h3>Top Jobs by Applications</h3>
+            <p>Highest-demand roles on the platform this month</p>
+          </div>
+          <a href="./jobs.html" class="btn btn-secondary btn-sm">View All Jobs</a>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Job Title</th>
+                <th>Company</th>
+                <th>Applications</th>
+                <th>Interviews</th>
+                <th>Fill Rate</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:700;color:var(--primary);">1</td>
+                <td><div style="font-weight:600;color:var(--text-primary);">Data Scientist</div><div style="font-size:12px;color:var(--text-muted);">Full-time · Bengaluru</div></td>
+                <td>TCS</td>
+                <td><strong>205</strong></td>
+                <td>48</td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <div class="progress-bar" style="width:80px;"><div class="progress-fill" style="width:92%;"></div></div>
+                    <span style="font-size:12px;font-weight:600;">92%</span>
+                  </div>
+                </td>
+                <td><span class="badge badge-success">Active</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;color:var(--primary);">2</td>
+                <td><div style="font-weight:600;color:var(--text-primary);">Frontend Developer</div><div style="font-size:12px;color:var(--text-muted);">Full-time · Remote</div></td>
+                <td>Google</td>
+                <td><strong>148</strong></td>
+                <td>32</td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <div class="progress-bar" style="width:80px;"><div class="progress-fill" style="width:85%;"></div></div>
+                    <span style="font-size:12px;font-weight:600;">85%</span>
+                  </div>
+                </td>
+                <td><span class="badge badge-success">Active</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;color:var(--primary);">3</td>
+                <td><div style="font-weight:600;color:var(--text-primary);">UI Engineer</div><div style="font-size:12px;color:var(--text-muted);">Full-time · Hyderabad</div></td>
+                <td>Microsoft</td>
+                <td><strong>93</strong></td>
+                <td>21</td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <div class="progress-bar" style="width:80px;"><div class="progress-fill" style="width:77%;"></div></div>
+                    <span style="font-size:12px;font-weight:600;">77%</span>
+                  </div>
+                </td>
+                <td><span class="badge badge-success">Active</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;color:var(--primary);">4</td>
+                <td><div style="font-weight:600;color:var(--text-primary);">React Developer</div><div style="font-size:12px;color:var(--text-muted);">Contract · Pune</div></td>
+                <td>Infosys</td>
+                <td><strong>67</strong></td>
+                <td>15</td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <div class="progress-bar" style="width:80px;"><div class="progress-fill" style="width:58%;"></div></div>
+                    <span style="font-size:12px;font-weight:600;">58%</span>
+                  </div>
+                </td>
+                <td><span class="badge badge-warning">Paused</span></td>
+              </tr>
+              <tr>
+                <td style="font-weight:700;color:var(--primary);">5</td>
+                <td><div style="font-weight:600;color:var(--text-primary);">DevOps Engineer</div><div style="font-size:12px;color:var(--text-muted);">Part-time · Mumbai</div></td>
+                <td>Wipro</td>
+                <td><strong>34</strong></td>
+                <td>8</td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <div class="progress-bar" style="width:80px;"><div class="progress-fill" style="width:40%;background:#e2e8f0;"></div></div>
+                    <span style="font-size:12px;font-weight:600;color:var(--text-muted);">40%</span>
+                  </div>
+                </td>
+                <td><span class="badge badge-danger">Closed</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+lucide.createIcons();
+
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+document.getElementById('menuToggle').addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.classList.toggle('visible');
+});
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.classList.remove('visible');
+});
+</script>
 </body>
-
 </html>

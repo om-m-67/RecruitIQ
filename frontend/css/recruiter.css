@@ -1,0 +1,144 @@
+/* ==========================================================
+   RecruitIQ — Recruiter Dashboard Styles
+========================================================== */
+
+@import url('./variables.css');
+
+/* ── Pipeline Board ── */
+.pipeline-board {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+.pipeline-col {
+  min-width: 240px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.pipeline-col-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.pipeline-col-title {
+  font-size: 13px; font-weight: 700;
+  color: var(--text-primary);
+  display: flex; align-items: center; gap: 8px;
+}
+.pipeline-col-count {
+  font-size: 11px; font-weight: 700;
+  background: var(--border);
+  color: var(--text-secondary);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+.pipeline-cards { padding: 10px; display: flex; flex-direction: column; gap: 8px; }
+
+.pipeline-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-xs);
+}
+.pipeline-card:hover {
+  border-color: #93c5fd;
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+.pipeline-card-name { font-size: 13.5px; font-weight: 600; color: var(--text-primary); }
+.pipeline-card-role { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+.pipeline-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 10px;
+}
+.pipeline-card-score {
+  font-size: 11.5px; font-weight: 700;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+.pipeline-card-score.high   { background: var(--success-bg); color: var(--success); }
+.pipeline-card-score.medium { background: var(--warning-bg); color: var(--warning); }
+.pipeline-card-score.low    { background: var(--danger-bg);  color: var(--danger); }
+
+/* ── Candidate Card ── */
+.candidate-card {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition);
+}
+.candidate-card:hover { border-color: #93c5fd; box-shadow: var(--shadow-sm); }
+.candidate-info { flex: 1; }
+.candidate-name  { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+.candidate-role  { font-size: 12.5px; color: var(--text-muted); margin-top: 2px; }
+.candidate-tags  { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.candidate-tag {
+  font-size: 11px; font-weight: 600;
+  padding: 2px 8px;
+  background: #f1f5f9; color: #475569;
+  border-radius: var(--radius-full);
+}
+.candidate-actions { display: flex; gap: 6px; align-items: center; }
+
+/* ── Job Posting Card ── */
+.job-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition);
+}
+.job-card:hover { border-color: #93c5fd; box-shadow: var(--shadow); transform: translateY(-2px); }
+.job-card-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.job-card-title { font-size: 15px; font-weight: 700; color: var(--text-primary); }
+.job-card-company { font-size: 13px; color: var(--text-muted); margin-top: 3px; }
+.job-card-meta {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  margin-top: 12px;
+  font-size: 12.5px; color: var(--text-muted);
+}
+.job-card-meta span {
+  display: flex; align-items: center; gap: 5px;
+}
+.job-card-meta svg { width: 13px; height: 13px; }
+.job-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 16px; padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Schedule Interview Form ── */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ── Interviewer chips ── */
+.interviewer-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  font-size: 12.5px; font-weight: 500;
+  color: var(--text-secondary);
+}
+.interviewer-chip img {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+}
