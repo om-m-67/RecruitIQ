@@ -1,244 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Contact Us | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/public.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/public.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
+<header class="landing-navbar" id="navbar">
+  <a href="./index.html" class="nav-logo">Recruit<span>IQ</span></a>
+  <nav class="nav-links">
+    <a href="./index.html">Home</a><a href="./about.html">About</a>
+    <a href="./features.html">Features</a><a href="./jobs.html">Jobs</a>
+    <a href="./companies.html">Companies</a><a href="./pricing.html">Pricing</a><a href="./contact.html" class="active">Contact</a>
+  </nav>
+  <div class="nav-actions"><a href="../auth/login.html" class="nav-login">Log in</a><a href="../auth/register.html" class="nav-signup">Get Started</a></div>
+  <button class="nav-toggle" id="navToggle"><i data-lucide="menu"></i></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="./index.html">Home</a><a href="./about.html">About</a><a href="./features.html">Features</a>
+  <a href="./jobs.html">Jobs</a><a href="./companies.html">Companies</a><a href="./pricing.html">Pricing</a>
+  <a href="./contact.html">Contact</a><a href="../auth/login.html">Log in</a>
+  <a href="../auth/register.html" class="nav-signup" style="display:inline-block;margin-top:8px;">Get Started</a>
+</div>
 
-    <header class="landing-navbar">
+<div class="section">
+  <div class="page-hero reveal">
+    <h1>Let's Talk</h1>
+    <p>Have a question, feedback, or need a demo? We'd love to hear from you.</p>
+  </div>
 
-        <div class="logo">RecruitIQ</div>
-
-        <nav>
-            <a href="./index.html">Home</a>
-            <a href="./about.html">About</a>
-            <a href="./features.html">Features</a>
-            <a href="./jobs.html">Jobs</a>
-            <a href="./companies.html">Companies</a>
-            <a href="./pricing.html">Pricing</a>
-            <a href="./contact.html">Contact</a>
-        </nav>
-
-        <div class="nav-buttons">
-            <a href="../auth/login.html" class="login-btn">Login</a>
-            <a href="../auth/register.html" class="signup-btn">Get Started</a>
+  <div class="contact-grid">
+    <div class="contact-form-card reveal">
+      <h2>Send Us a Message</h2>
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label>Full Name</label><input type="text" placeholder="John Doe" required></div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@example.com" required></div>
         </div>
+        <div class="form-group"><label>Subject</label><input type="text" placeholder="How can we help?" required></div>
+        <div class="form-group"><label>Message</label><textarea rows="6" placeholder="Tell us more…" required></textarea></div>
+        <button type="submit" class="primary-btn" style="width:100%;height:52px;font-size:15px;">
+          <i data-lucide="send"></i> Send Message
+        </button>
+      </form>
+    </div>
+    <div class="contact-info-list reveal">
+      <div class="info-item">
+        <div class="info-icon"><i data-lucide="map-pin"></i></div>
+        <div><h4>Address</h4><p>RecruitIQ Headquarters<br>Pune, Maharashtra, India</p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i data-lucide="mail"></i></div>
+        <div><h4>Email</h4><p>support@recruitiq.io<br>sales@recruitiq.io</p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i data-lucide="phone"></i></div>
+        <div><h4>Phone</h4><p>+91 98765 43210</p></div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i data-lucide="clock"></i></div>
+        <div><h4>Working Hours</h4><p>Monday – Friday<br>9:00 AM – 6:00 PM IST</p></div>
+      </div>
+    </div>
+  </div>
 
-    </header>
+  <!-- FAQ Quick Links -->
+  <div class="section-header reveal" style="margin-bottom:32px;">
+    <h2>Need Quick Help?</h2>
+  </div>
+  <div class="features-grid" style="grid-template-columns:repeat(3,1fr);">
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="user-circle"></i></div>
+      <h3>Account Support</h3>
+      <p>Get help with login, registration, password reset, and account management.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="briefcase"></i></div>
+      <h3>Recruitment Tools</h3>
+      <p>Learn how to use RecruitIQ's ATS, pipelines, interviews, and analytics.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="credit-card"></i></div>
+      <h3>Billing Questions</h3>
+      <p>Manage subscriptions, upgrade plans, and handle payment-related queries.</p>
+    </div>
+  </div>
+</div>
 
-    <section class="contact-hero">
-
-        <h1>Contact RecruitIQ</h1>
-
-        <p>
-            Have questions? We'd love to hear from you.
-        </p>
-
-    </section>
-
-    <section class="contact-section">
-
-        <div class="contact-form-card">
-
-            <h2>Send Us A Message</h2>
-
-            <form>
-
-                <div class="form-grid">
-
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" placeholder="Enter your name">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Email Address</label>
-                        <input type="email" placeholder="Enter your email">
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-                    <label>Subject</label>
-                    <input type="text" placeholder="Enter subject">
-                </div>
-
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea rows="6" placeholder="Write your message"></textarea>
-                </div>
-
-                <button type="submit" class="primary-btn">
-                    Send Message
-                </button>
-
-            </form>
-
-        </div>
-
-        <div class="contact-info">
-
-            <div class="contact-card">
-
-                <h3>📍 Address</h3>
-
-                <p>
-                    RecruitIQ Headquarters<br>
-                    Pune, Maharashtra, India
-                </p>
-
-            </div>
-
-            <div class="contact-card">
-
-                <h3>📧 Email</h3>
-
-                <p>
-                    support@recruitiq.com
-                </p>
-
-            </div>
-
-            <div class="contact-card">
-
-                <h3>📞 Phone</h3>
-
-                <p>
-                    +91 98765 43210
-                </p>
-
-            </div>
-
-            <div class="contact-card">
-
-                <h3>⏰ Working Hours</h3>
-
-                <p>
-                    Monday - Friday<br>
-                    9:00 AM - 6:00 PM
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="map-section">
-
-        <div class="map-placeholder">
-            <iframe src="https://www.google.com/maps/embed?pb=" width="100%" height="100%" style="border:0;border-radius:24px;"
-                allowfullscreen="">
-            </iframe>
-        </div>
-
-    </section>
-
-    <section class="faq-links">
-
-        <h2>Need Quick Help?</h2>
-
-        <div class="faq-grid">
-
-            <div class="faq-link-card">
-                <h3>Account Support</h3>
-                <p>Get help with login and registration.</p>
-            </div>
-
-            <div class="faq-link-card">
-                <h3>Recruitment Tools</h3>
-                <p>Learn how RecruitIQ works.</p>
-            </div>
-
-            <div class="faq-link-card">
-                <h3>Billing Questions</h3>
-                <p>Manage subscriptions and plans.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- Footer -->
-    
-    <!-- Professional Footer -->
-    
-    <footer class="footer">
-    
-        <div class="footer-container">
-    
-            <div class="footer-column">
-    
-                <h2 class="footer-logo">RecruitIQ</h2>
-    
-                <p>
-                    Modern Applicant Tracking & Recruitment Platform helping
-                    companies hire smarter, faster, and better.
-                </p>
-    
-                <div class="social-links">
-    
-                    <a href="#">Facebook</a>
-                    <a href="#">LinkedIn</a>
-                    <a href="#">Twitter</a>
-                    <a href="#">GitHub</a>
-    
-                </div>
-    
-            </div>
-    
-            <div class="footer-column">
-    
-                <h3>Platform</h3>
-    
-                <a href="./features.html">Features</a>
-                <a href="./pricing.html">Pricing</a>
-                <a href="./companies.html">Companies</a>
-                <a href="./jobs.html">Jobs</a>
-    
-            </div>
-    
-            <div class="footer-column">
-    
-                <h3>Company</h3>
-    
-                <a href="./about.html">About</a>
-                <a href="./contact.html">Contact</a>
-                <a href="./careers.html">Careers</a>
-                <a href="./blog.html">Blog</a>
-    
-            </div>
-    
-            <div class="footer-column">
-    
-                <h3>Support</h3>
-    
-                <a href="./help-center.html">Help Center</a>
-                <a href="./privacy-policy.html">Privacy Policy</a>
-                <a href="./terms.html">Terms & Conditions</a>
-                <a href="./faq.html">FAQs</a>
-    
-            </div>
-    
-        </div>
-    
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="footer-logo">Recruit<span>IQ</span></div><p>Modern Applicant Tracking & Recruitment Platform helping companies hire smarter, faster, and better.</p><div class="footer-social"><a href="#"><i data-lucide="linkedin"></i></a><a href="#"><i data-lucide="twitter"></i></a><a href="#"><i data-lucide="github"></i></a><a href="#"><i data-lucide="facebook"></i></a></div></div>
+    <div class="footer-links"><h4>Platform</h4><a href="./features.html">Features</a><a href="./pricing.html">Pricing</a><a href="./jobs.html">Jobs</a><a href="./companies.html">Companies</a></div>
+    <div class="footer-links"><h4>Company</h4><a href="./about.html">About Us</a><a href="./contact.html">Contact</a><a href="#">Blog</a><a href="#">Careers</a></div>
+    <div class="footer-links"><h4>Support</h4><a href="./faq.html">FAQs</a><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms.html">Terms</a><a href="./contact.html">Help Center</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 RecruitIQ. All rights reserved.</p></div>
+</footer>
+<div id="toastWrap" style="position:fixed;bottom:24px;right:24px;z-index:9999;"></div>
+<script>
+lucide.createIcons();
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20));
+document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const t=document.createElement('div');
+  t.style.cssText='background:#0f172a;color:#e2e8f0;padding:14px 20px;border-radius:12px;font-size:13.5px;margin-top:8px;border-left:3px solid #2563eb;';
+  t.textContent='Message sent! We\'ll get back to you within 24 hours.';
+  document.getElementById('toastWrap').appendChild(t);
+  setTimeout(()=>t.remove(),4000);
+  this.reset();
+});
+</script>
 </body>
-
 </html>

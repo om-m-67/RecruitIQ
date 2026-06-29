@@ -1,335 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>RecruitIQ - Applicant Tracking & Hiring Operations Platform</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/variables.css">
-    <link rel="stylesheet" href="../css/public.css">
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecruitIQ — Hire Smarter. Build Better Teams.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/public.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
 
-    <!-- Navbar -->
+<header class="landing-navbar" id="navbar">
+  <a href="./index.html" class="nav-logo">Recruit<span>IQ</span></a>
+  <nav class="nav-links">
+    <a href="./index.html" class="active">Home</a>
+    <a href="./about.html">About</a>
+    <a href="./features.html">Features</a>
+    <a href="./jobs.html">Jobs</a>
+    <a href="./companies.html">Companies</a>
+    <a href="./pricing.html">Pricing</a>
+    <a href="./contact.html">Contact</a>
+  </nav>
+  <div class="nav-actions">
+    <a href="../auth/login.html" class="nav-login">Log in</a>
+    <a href="../auth/register.html" class="nav-signup">Get Started</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu"><i data-lucide="menu"></i></button>
+</header>
 
-    <header class="landing-navbar">
+<div class="mobile-menu" id="mobileMenu">
+  <a href="./index.html">Home</a><a href="./about.html">About</a>
+  <a href="./features.html">Features</a><a href="./jobs.html">Jobs</a>
+  <a href="./companies.html">Companies</a><a href="./pricing.html">Pricing</a>
+  <a href="./contact.html">Contact</a><a href="../auth/login.html">Log in</a>
+  <a href="../auth/register.html" class="nav-signup" style="display:inline-block;margin-top:8px;">Get Started</a>
+</div>
 
-        <div class="logo">
-            RecruitIQ
+<!-- Hero -->
+<div class="section" style="padding-top:40px;">
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-badge reveal"><i data-lucide="zap"></i> AI-Powered Recruitment Platform</div>
+      <h1 class="hero-title reveal">Hire <span>Smarter.</span><br>Build Better Teams.</h1>
+      <p class="hero-subtitle reveal">Streamline hiring with structured pipelines, interview scheduling, candidate management, and analytics — all in one platform.</p>
+      <div class="hero-btns reveal">
+        <a href="../auth/register.html" class="primary-btn"><i data-lucide="arrow-right"></i> Start Hiring Free</a>
+        <a href="./features.html" class="secondary-btn"><i data-lucide="play-circle"></i> See How It Works</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="visual-card">
+        <div class="visual-card-title">RecruitIQ Dashboard</div>
+        <div class="visual-stat">
+          <div class="visual-stat-label"><i data-lucide="file-text"></i> Applications</div>
+          <div class="visual-stat-value">2,456</div>
         </div>
-
-        <nav>
-
-            <a href="./index.html">Home</a>
-            <a href="./about.html">About</a>
-            <a href="./features.html">Features</a>
-            <a href="./jobs.html">Jobs</a>
-            <a href="./companies.html">Companies</a>
-            <a href="./pricing.html">Pricing</a>
-            <a href="./contact.html">Contact</a>
-
-        </nav>
-
-        <div class="nav-buttons">
-
-            <a href="../auth/login.html" class="login-btn">
-                Login
-            </a>
-
-            <a href="../auth/register.html" class="signup-btn">
-                Get Started
-            </a>
-
+        <div class="visual-stat">
+          <div class="visual-stat-label"><i data-lucide="calendar"></i> Interviews</div>
+          <div class="visual-stat-value">328</div>
         </div>
-
-    </header>
-
-    <!-- Hero Section -->
-
-    <section class="hero">
-
-        <div class="hero-content">
-
-            <span class="hero-badge">
-                Applicant Tracking & Hiring Operations Platform
-            </span>
-
-            <h1>
-                Hire Smarter.<br>
-                Recruit Faster.
-            </h1>
-
-            <p>
-                Streamline hiring with structured pipelines,
-                interview scheduling, candidate management,
-                and hiring analytics in one platform.
-            </p>
-
-            <div class="hero-buttons">
-
-                <a href="#" class="primary-btn">
-                    Start Hiring
-                </a>
-
-                <a href="#" class="secondary-btn">
-                    Watch Demo
-                </a>
-
-            </div>
-
+        <div class="visual-stat">
+          <div class="visual-stat-label"><i data-lucide="check-circle"></i> Hires This Month</div>
+          <div class="visual-stat-value">48</div>
         </div>
-
-        <div class="hero-image">
-
-            <div class="dashboard-preview">
-
-                <h3>RecruitIQ Dashboard</h3>
-
-                <div class="mini-card">
-                    Applications: 2,456
-                </div>
-
-                <div class="mini-card">
-                    Interviews: 328
-                </div>
-
-                <div class="mini-card">
-                    Hires: 48
-                </div>
-
-            </div>
-
+        <div class="visual-stat">
+          <div class="visual-stat-label"><i data-lucide="trending-up"></i> Hiring Success</div>
+          <div class="visual-stat-value">95%</div>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    </section>
+<!-- Stats -->
+<div class="section" style="padding-top:0;">
+  <div class="stats-grid">
+    <div class="stat-box reveal"><h2>10K+</h2><p>Candidates</p></div>
+    <div class="stat-box reveal"><h2>500+</h2><p>Companies</p></div>
+    <div class="stat-box reveal"><h2>95%</h2><p>Hiring Success</p></div>
+    <div class="stat-box reveal"><h2>24/7</h2><p>Support</p></div>
+  </div>
+</div>
 
-    <!-- Stats -->
+<!-- Features -->
+<div class="section">
+  <div class="section-header reveal">
+    <div class="section-label"><i data-lucide="layers"></i> Features</div>
+    <h2>Powerful Recruitment Features</h2>
+    <p>Everything recruiters need to discover, evaluate, and hire top talent faster than ever.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="users"></i></div>
+      <h3>Candidate Tracking</h3>
+      <p>Keep every applicant organized by role, stage, and score in one structured pipeline.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="git-branch"></i></div>
+      <h3>ATS Pipeline</h3>
+      <p>Visualize your hiring funnel from applied to offer with clear stage management.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="calendar"></i></div>
+      <h3>Interview Scheduling</h3>
+      <p>Schedule, reschedule, and track interviews with automatic reminders.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="bar-chart-2"></i></div>
+      <h3>Hiring Analytics</h3>
+      <p>Make data-driven decisions with real-time dashboards and funnel reports.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="zap"></i></div>
+      <h3>AI Screening</h3>
+      <p>Automatically score and rank candidates based on job fit and experience.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="bell"></i></div>
+      <h3>Smart Notifications</h3>
+      <p>Stay updated with real-time alerts for applications and hiring milestones.</p>
+    </div>
+  </div>
+</div>
 
-    <section class="stats-section">
+<!-- Testimonials -->
+<div class="section">
+  <div class="section-header reveal">
+    <div class="section-label"><i data-lucide="star"></i> Testimonials</div>
+    <h2>Trusted by Recruiters Worldwide</h2>
+    <p>Thousands of hiring teams use RecruitIQ to build their dream teams.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+      <p>"RecruitIQ reduced our hiring time by 50%. The pipeline visibility and structured workflows are exactly what we needed."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">SJ</div>
+        <div><div class="author-name">Sarah Johnson</div><div class="author-role">HR Manager, TechNova</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+      <p>"The analytics are game-changing. We can now make data-driven hiring decisions and track every stage of recruitment."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">MS</div>
+        <div><div class="author-name">Michael Smith</div><div class="author-role">Talent Acquisition Lead, Infosys</div></div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal">
+      <div class="stars"><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i><i data-lucide="star"></i></div>
+      <p>"Clean interface, excellent analytics and a team that genuinely listens. RecruitIQ is the best hiring tool we've used."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">EB</div>
+        <div><div class="author-name">Emily Brown</div><div class="author-role">Recruitment Head, Wipro</div></div>
+      </div>
+    </div>
+  </div>
+</div>
 
-        <div class="stat-box">
-            <h2>10K+</h2>
-            <p>Candidates</p>
-        </div>
+<!-- CTA -->
+<div class="section" style="padding-top:0;">
+  <div class="cta-section reveal">
+    <h2>Ready to Transform Your Hiring?</h2>
+    <p>Join thousands of recruiters using RecruitIQ to build their dream teams.</p>
+    <a href="../auth/register.html" class="cta-btn"><i data-lucide="arrow-right"></i> Start Free Trial</a>
+  </div>
+</div>
 
-        <div class="stat-box">
-            <h2>500+</h2>
-            <p>Companies</p>
-        </div>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Recruit<span>IQ</span></div>
+      <p>Modern Applicant Tracking & Recruitment Platform helping companies hire smarter, faster, and better.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+        <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+        <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+        <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+      </div>
+    </div>
+    <div class="footer-links"><h4>Platform</h4><a href="./features.html">Features</a><a href="./pricing.html">Pricing</a><a href="./jobs.html">Jobs</a><a href="./companies.html">Companies</a></div>
+    <div class="footer-links"><h4>Company</h4><a href="./about.html">About Us</a><a href="./contact.html">Contact</a><a href="#">Blog</a><a href="#">Careers</a></div>
+    <div class="footer-links"><h4>Support</h4><a href="./faq.html">FAQs</a><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms.html">Terms & Conditions</a><a href="./contact.html">Help Center</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 RecruitIQ. All rights reserved.</p></div>
+</footer>
 
-        <div class="stat-box">
-            <h2>95%</h2>
-            <p>Hiring Success</p>
-        </div>
-
-        <div class="stat-box">
-            <h2>24/7</h2>
-            <p>Support</p>
-        </div>
-
-    </section>
-
-    <!-- Features -->
-
-    <section class="features-section">
-
-        <div class="section-title">
-
-            <h2>Powerful Recruitment Features</h2>
-
-            <p>
-                Everything recruiters need to hire top talent.
-            </p>
-
-        </div>
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-                <div style="font-size:36px;margin-bottom:16px;">📋</div>
-                <h3>Candidate Tracking</h3>
-                <p>Keep every applicant organized by role, stage, and score — all in one structured pipeline.</p>
-            </div>
-
-            <div class="feature-card">
-                <div style="font-size:36px;margin-bottom:16px;">🔁</div>
-                <h3>ATS Pipeline</h3>
-                <p>Visualize your hiring funnel from applied to offer with drag-and-drop stage management.</p>
-            </div>
-
-            <div class="feature-card">
-                <div style="font-size:36px;margin-bottom:16px;">📅</div>
-                <h3>Interview Scheduling</h3>
-                <p>Schedule, reschedule, and track interviews with automatic reminders and calendar sync.</p>
-            </div>
-
-            <div class="feature-card">
-                <div style="font-size:36px;margin-bottom:16px;">📈</div>
-                <h3>Hiring Analytics</h3>
-                <p>Make data-driven decisions with real-time dashboards, funnel reports, and time-to-hire metrics.</p>
-            </div>
-
-            <div class="feature-card">
-                <div style="font-size:36px;margin-bottom:16px;">🤖</div>
-                <h3>AI Screening</h3>
-                <p>Automatically score and rank candidates based on job fit, skills, and experience alignment.</p>
-            </div>
-
-            <div class="feature-card">
-                <div style="font-size:36px;margin-bottom:16px;">🔔</div>
-                <h3>Smart Notifications</h3>
-                <p>Stay updated with real-time alerts for new applications, interview updates, and hiring milestones.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- Testimonials -->
-
-    <section class="testimonials">
-
-        <div class="section-title">
-
-            <h2>Trusted by Recruiters</h2>
-
-        </div>
-
-        <div class="testimonial-grid">
-
-            <div class="testimonial-card">
-
-                <p>
-                    RecruitIQ reduced our hiring time by 50%.
-                </p>
-
-                <h4>Sarah Johnson</h4>
-
-                <span>HR Manager</span>
-
-            </div>
-
-            <div class="testimonial-card">
-
-                <p>
-                    The pipeline visibility and analytics are game-changing.
-                </p>
-
-                <h4>Michael Smith</h4>
-
-                <span>Talent Acquisition Lead</span>
-
-            </div>
-
-            <div class="testimonial-card">
-
-                <p>
-                    Clean interface and excellent analytics.
-                </p>
-
-                <h4>Emily Brown</h4>
-
-                <span>Recruitment Head</span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- CTA -->
-
-    <section class="cta-section">
-
-        <h2>
-            Ready to Transform Hiring?
-        </h2>
-
-        <p>
-            Join thousands of recruiters using RecruitIQ.
-        </p>
-
-        <a href="../auth/register.html" class="primary-btn">
-            Start Free Trial
-        </a>
-
-    </section>
-
-    <!-- Footer -->
-
-    <!-- Professional Footer -->
-    
-    <footer class="footer">
-    
-        <div class="footer-container">
-    
-            <div class="footer-column">
-    
-                <h2 class="footer-logo">RecruitIQ</h2>
-    
-                <p>
-                    Modern Applicant Tracking & Recruitment Platform helping
-                    companies hire smarter, faster, and better.
-                </p>
-    
-                <div class="social-links">
-    
-                    <a href="#">Facebook</a>
-                    <a href="#">LinkedIn</a>
-                    <a href="#">Twitter</a>
-                    <a href="#">GitHub</a>
-    
-                </div>
-    
-            </div>
-    
-            <div class="footer-column">
-    
-                <h3>Platform</h3>
-    
-                <a href="./features.html">Features</a>
-                <a href="./pricing.html">Pricing</a>
-                <a href="./companies.html">Companies</a>
-                <a href="./jobs.html">Jobs</a>
-    
-            </div>
-    
-            <div class="footer-column">
-    
-                <h3>Company</h3>
-    
-                <a href="./about.html">About</a>
-                <a href="./contact.html">Contact</a>
-                <a href="./careers.html">Careers</a>
-                <a href="./blog.html">Blog</a>
-    
-            </div>
-    
-            <div class="footer-column">
-    
-                <h3>Support</h3>
-    
-                <a href="./help-center.html">Help Center</a>
-                <a href="./privacy-policy.html">Privacy Policy</a>
-                <a href="./terms.html">Terms & Conditions</a>
-                <a href="./faq.html">FAQs</a>
-    
-            </div>
-    
-        </div>
-    
-    </footer>
-
-    <script>
-      lucide.createIcons();
-    </script>
+<script>
+lucide.createIcons();
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20));
+document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+const obs=new IntersectionObserver((e)=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
-
 </html>

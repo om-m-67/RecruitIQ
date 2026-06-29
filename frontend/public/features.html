@@ -1,258 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Features | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/public.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Features | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/public.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
+<header class="landing-navbar" id="navbar">
+  <a href="./index.html" class="nav-logo">Recruit<span>IQ</span></a>
+  <nav class="nav-links">
+    <a href="./index.html">Home</a><a href="./about.html">About</a>
+    <a href="./features.html" class="active">Features</a><a href="./jobs.html">Jobs</a>
+    <a href="./companies.html">Companies</a><a href="./pricing.html">Pricing</a><a href="./contact.html">Contact</a>
+  </nav>
+  <div class="nav-actions"><a href="../auth/login.html" class="nav-login">Log in</a><a href="../auth/register.html" class="nav-signup">Get Started</a></div>
+  <button class="nav-toggle" id="navToggle"><i data-lucide="menu"></i></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="./index.html">Home</a><a href="./about.html">About</a><a href="./features.html">Features</a>
+  <a href="./jobs.html">Jobs</a><a href="./companies.html">Companies</a><a href="./pricing.html">Pricing</a>
+  <a href="./contact.html">Contact</a><a href="../auth/login.html">Log in</a>
+  <a href="../auth/register.html" class="nav-signup" style="display:inline-block;margin-top:8px;">Get Started</a>
+</div>
 
-    <header class="landing-navbar">
+<div class="section">
+  <div class="page-hero reveal">
+    <h1>Powerful Features For Modern Recruitment</h1>
+    <p>Everything you need to streamline hiring, track candidates, and make smarter recruitment decisions — all in one platform.</p>
+  </div>
 
-        <div class="logo">RecruitIQ</div>
+  <!-- Showcase -->
+  <div class="section-header reveal" style="margin-bottom:36px;">
+    <div class="section-label"><i data-lucide="layers"></i> Core Features</div>
+    <h2>Built For Serious Hiring Teams</h2>
+  </div>
+  <div class="showcase-grid" style="margin-bottom:80px;">
+    <div class="showcase-card reveal">
+      <div class="showcase-icon"><i data-lucide="users"></i></div>
+      <div><h3>Candidate Management</h3><p>Automatically rank and shortlist candidates based on skills, experience, ATS score, and job requirements. Never lose track of a great applicant again.</p></div>
+    </div>
+    <div class="showcase-card reveal">
+      <div class="showcase-icon"><i data-lucide="git-branch"></i></div>
+      <div><h3>ATS Pipeline Management</h3><p>Visual hiring pipelines help recruiters manage applicants through every stage — from applied to hired — with full status visibility.</p></div>
+    </div>
+    <div class="showcase-card reveal">
+      <div class="showcase-icon"><i data-lucide="calendar"></i></div>
+      <div><h3>Interview Scheduling</h3><p>Schedule interviews, coordinate hiring teams, send automated reminders, and manage feedback — all from one clean interface.</p></div>
+    </div>
+    <div class="showcase-card reveal">
+      <div class="showcase-icon"><i data-lucide="bar-chart-2"></i></div>
+      <div><h3>Recruitment Analytics</h3><p>Measure hiring efficiency, track conversion rates, monitor recruiter performance, and identify bottlenecks with real-time reports.</p></div>
+    </div>
+  </div>
 
-        <nav>
-            <a href="./index.html">Home</a>
-            <a href="./about.html">About</a>
-            <a href="./features.html">Features</a>
-            <a href="./jobs.html">Jobs</a>
-            <a href="./companies.html">Companies</a>
-            <a href="./pricing.html">Pricing</a>
-            <a href="./contact.html">Contact</a>
-        </nav>
+  <!-- Feature grid -->
+  <div class="section-header reveal" style="margin-bottom:36px;">
+    <div class="section-label"><i data-lucide="heart"></i> Why Recruiters Love Us</div>
+    <h2>Everything In One Place</h2>
+    <p>No more switching between tools. RecruitIQ handles it all.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="users-2"></i></div>
+      <h3>Team Collaboration</h3>
+      <p>Work together with hiring managers, interviewers, and HR in one shared workspace with role-based access.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="bell"></i></div>
+      <h3>Smart Notifications</h3>
+      <p>Never miss interviews, application updates, or hiring milestones with real-time in-app and email alerts.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="folder-open"></i></div>
+      <h3>Resume Database</h3>
+      <p>Store, search, and organize candidate resumes with ATS scoring and keyword matching built in.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="zap"></i></div>
+      <h3>Fast Hiring</h3>
+      <p>Reduce time-to-hire significantly with automated screening, structured pipelines, and one-click scheduling.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="shield-check"></i></div>
+      <h3>Enterprise Security</h3>
+      <p>256-bit encryption, SOC 2 compliance, and GDPR-ready data handling keeps candidate data safe.</p>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon"><i data-lucide="plug"></i></div>
+      <h3>API & Integrations</h3>
+      <p>Connect with your existing HRMS, calendar, and communication tools via our REST API.</p>
+    </div>
+  </div>
+</div>
 
-        <div class="nav-buttons">
-            <a href="./auth/login.html" class="login-btn">Login</a>
-            <a href="./auth/register.html" class="signup-btn">Get Started</a>
-        </div>
+<div class="section" style="padding-top:0;">
+  <div class="cta-section reveal">
+    <h2>Start Hiring Smarter Today</h2>
+    <p>Join companies transforming recruitment with RecruitIQ.</p>
+    <a href="../auth/register.html" class="cta-btn"><i data-lucide="arrow-right"></i> Get Started Free</a>
+  </div>
+</div>
 
-    </header>
-
-    <section class="feature-hero mb-3">
-
-        <h1>Powerful Features For Modern Recruitment</h1>
-
-        <p>
-            Everything you need to streamline hiring, track candidates,
-            and make smarter recruitment decisions.
-        </p>
-
-    </section>
-
-    <section class="feature-showcase">
-
-        <div class="showcase-card">
-
-            <div class="showcase-icon px-4 py-2">🤖</div>
-
-            <div>
-
-                <h2 class="fs-5 px-4">Candidate Management</h2>
-
-                <p class="fs-6 px-4">
-                    Automatically rank and shortlist candidates based on
-                    skills, experience, ATS score, and job requirements.
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="showcase-card">
-
-            <div class="showcase-icon px-4 py-2">📊</div>
-
-            <div>
-
-                <h2 class="fs-5 px-4">ATS Pipeline Management</h2>
-
-                <p class="fs-6 px-4">
-                    Visual hiring pipelines help recruiters manage
-                    applicants through every hiring stage.
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="showcase-card">
-
-            <div class="showcase-icon px-4 py-2">📅</div>
-
-            <div>
-
-                <h2 class="fs-5 px-4">Interview Scheduling</h2>
-
-                <p class="fs-6 px-4">
-                    Schedule interviews and coordinate hiring teams
-                    with automated workflows.
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="showcase-card">
-
-            <div class="showcase-icon px-4 py-2">📈</div>
-
-            <div>
-
-                <h2 class="fs-5 px-4">Recruitment Analytics</h2>
-
-                <p class="fs-6 px-4">
-                    Measure hiring efficiency, conversion rates,
-                    recruiter performance and hiring trends.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="feature-grid-section">
-
-        <div class="section-title">
-
-            <h2>Why Recruiters Love RecruitIQ</h2>
-
-        </div>
-
-        <div class="feature-grid">
-
-            <div class="feature-card">
-                👥
-                <h3>Candidate Management</h3>
-                <p>Manage all applicants in one dashboard.</p>
-            </div>
-
-            <div class="feature-card">
-                🔔
-                <h3>Smart Notifications</h3>
-                <p>Never miss interviews or candidate updates.</p>
-            </div>
-
-            <div class="feature-card">
-                📂
-                <h3>Resume Database</h3>
-                <p>Store and organize candidate resumes securely.</p>
-            </div>
-
-            <div class="feature-card">
-                🤝
-                <h3>Team Collaboration</h3>
-                <p>Work together with hiring managers seamlessly.</p>
-            </div>
-
-            <div class="feature-card">
-                ⚡
-                <h3>Fast Hiring</h3>
-                <p>Reduce time-to-hire significantly.</p>
-            </div>
-
-            <div class="feature-card">
-                🔒
-                <h3>Enterprise Security</h3>
-                <p>Keep hiring data safe and protected.</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="cta-section">
-
-        <h2>Start Hiring Smarter Today</h2>
-
-        <p>
-            Join companies transforming recruitment with RecruitIQ.
-        </p>
-
-        <a href="../auth/register.html" class="primary-btn">
-            Get Started
-        </a>
-
-    </section>
-
-    <!-- Footer -->
-    
-    <!-- Professional Footer -->
-    
-    <footer class="footer">
-    
-        <div class="footer-container">
-    
-            <div class="footer-column">
-    
-                <h2 class="footer-logo">RecruitIQ</h2>
-    
-                <p>
-                    Modern Applicant Tracking & Recruitment Platform helping
-                    companies hire smarter, faster, and better.
-                </p>
-    
-                <div class="social-links">
-    
-                    <a href="#">Facebook</a>
-                    <a href="#">LinkedIn</a>
-                    <a href="#">Twitter</a>
-                    <a href="#">GitHub</a>
-    
-                </div>
-    
-            </div>
-    
-            <div class="footer-column">
-    
-                <h3>Platform</h3>
-    
-                <a href="./features.html">Features</a>
-                <a href="./pricing.html">Pricing</a>
-                <a href="./companies.html">Companies</a>
-                <a href="./jobs.html">Jobs</a>
-    
-            </div>
-    
-            <div class="footer-column">
-    
-                <h3>Company</h3>
-    
-                <a href="./about.html">About</a>
-                <a href="./contact.html">Contact</a>
-                <a href="./careers.html">Careers</a>
-                <a href="./blog.html">Blog</a>
-    
-            </div>
-    
-            <div class="footer-column">
-    
-                <h3>Support</h3>
-    
-                <a href="./help-center.html">Help Center</a>
-                <a href="./privacy-policy.html">Privacy Policy</a>
-                <a href="./terms.html">Terms & Conditions</a>
-                <a href="./faq.html">FAQs</a>
-    
-            </div>
-    
-        </div>
-    
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="footer-logo">Recruit<span>IQ</span></div><p>Modern Applicant Tracking & Recruitment Platform helping companies hire smarter, faster, and better.</p><div class="footer-social"><a href="#"><i data-lucide="linkedin"></i></a><a href="#"><i data-lucide="twitter"></i></a><a href="#"><i data-lucide="github"></i></a><a href="#"><i data-lucide="facebook"></i></a></div></div>
+    <div class="footer-links"><h4>Platform</h4><a href="./features.html">Features</a><a href="./pricing.html">Pricing</a><a href="./jobs.html">Jobs</a><a href="./companies.html">Companies</a></div>
+    <div class="footer-links"><h4>Company</h4><a href="./about.html">About Us</a><a href="./contact.html">Contact</a><a href="#">Blog</a><a href="#">Careers</a></div>
+    <div class="footer-links"><h4>Support</h4><a href="./faq.html">FAQs</a><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms.html">Terms</a><a href="./contact.html">Help Center</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 RecruitIQ. All rights reserved.</p></div>
+</footer>
+<script>
+lucide.createIcons();
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20));
+document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
 </body>
-
 </html>

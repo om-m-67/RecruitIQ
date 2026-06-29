@@ -1,195 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>FAQ | RecruitIQ</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/global.css">
-    <link rel="stylesheet" href="../css/public.css">
-    <link rel="stylesheet" href="../css/responsive.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ | RecruitIQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/public.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
-
 <body>
-
-    <header class="landing-navbar">
-
-        <div class="logo">RecruitIQ</div>
-
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="jobs.html">Jobs</a>
-            <a href="companies.html">Companies</a>
-            <a href="features.html">Features</a>
-            <a href="pricing.html">Pricing</a>
-        </nav>
-
-        <div class="nav-buttons">
-            <a href="../auth/login.html" class="login-btn">Login</a>
-            <a href="../auth/register.html" class="signup-btn">Get Started</a>
-        </div>
-
-    </header>
-
-    <section class="faq-hero">
-
-        <h1>Frequently Asked Questions</h1>
-
-        <p>
-            Find answers to common questions about RecruitIQ.
-        </p>
-
-    </section>
-
-    <section class="faq-search-section">
-
-        <input type="text" class="faq-search" placeholder="Search FAQs...">
-
-    </section>
-
-    <section class="faq-container">
-
-        <div class="faq-item">
-
-            <button class="faq-question">
-                How does RecruitIQ work?
-            </button>
-
-            <div class="faq-answer">
-                RecruitIQ helps recruiters manage hiring using ATS workflows,
-                candidate pipelines, analytics and interview scheduling.
-            </div>
-
-        </div>
-
-        <div class="faq-item">
-
-            <button class="faq-question">
-                Is RecruitIQ free to use?
-            </button>
-
-            <div class="faq-answer">
-                Yes. RecruitIQ offers a free plan with basic recruitment tools.
-            </div>
-
-        </div>
-
-        <div class="faq-item">
-
-            <button class="faq-question">
-                How do candidates apply for jobs?
-            </button>
-
-            <div class="faq-answer">
-                Candidates can browse jobs, upload resumes and track applications.
-            </div>
-
-        </div>
-
-        <div class="faq-item">
-
-            <button class="faq-question">
-                Does RecruitIQ support structured screening?
-            </button>
-
-            <div class="faq-answer">
-                Yes. Recruiters can review candidates through clear stages, scorecards and job-specific evaluation workflows.
-            </div>
-
-        </div>
-
-        <div class="faq-item">
-
-            <button class="faq-question">
-                Can recruiters schedule interviews?
-            </button>
-
-            <div class="faq-answer">
-                Recruiters can create interview schedules and send invitations.
-            </div>
-
-        </div>
-
-        <div class="faq-item">
-
-            <button class="faq-question">
-                How can I contact support?
-            </button>
-
-            <div class="faq-answer">
-                Visit the Contact page or email support@recruitiq.com.
-            </div>
-
-        </div>
-
-    </section>
-
-    <section class="faq-categories">
-
-        <div class="faq-category-card">
-
-            <h3>👨‍💼 Recruiters</h3>
-
-            <p>
-                Learn ATS management, candidate tracking and hiring workflows.
-            </p>
-
-        </div>
-
-        <div class="faq-category-card">
-
-            <h3>👨‍🎓 Candidates</h3>
-
-            <p>
-                Learn profile creation, job applications and resume management.
-            </p>
-
-        </div>
-
-        <div class="faq-category-card">
-
-            <h3>💳 Billing</h3>
-
-            <p>
-                Learn subscription, pricing and payment information.
-            </p>
-
-        </div>
-
-    </section>
-
-    <footer class="footer">
-
-        <p>
-            © 2026 RecruitIQ. All Rights Reserved.
-        </p>
-
-    </footer>
-
-    <script>
-
-        document.querySelectorAll(".faq-question").forEach(item => {
-
-            item.addEventListener("click", () => {
-
-                const answer = item.nextElementSibling;
-
-                answer.classList.toggle("active");
-
-            });
-
-        });
-
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<header class="landing-navbar" id="navbar">
+  <a href="./index.html" class="nav-logo">Recruit<span>IQ</span></a>
+  <nav class="nav-links">
+    <a href="./index.html">Home</a><a href="./about.html">About</a>
+    <a href="./features.html">Features</a><a href="./jobs.html">Jobs</a>
+    <a href="./companies.html">Companies</a><a href="./pricing.html">Pricing</a><a href="./contact.html">Contact</a>
+  </nav>
+  <div class="nav-actions"><a href="../auth/login.html" class="nav-login">Log in</a><a href="../auth/register.html" class="nav-signup">Get Started</a></div>
+  <button class="nav-toggle" id="navToggle"><i data-lucide="menu"></i></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="./index.html">Home</a><a href="./about.html">About</a><a href="./features.html">Features</a>
+  <a href="./jobs.html">Jobs</a><a href="./companies.html">Companies</a><a href="./pricing.html">Pricing</a>
+  <a href="./contact.html">Contact</a><a href="../auth/login.html">Log in</a>
+  <a href="../auth/register.html" class="nav-signup" style="display:inline-block;margin-top:8px;">Get Started</a>
+</div>
+
+<div class="section">
+  <div class="page-hero reveal">
+    <h1>Frequently Asked Questions</h1>
+    <p>Find answers to common questions about RecruitIQ.</p>
+  </div>
+
+  <div class="faq-search-wrap reveal">
+    <i data-lucide="search"></i>
+    <input type="text" class="faq-search" id="faqSearch" placeholder="Search FAQs…" oninput="filterFAQ(this.value)">
+  </div>
+
+  <div class="faq-list" id="faqList">
+    <div class="faq-item reveal"><button class="faq-question">How does RecruitIQ work? <i data-lucide="plus"></i></button><div class="faq-answer">RecruitIQ helps recruiters manage hiring using ATS workflows, candidate pipelines, analytics and interview scheduling — all in one modern platform.</div></div>
+    <div class="faq-item reveal"><button class="faq-question">Is RecruitIQ free to use? <i data-lucide="plus"></i></button><div class="faq-answer">Yes. RecruitIQ offers a free Starter plan with basic recruitment tools — 5 active jobs, basic ATS, and email support. No credit card required.</div></div>
+    <div class="faq-item reveal"><button class="faq-question">How do candidates apply for jobs? <i data-lucide="plus"></i></button><div class="faq-answer">Candidates create a profile, upload their resume, browse open positions, and apply directly. They can track application status in real-time through their dashboard.</div></div>
+    <div class="faq-item reveal"><button class="faq-question">Does RecruitIQ support structured interview workflows? <i data-lucide="plus"></i></button><div class="faq-answer">Yes. Recruiters can schedule multiple interview rounds, assign interviewers, collect structured feedback with scorecards, and track candidate confirmation status.</div></div>
+    <div class="faq-item reveal"><button class="faq-question">Can recruiters schedule interviews through RecruitIQ? <i data-lucide="plus"></i></button><div class="faq-answer">Absolutely. Recruiters can schedule video, phone, or onsite interviews, set date/time, add meeting links, assign interviewers, and send calendar invites — all from the platform.</div></div>
+    <div class="faq-item reveal"><button class="faq-question">What ATS features does RecruitIQ include? <i data-lucide="plus"></i></button><div class="faq-answer">RecruitIQ includes full ATS with candidate tracking, stage management (Applied → Shortlisted → Interview → Offer → Hired), ATS scoring, status updates, and automated notifications.</div></div>
+    <div class="faq-item reveal"><button class="faq-question">Is my data secure on RecruitIQ? <i data-lucide="plus"></i></button><div class="faq-answer">Yes. We use 256-bit encryption, secure authentication with JWT tokens, and follow GDPR-compliant data handling practices. Your data is never sold or shared.</div></div>
+    <div class="faq-item reveal"><button class="faq-question">How can I contact support? <i data-lucide="plus"></i></button><div class="faq-answer">You can reach us via the Contact page, email support@recruitiq.io, or through in-app chat. Our support team responds within 24 hours on business days.</div></div>
+  </div>
+
+  <!-- Categories -->
+  <div class="section-header reveal" style="margin-bottom:32px;">
+    <h2>Browse by Category</h2>
+  </div>
+  <div class="faq-cats-grid">
+    <div class="faq-cat-card reveal">
+      <div class="faq-cat-icon"><i data-lucide="briefcase"></i></div>
+      <h3>For Recruiters</h3>
+      <p>Learn ATS management, candidate tracking, pipeline workflows, and interview scheduling.</p>
+    </div>
+    <div class="faq-cat-card reveal">
+      <div class="faq-cat-icon"><i data-lucide="user"></i></div>
+      <h3>For Candidates</h3>
+      <p>Learn profile creation, job applications, resume upload, and application tracking.</p>
+    </div>
+    <div class="faq-cat-card reveal">
+      <div class="faq-cat-icon"><i data-lucide="credit-card"></i></div>
+      <h3>Billing & Plans</h3>
+      <p>Understand subscriptions, plan upgrades, billing cycles, and payment methods.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><div class="footer-logo">Recruit<span>IQ</span></div><p>Modern Applicant Tracking & Recruitment Platform helping companies hire smarter, faster, and better.</p><div class="footer-social"><a href="#"><i data-lucide="linkedin"></i></a><a href="#"><i data-lucide="twitter"></i></a><a href="#"><i data-lucide="github"></i></a><a href="#"><i data-lucide="facebook"></i></a></div></div>
+    <div class="footer-links"><h4>Platform</h4><a href="./features.html">Features</a><a href="./pricing.html">Pricing</a><a href="./jobs.html">Jobs</a><a href="./companies.html">Companies</a></div>
+    <div class="footer-links"><h4>Company</h4><a href="./about.html">About Us</a><a href="./contact.html">Contact</a><a href="#">Blog</a><a href="#">Careers</a></div>
+    <div class="footer-links"><h4>Support</h4><a href="./faq.html">FAQs</a><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms.html">Terms</a><a href="./contact.html">Help Center</a></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 RecruitIQ. All rights reserved.</p></div>
+</footer>
+<script>
+lucide.createIcons();
+window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>20));
+document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Accordion
+document.querySelectorAll('.faq-question').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    const isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!isOpen) item.classList.add('open');
+  });
+});
+
+// Search filter
+function filterFAQ(q){
+  const lower=q.toLowerCase();
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const text=item.querySelector('.faq-question').textContent.toLowerCase();
+    item.style.display=text.includes(lower)?'':'none';
+  });
+}
+</script>
 </body>
-
 </html>
