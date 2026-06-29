@@ -5,7 +5,10 @@
   <title>Features | RecruitIQ</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/public.css">
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
 </head>
 <body>
 <header class="landing-navbar" id="navbar">
@@ -105,10 +108,19 @@
 
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-brand"><div class="footer-logo">Recruit<span>IQ</span></div><p>Modern Applicant Tracking & Recruitment Platform helping companies hire smarter, faster, and better.</p><div class="footer-social"><a href="#"><i data-lucide="linkedin"></i></a><a href="#"><i data-lucide="twitter"></i></a><a href="#"><i data-lucide="github"></i></a><a href="#"><i data-lucide="facebook"></i></a></div></div>
+    <div class="footer-brand">
+      <div class="footer-logo">Recruit<span>IQ</span></div>
+      <p>Modern Applicant Tracking & Recruitment Platform helping companies hire smarter, faster, and better.</p>
+      <div class="footer-social">
+        <i class="fab fa-linkedin"></i>
+        <i class="fab fa-x-twitter"></i>
+        <i class="fab fa-github"></i>
+        <i class="fab fa-facebook-f"></i>
+      </div>
+    </div>
     <div class="footer-links"><h4>Platform</h4><a href="./features.html">Features</a><a href="./pricing.html">Pricing</a><a href="./jobs.html">Jobs</a><a href="./companies.html">Companies</a></div>
     <div class="footer-links"><h4>Company</h4><a href="./about.html">About Us</a><a href="./contact.html">Contact</a><a href="#">Blog</a><a href="#">Careers</a></div>
-    <div class="footer-links"><h4>Support</h4><a href="./faq.html">FAQs</a><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms.html">Terms</a><a href="./contact.html">Help Center</a></div>
+    <div class="footer-links"><h4>Support</h4><a href="./faq.html">FAQs</a><a href="./privacy-policy.html">Privacy Policy</a><a href="./terms.html">Terms & Conditions</a><a href="./contact.html">Help Center</a></div>
   </div>
   <div class="footer-bottom"><p>© 2026 RecruitIQ. All rights reserved.</p></div>
 </footer>
@@ -118,6 +130,9 @@ window.addEventListener('scroll',()=>document.getElementById('navbar').classList
 document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('open'));
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+<script>
+  lucide.createIcons();
 </script>
 </body>
 </html>

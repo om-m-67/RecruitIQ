@@ -217,9 +217,52 @@ body{padding-top:90px;}
 .company-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-bottom:16px;}
 .company-tags span{padding:4px 12px;background:var(--primary-light);color:var(--primary);font-size:12px;font-weight:600;border-radius:99px;}
 .company-meta{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);font-weight:600;padding-top:14px;border-top:1px solid var(--border);margin-bottom:18px;}
-.view-company-btn{width:100%;height:44px;background:var(--gradient);color:#fff;font-size:13.5px;font-weight:700;border-radius:12px;transition:all var(--transition);}
-.view-company-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,99,235,.22);}
+.view-company-btn {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all .35s ease;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, .25);
+  position: relative;
+  overflow: hidden;
+}
 
+.view-company-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, .35),
+      transparent);
+  transition: .6s;
+}
+
+.view-company-btn:hover::before {
+  left: 120%;
+}
+
+.view-company-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 18px 40px rgba(37, 99, 235, .35);
+}
+
+.view-company-btn:active {
+  transform: scale(.97);
+}
 /* ── Pricing ── */
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:80px;}
 .pricing-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius-lg);padding:36px;box-shadow:var(--shadow-sm);position:relative;overflow:hidden;transition:all var(--transition);}
@@ -369,4 +412,174 @@ body{padding-top:90px;}
   .hero-title{font-size:36px;}
   .journey-grid{grid-template-columns:1fr;}
   .page-hero{padding:60px 24px;}
+}
+/* ============================
+   Privacy Policy / Legal Page
+============================ */
+
+.legal-hero {
+  width: 90%;
+  max-width: 1200px;
+  margin: 70px auto 50px;
+  padding: 90px 60px;
+  text-align: center;
+  background: linear-gradient(135deg, #eef4ff, #f8fbff);
+  border: 1px solid rgba(37, 99, 235, .08);
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(37, 99, 235, .08);
+}
+
+.legal-hero::before {
+  content: "";
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  background: rgba(37, 99, 235, .08);
+  border-radius: 50%;
+  top: -120px;
+  right: -120px;
+  filter: blur(30px);
+}
+
+.legal-hero::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  background: rgba(79, 70, 229, .08);
+  border-radius: 50%;
+  bottom: -120px;
+  left: -120px;
+  filter: blur(30px);
+}
+
+.legal-hero h1 {
+  position: relative;
+  font-size: 58px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 18px;
+  letter-spacing: -1px;
+}
+
+.legal-hero p {
+  position: relative;
+  max-width: 760px;
+  margin: auto;
+  font-size: 19px;
+  line-height: 1.8;
+  color: #64748b;
+}
+
+/* ========================= */
+
+.legal-content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 28px;
+}
+
+.legal-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 22px;
+  padding: 34px;
+  position: relative;
+  overflow: hidden;
+  transition: .35s;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, .05);
+}
+
+.legal-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: .35s;
+}
+
+.legal-card:hover::before {
+  transform: scaleX(1);
+}
+
+.legal-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(37, 99, 235, .15);
+  border-color: #bfdbfe;
+}
+
+.legal-card h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+.legal-card p {
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.9;
+}
+
+/* Number Badge */
+
+.legal-card h2::before {
+  content: "";
+  display: inline-flex;
+  width: 12px;
+  height: 12px;
+  background: #2563eb;
+  border-radius: 50%;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+/* ========================= */
+
+@media(max-width:992px) {
+
+  .legal-hero {
+    padding: 70px 35px;
+  }
+
+  .legal-hero h1 {
+    font-size: 44px;
+  }
+
+}
+
+@media(max-width:768px) {
+
+  .legal-hero {
+    margin-top: 40px;
+    padding: 60px 25px;
+  }
+
+  .legal-hero h1 {
+    font-size: 36px;
+  }
+
+  .legal-hero p {
+    font-size: 16px;
+  }
+
+  .legal-content {
+    grid-template-columns: 1fr;
+  }
+
+  .legal-card {
+    padding: 28px;
+  }
+
 }
